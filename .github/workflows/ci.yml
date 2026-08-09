@@ -1,0 +1,133 @@
+# ============================================================================
+# CI — verify the latest engine release actually works, and that every template
+# opens in it.
+#
+# WHY THIS EXISTS: this repository's content is only useful if it is known to
+# work. Every template and sample doubles as a regression test — if one breaks
+# on a new engine version, a user's project will break the same way.
+#
+# It is also the canary for the ENGINE's releases. It installs the published
+# artifact exactly as a user would, so a release that is broken from a user's
+# point of view fails here. That matters: v0.2.0 shipped a symbols asset that
+# sorted ahead of the engine package in the Hub's asset matching, and every Hub
+# already installed would have downloaded 63 MB of debug binaries instead of the
+# engine. Nothing caught it automatically. This is the thing that would have.
+#
+# NOTE for editors: never put `shell:` on a `uses:` step — invalid, fails in 0s.
+# ============================================================================
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+  schedule:
+    # Daily: the engine can publish a release at any time, and this is what
+    # notices when a published release stops being installable.
+    - cron: "17 6 * * *"
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  engine-release-works:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download the latest engine release
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Resolve exactly the way the Hub does: the asset whose name contains
+          # "-win64.zip". NOT plain ".zip" — the symbols archive would match that
+          # and sort first. This assertion is the point of the step.
+          api="https://api.github.com/repos/orgolis/c-Engine-Game/releases/latest"
+          curl -sSL "$api" -o release.json
+          tag=$(python -c "import json;print(json.load(open('release.json'))['tag_name'])")
+          url=$(python - <<'PY'
+          import json
+          d = json.load(open("release.json"))
+          cands = [a for a in d["assets"] if "-win64.zip" in a["name"]]
+          assert len(cands) == 1, f"expected exactly one engine package, got {[a['name'] for a in cands]}"
+          print(cands[0]["browser_download_url"])
+          PY
+          )
+          echo "engine $tag -> $url"
+          curl -sSL "$url" -o engine.zip
+          mkdir -p engine && cd engine && unzip -q ../engine.zip
+          ls -la | head -20
+
+      - name: The release ships a usable command line
+        id: cli
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd engine
+          # Engine releases up to and including v0.2.0 shipped editor.exe only;
+          # the CLI was added to the package afterwards. Rather than sit red
+          # until the next release - which trains everyone to ignore this
+          # workflow, the exact habit that let twenty broken releases ship - the
+          # absence is reported as a warning and the CLI-dependent steps are
+          # skipped explicitly. They light up on their own once a release
+          # includes gws. What is NOT skipped is the check that the package
+          # contains a runnable editor at all.
+          test -f editor.exe || { echo "::error::the engine package has no editor.exe"; exit 1; }
+          if [ -f gws.exe ]; then
+            ./gws.exe version
+            ./gws.exe --help > /dev/null
+            echo "has_cli=true" >> "$GITHUB_OUTPUT"
+            echo "OK: gws is present and runs"
+          else
+            echo "has_cli=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::this engine release does not ship gws - simulation and template checks skipped"
+            echo "### CLI not in this release" >> "$GITHUB_STEP_SUMMARY"
+            echo "Verified the package contains editor.exe. Simulation and template coverage need an engine release that ships \`gws\`." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: The engine simulates
+        if: steps.cli.outputs.has_cli == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd engine
+          # --demo seeds a world, so a green result means the gameplay systems
+          # actually ran rather than that a binary merely launched.
+          ./gws.exe run --demo --frames 120 --json | tee run.json
+          python - <<'PY'
+          import json
+          d = json.load(open("run.json"))
+          assert d["ok"], d
+          assert d["entities"] == 1, f"expected the demo entity, got {d['entities']}"
+          assert d["events"], "the demo world produced no events - the tick did not run"
+          print("OK: simulated", d["frames"], "frames,", d["entities"], "entities")
+          PY
+
+      - name: Every template opens
+        if: steps.cli.outputs.has_cli == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          found=0
+          for manifest in templates/*/project.schizo; do
+            dir=$(dirname "$manifest")
+            echo "::group::$dir"
+            ./engine/gws.exe validate "$dir"
+            ./engine/gws.exe run --project "$dir" --frames 60 --json
+            echo "::endgroup::"
+            found=$((found+1))
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No templates yet — the harness is in place and will cover them as they land (Phase 6)."
+            echo "### No templates yet" >> "$GITHUB_STEP_SUMMARY"
+            echo "The engine release was verified installable and able to simulate." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "$found template(s) opened in the latest engine"
+            echo "### $found template(s) verified" >> "$GITHUB_STEP_SUMMARY"
+          fi
