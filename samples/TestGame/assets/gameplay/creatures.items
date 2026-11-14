@@ -1,0 +1,25 @@
+# What the creatures fight with. Each creature's NPC Agent names one (Inspector >
+# NPC Agent > ability). The cast time is the wind-up you can see coming; a spit
+# has a speed, so it flies -- and can be side-stepped.
+
+ability claw
+  name Claw
+  cooldown 1.4
+  cast 0.45
+  target aimed
+  range 3
+  damage 9 physical
+  vfx claw
+end
+
+ability spit
+  name Spit
+  cooldown 3
+  cast 0.7
+  target aimed
+  range 26
+  speed 16
+  arc 4
+  damage 6 poison
+  vfx spit
+end

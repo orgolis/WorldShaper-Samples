@@ -4,7 +4,7 @@
 # in the inventory (I) and Use to swap it with the gun in hand. "draw" is how
 # long a gun takes to come up. Gear: pick it in the inventory and Use to wear
 # it -- what it replaces goes back into the bag. "resist.physical" is the share
-# of the creatures' damage it takes off. Grenades: G throws one where you aim
+# of the creatures' damage it takes off. Grenades: G throws one (it arcs; aim up to throw it far)
 # ("casts" an ability when used).
 
 weapon pistol
@@ -188,14 +188,16 @@ item frag_grenade
   max_stack 5
   weight 0.4
   casts frag
-  about Thrown where you aim (G): 90 damage within 5 m
+  about Thrown (G), it bursts where it lands: 90 damage within 5 m
 end
 
 ability frag
   name Frag Grenade
   target area_at_aim
-  range 25
+  range 40
   radius 5
   damage 90 explosive
+  speed 18
+  arc 9.8
   vfx frag
 end

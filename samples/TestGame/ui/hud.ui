@@ -1,23 +1,23 @@
 # The HUD: health and mana, the objective, the keys (as the player has bound them).
 ui layer=0
-panel  id=box       anchor=top_left x=20 y=20 w=470 h=120 color=0.04,0.06,0.09,0.6
-label  id=hp_label  anchor=top_left x=36 y=32 w=60 h=34 text="HP" size=30 color=1,0.82,0.8,1
-bar    id=hp        anchor=top_left x=100 y=34 w=370 h=32 color=0.85,0.22,0.2,1 bind=player.Health
-label  id=hp_value  anchor=top_left x=100 y=34 w=370 h=32 text="{player.Health}" size=26 align=center
-label  id=mp_label  anchor=top_left x=36 y=84 w=60 h=34 text="MP" size=30 color=0.8,0.86,1,1
-bar    id=mp        anchor=top_left x=100 y=86 w=370 h=32 color=0.28,0.45,0.95,1 bind=player.Mana
-label  id=mp_value  anchor=top_left x=100 y=86 w=370 h=32 text="{player.Mana}" size=26 align=center
-panel  id=obj_box   anchor=top x=0 y=20 w=720 h=62 color=0.04,0.06,0.09,0.6
-label  id=objective anchor=top x=0 y=20 w=720 h=62 text="Clear the creature camps" size=34 align=center color=1,0.92,0.7,1
-panel  id=lv_box    anchor=top_right x=-20 y=20 w=380 h=120 color=0.04,0.06,0.09,0.6
-label  id=level     anchor=top_right x=-36 y=30 w=348 h=36 text="Level {player.level}" size=30 color=1,0.92,0.7,1
-bar    id=xp        anchor=top_right x=-36 y=72 w=348 h=16 color=0.95,0.75,0.25,1 bind=player.xp
-label  id=points    anchor=top_right x=-36 y=96 w=348 h=34 text="Skill points: {player.skill_points}   ({key.skills})" size=22 color=1,1,1,0.8
-label  id=keys      anchor=bottom_left x=20 y=-14 w=1880 h=34 text="{key.fire} fire   {key.aim} aim   {key.reload} reload   {key.next_weapon} next gun   {key.grenade} grenade   {key.interact} use   {key.ability_1} {key.ability_2} {key.ability_3} {key.ability_4} abilities   {key.inventory} inventory   {key.skills} skills   Esc menu" size=19 color=1,1,1,0.6
-panel  id=ws_box    anchor=bottom_right x=-20 y=-152 w=440 h=104 color=0.04,0.06,0.09,0.6
-label  id=ws_k1     anchor=bottom_right x=-312 y=-232 w=144 h=24 text="{key.weapon_1}" size=18 align=center color=1,0.86,0.5,0.9
-label  id=ws_k2     anchor=bottom_right x=-168 y=-232 w=144 h=24 text="{key.weapon_2}" size=18 align=center color=1,0.86,0.5,0.9
-label  id=ws_k3     anchor=bottom_right x=-24 y=-232 w=144 h=24 text="{key.weapon_3}" size=18 align=center color=1,0.86,0.5,0.9
-slots  id=hud_guns  anchor=bottom_right x=-24 y=-156 w=432 h=72 cols=3 rows=1 size=15 bind=player.weapons
-panel  id=gr_box    anchor=bottom_right x=-20 y=-104 w=260 h=40 color=0.04,0.06,0.09,0.6
-label  id=grenades  anchor=bottom_right x=-30 y=-104 w=240 h=40 text="Grenades: {player.item.frag_grenade}   ({key.grenade})" size=22 align=right
+panel  id=box       anchor=top_left x=20 y=20 w=470 h=120 color=0.04,0.06,0.09,0.6 radius=8 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=hp_label  anchor=top_left x=36 y=32 w=60 h=34 text="HP" size=30 color=1,0.82,0.8,1 shadow=1
+bar    id=hp        anchor=top_left x=100 y=34 w=370 h=32 color=0.85,0.22,0.2,1 bind=player.Health radius=6 bg=0.02,0.03,0.05,0.75 border=0,0,0,0.6 border_width=1.5
+label  id=hp_value  anchor=top_left x=100 y=34 w=370 h=32 text="{player.Health}" size=26 align=center shadow=1
+label  id=mp_label  anchor=top_left x=36 y=84 w=60 h=34 text="MP" size=30 color=0.8,0.86,1,1 shadow=1
+bar    id=mp        anchor=top_left x=100 y=86 w=370 h=32 color=0.28,0.45,0.95,1 bind=player.Mana radius=6 bg=0.02,0.03,0.05,0.75 border=0,0,0,0.6 border_width=1.5
+label  id=mp_value  anchor=top_left x=100 y=86 w=370 h=32 text="{player.Mana}" size=26 align=center shadow=1
+panel  id=obj_box   anchor=top x=0 y=20 w=720 h=62 color=0.04,0.06,0.09,0.6 radius=8 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=objective anchor=top x=0 y=20 w=720 h=62 text="Clear the creature camps" size=34 align=center color=1,0.92,0.7,1 bold=1 shadow=1
+panel  id=lv_box    anchor=top_right x=-20 y=20 w=380 h=120 color=0.04,0.06,0.09,0.6 radius=8 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=level     anchor=top_right x=-36 y=30 w=348 h=36 text="Level {player.level}" size=30 color=1,0.92,0.7,1 bold=1 shadow=1
+bar    id=xp        anchor=top_right x=-36 y=72 w=348 h=16 color=0.95,0.75,0.25,1 bind=player.xp radius=6 bg=0.02,0.03,0.05,0.75 border=0,0,0,0.6 border_width=1.5
+label  id=points    anchor=top_right x=-36 y=96 w=348 h=34 text="Skill points: {player.skill_points}   ({key.skills})" size=22 color=1,1,1,0.8 bold=1 shadow=1
+label  id=keys      anchor=bottom_left x=20 y=-14 w=1880 h=34 text="{key.fire} fire   {key.aim} aim   {key.reload} reload   {key.next_weapon} next gun   {key.grenade} grenade   {key.interact} use   {key.ability_1} {key.ability_2} {key.ability_3} {key.ability_4} abilities   {key.inventory} inventory   {key.skills} skills   Esc menu" size=19 color=1,1,1,0.6 shadow=1
+panel  id=ws_box    anchor=bottom_right x=-20 y=-168 w=440 h=104 color=0.04,0.06,0.09,0.6 radius=8 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=ws_k1     anchor=bottom_right x=-312 y=-248 w=144 h=24 text="{key.weapon_1}" size=18 align=center color=1,0.86,0.5,0.9 shadow=1
+label  id=ws_k2     anchor=bottom_right x=-168 y=-248 w=144 h=24 text="{key.weapon_2}" size=18 align=center color=1,0.86,0.5,0.9 shadow=1
+label  id=ws_k3     anchor=bottom_right x=-24 y=-248 w=144 h=24 text="{key.weapon_3}" size=18 align=center color=1,0.86,0.5,0.9 shadow=1
+slots  id=hud_guns  anchor=bottom_right x=-24 y=-172 w=432 h=72 cols=3 rows=1 size=15 bind=player.weapons radius=6 border=1,1,1,0.1 border_width=1
+panel  id=gr_box    anchor=bottom_right x=-20 y=-120 w=260 h=40 color=0.04,0.06,0.09,0.6 radius=8 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=grenades  anchor=bottom_right x=-30 y=-120 w=240 h=40 text="Grenades: {player.item.frag_grenade}   ({key.grenade})" size=22 align=right shadow=1

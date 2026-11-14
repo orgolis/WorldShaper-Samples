@@ -45,6 +45,7 @@ ability firebolt
   range 35
   damage 30 fire
   vfx firebolt
+  speed 45
 end
 
 ability frost_nova

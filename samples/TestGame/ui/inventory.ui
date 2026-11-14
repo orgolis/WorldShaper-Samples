@@ -1,26 +1,26 @@
 # The inventory: weapon slots, gear worn, the bag.
 ui modal pause layer=45
 panel  id=dim      anchor=fill color=0,0,0,0.55
-panel  id=card     anchor=center x=0 y=0 w=1400 h=900 color=0.06,0.08,0.12,0.95
-label  id=title    anchor=center x=0 y=-400 w=800 h=70 text="Inventory" size=52 align=center
-label  id=h_guns   anchor=center x=-300 y=-340 w=640 h=40 text="Weapon slots" size=30 align=center color=1,0.86,0.5,1
+panel  id=card     anchor=center x=0 y=0 w=1400 h=900 color=0.06,0.08,0.12,0.95 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=title    anchor=center x=0 y=-400 w=800 h=70 text="Inventory" size=52 align=center bold=1 shadow=1
+label  id=h_guns   anchor=center x=-300 y=-340 w=640 h=40 text="Weapon slots" size=30 align=center color=1,0.86,0.5,1 bold=1
 label  id=k_gun1   anchor=center x=-500 y=-298 w=200 h=26 text="Slot 1  [{key.weapon_1}]" size=18 align=center color=1,1,1,0.6
 label  id=k_gun2   anchor=center x=-300 y=-298 w=200 h=26 text="Slot 2  [{key.weapon_2}]" size=18 align=center color=1,1,1,0.6
 label  id=k_gun3   anchor=center x=-100 y=-298 w=200 h=26 text="Slot 3  [{key.weapon_3}]" size=18 align=center color=1,1,1,0.6
-slots  id=guns     anchor=center x=-300 y=-232 w=600 h=96 cols=3 rows=1 size=18 bind=player.weapons
+slots  id=guns     anchor=center x=-300 y=-232 w=600 h=96 cols=3 rows=1 size=18 bind=player.weapons radius=6 border=1,1,1,0.1 border_width=1
 label  id=gun_info anchor=center x=-300 y=-169 w=700 h=26 text="{guns.info}" size=19 align=center color=0.85,0.9,1,0.85
-button id=stow_gun anchor=center x=-300 y=-127 w=300 h=40 text="Put in bag" size=21 enabled=guns.filled
-label  id=h_worn   anchor=center x=400 y=-330 w=440 h=40 text="Worn" size=30 align=center color=1,0.86,0.5,1
+button id=stow_gun anchor=center x=-300 y=-127 w=300 h=40 text="Put in bag" size=21 enabled=guns.filled color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=h_worn   anchor=center x=400 y=-330 w=440 h=40 text="Worn" size=30 align=center color=1,0.86,0.5,1 bold=1
 label  id=l_head   anchor=center x=255 y=-270 w=130 h=46 text="Head" size=24
-button id=eq_head  anchor=center x=450 y=-270 w=260 h=46 text="{player.equipped.head}" size=21 enabled=player.equipped.head
+button id=eq_head  anchor=center x=450 y=-270 w=260 h=46 text="{player.equipped.head}" size=21 enabled=player.equipped.head color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 label  id=l_chest  anchor=center x=255 y=-214 w=130 h=46 text="Chest" size=24
-button id=eq_chest anchor=center x=450 y=-214 w=260 h=46 text="{player.equipped.chest}" size=21 enabled=player.equipped.chest
+button id=eq_chest anchor=center x=450 y=-214 w=260 h=46 text="{player.equipped.chest}" size=21 enabled=player.equipped.chest color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 label  id=worn_hint anchor=center x=400 y=-150 w=500 h=26 text="Click to take it off" size=17 align=center color=1,1,1,0.5
-label  id=h_bag    anchor=center x=0 y=-82 w=640 h=36 text="Bag" size=30 align=center color=1,0.86,0.5,1
-slots  id=bag      anchor=center x=0 y=72 w=1120 h=260 cols=8 rows=3 size=18 bind=player.inventory
-label  id=picked   anchor=center x=0 y=228 w=900 h=40 text="{bag.name}" size=32 align=center color=1,0.86,0.5,1
+label  id=h_bag    anchor=center x=0 y=-82 w=640 h=36 text="Bag" size=30 align=center color=1,0.86,0.5,1 bold=1
+slots  id=bag      anchor=center x=0 y=72 w=1120 h=260 cols=8 rows=3 size=18 bind=player.inventory radius=6 border=1,1,1,0.1 border_width=1
+label  id=picked   anchor=center x=0 y=228 w=900 h=40 text="{bag.name}" size=32 align=center color=1,0.86,0.5,1 bold=1
 label  id=about    anchor=center x=0 y=262 w=1000 h=28 text="{bag.info}" size=21 align=center color=0.85,0.9,1,0.85
 label  id=stats    anchor=center x=0 y=298 w=1000 h=30 text="Health {player.Health}     Mana {player.Mana}" size=23 align=center
-button id=use_item anchor=center x=-160 y=370 w=280 h=60 text="Use / equip" size=26 enabled=bag.count
-button id=inventory_close anchor=center x=160 y=370 w=280 h=60 text="Close" size=26
+button id=use_item anchor=center x=-160 y=370 w=280 h=60 text="Use / equip" size=26 enabled=bag.count color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+button id=inventory_close anchor=center x=160 y=370 w=280 h=60 text="Close" size=26 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 label  id=gun_hint anchor=center x=0 y=424 w=1300 h=24 text="A gun found while every weapon slot is full goes into the bag: pick it there and Use / equip to swap it with the gun in hand." size=17 align=center color=1,1,1,0.5

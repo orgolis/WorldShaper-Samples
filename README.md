@@ -23,7 +23,7 @@ so the Hub's *upgrade preflight* runs against this repo's content.
 
 | Sample | Needs engine | What it is |
 |---|---|---|
-| [TestGame](samples/TestGame) -- "The Beacon" | 0.8.43+ | A complete first-person game: hills, creature camps, eight guns in three weapon slots, armour, grenades, a skill tree, menus, HUD, settings, checkpoints and a goal -- all project files (scenes, `.ui`, logic scripts, `.items`). |
+| [TestGame](samples/TestGame) -- "The Beacon" | 0.8.44+ | A complete first-person game: hills under an HDR sky, solid forests, creature camps that fight together, eight guns in three weapon slots, armour, thrown grenades, spells, effects, a skill tree, menus, HUD, settings, checkpoints and a goal -- all project files (scenes, `.ui`, logic scripts, `.items`). |
 
 **Download:** each sample is a zip on the [Releases](https://github.com/orgolis/WorldShaper-Samples/releases) page -- the newest TestGame is always at
 https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip. Unzip it, then in the Hub:

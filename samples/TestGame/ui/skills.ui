@@ -2,57 +2,57 @@
 # ones above it (and any named under it) first. Abilities go on the bar (keys in Settings).
 ui modal pause layer=45
 panel  id=dim      anchor=fill color=0,0,0,0.55
-panel  id=card     anchor=center x=0 y=0 w=1500 h=860 color=0.06,0.08,0.12,0.95
-label  id=title    anchor=center x=0 y=-380 w=800 h=70 text="Skill Tree" size=52 align=center
-label  id=level    anchor=center x=-300 y=-310 w=400 h=40 text="Level {player.level}" size=30 align=center color=1,0.92,0.7,1
-bar    id=xp       anchor=center x=-300 y=-276 w=360 h=14 color=0.95,0.75,0.25,1 bind=player.xp
-label  id=points   anchor=center x=300 y=-296 w=500 h=44 text="Skill points: {player.skill_points}" size=32 align=center color=0.6,0.9,1,1
-label  id=h_0      anchor=center x=-480 y=-220 w=440 h=44 text="Spells" size=32 align=center color=1,0.86,0.5,1
-panel  id=box_frost anchor=center x=-480 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_frost   anchor=center x=-480 y=-152 w=420 h=40 text="Frost Nova" size=30 align=center
+panel  id=card     anchor=center x=0 y=0 w=1500 h=860 color=0.06,0.08,0.12,0.95 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=title    anchor=center x=0 y=-380 w=800 h=70 text="Skill Tree" size=52 align=center bold=1 shadow=1
+label  id=level    anchor=center x=-300 y=-310 w=400 h=40 text="Level {player.level}" size=30 align=center color=1,0.92,0.7,1 bold=1
+bar    id=xp       anchor=center x=-300 y=-276 w=360 h=14 color=0.95,0.75,0.25,1 bind=player.xp radius=6 bg=0.02,0.03,0.05,0.75 border=0,0,0,0.6 border_width=1.5
+label  id=points   anchor=center x=300 y=-296 w=500 h=44 text="Skill points: {player.skill_points}" size=32 align=center color=0.6,0.9,1,1 bold=1
+label  id=h_0      anchor=center x=-480 y=-220 w=440 h=44 text="Spells" size=32 align=center color=1,0.86,0.5,1 bold=1
+panel  id=box_frost anchor=center x=-480 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_frost   anchor=center x=-480 y=-152 w=420 h=40 text="Frost Nova" size=30 align=center bold=1
 label  id=d_frost   anchor=center x=-480 y=-116 w=420 h=30 text="Ability: a freezing burst around you" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_frost   anchor=center x=-480 y=-88 w=420 h=26 text="First of its branch" size=17 align=center color=1,1,1,0.5
-button id=learn_frost anchor=center x=-480 y=-46 w=300 h=44 text="{skill.frost}" size=22 enabled=skill.frost.can
-panel  id=box_storm anchor=center x=-480 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_storm   anchor=center x=-480 y=38 w=420 h=40 text="Lightning" size=30 align=center
+button id=learn_frost anchor=center x=-480 y=-46 w=300 h=44 text="{skill.frost}" size=22 enabled=skill.frost.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_storm anchor=center x=-480 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_storm   anchor=center x=-480 y=38 w=420 h=40 text="Lightning" size=30 align=center bold=1
 label  id=d_storm   anchor=center x=-480 y=74 w=420 h=30 text="Ability: a long-range bolt" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_storm   anchor=center x=-480 y=102 w=420 h=26 text="Needs Frost Nova" size=17 align=center color=1,1,1,0.5
-button id=learn_storm anchor=center x=-480 y=144 w=300 h=44 text="{skill.storm}" size=22 enabled=skill.storm.can
-panel  id=box_archmage anchor=center x=-480 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_archmage   anchor=center x=-480 y=228 w=420 h=40 text="Archmage" size=30 align=center
+button id=learn_storm anchor=center x=-480 y=144 w=300 h=44 text="{skill.storm}" size=22 enabled=skill.storm.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_archmage anchor=center x=-480 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_archmage   anchor=center x=-480 y=228 w=420 h=40 text="Archmage" size=30 align=center bold=1
 label  id=d_archmage   anchor=center x=-480 y=264 w=420 h=30 text="+60 max mana" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_archmage   anchor=center x=-480 y=292 w=420 h=26 text="Needs Lightning + Clarity" size=17 align=center color=1,1,1,0.5
-button id=learn_archmage anchor=center x=-480 y=334 w=300 h=44 text="{skill.archmage}" size=22 enabled=skill.archmage.can
-label  id=h_1      anchor=center x=0 y=-220 w=440 h=44 text="Body" size=32 align=center color=1,0.86,0.5,1
-panel  id=box_tough anchor=center x=0 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_tough   anchor=center x=0 y=-152 w=420 h=40 text="Toughness" size=30 align=center
+button id=learn_archmage anchor=center x=-480 y=334 w=300 h=44 text="{skill.archmage}" size=22 enabled=skill.archmage.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=h_1      anchor=center x=0 y=-220 w=440 h=44 text="Body" size=32 align=center color=1,0.86,0.5,1 bold=1
+panel  id=box_tough anchor=center x=0 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_tough   anchor=center x=0 y=-152 w=420 h=40 text="Toughness" size=30 align=center bold=1
 label  id=d_tough   anchor=center x=0 y=-116 w=420 h=30 text="+25 max health" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_tough   anchor=center x=0 y=-88 w=420 h=26 text="First of its branch" size=17 align=center color=1,1,1,0.5
-button id=learn_tough anchor=center x=0 y=-46 w=300 h=44 text="{skill.tough}" size=22 enabled=skill.tough.can
-panel  id=box_mend_skill anchor=center x=0 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_mend_skill   anchor=center x=0 y=38 w=420 h=40 text="Mend" size=30 align=center
+button id=learn_tough anchor=center x=0 y=-46 w=300 h=44 text="{skill.tough}" size=22 enabled=skill.tough.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_mend_skill anchor=center x=0 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_mend_skill   anchor=center x=0 y=38 w=420 h=40 text="Mend" size=30 align=center bold=1
 label  id=d_mend_skill   anchor=center x=0 y=74 w=420 h=30 text="Ability: heal yourself" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_mend_skill   anchor=center x=0 y=102 w=420 h=26 text="Needs Toughness" size=17 align=center color=1,1,1,0.5
-button id=learn_mend_skill anchor=center x=0 y=144 w=300 h=44 text="{skill.mend_skill}" size=22 enabled=skill.mend_skill.can
-panel  id=box_iron anchor=center x=0 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_iron   anchor=center x=0 y=228 w=420 h=40 text="Iron Skin" size=30 align=center
+button id=learn_mend_skill anchor=center x=0 y=144 w=300 h=44 text="{skill.mend_skill}" size=22 enabled=skill.mend_skill.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_iron anchor=center x=0 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_iron   anchor=center x=0 y=228 w=420 h=40 text="Iron Skin" size=30 align=center bold=1
 label  id=d_iron   anchor=center x=0 y=264 w=420 h=30 text="+50 max health" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_iron   anchor=center x=0 y=292 w=420 h=26 text="Needs Mend" size=17 align=center color=1,1,1,0.5
-button id=learn_iron anchor=center x=0 y=334 w=300 h=44 text="{skill.iron}" size=22 enabled=skill.iron.can
-label  id=h_2      anchor=center x=480 y=-220 w=440 h=44 text="Mind" size=32 align=center color=1,0.86,0.5,1
-panel  id=box_focus anchor=center x=480 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_focus   anchor=center x=480 y=-152 w=420 h=40 text="Focus" size=30 align=center
+button id=learn_iron anchor=center x=0 y=334 w=300 h=44 text="{skill.iron}" size=22 enabled=skill.iron.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=h_2      anchor=center x=480 y=-220 w=440 h=44 text="Mind" size=32 align=center color=1,0.86,0.5,1 bold=1
+panel  id=box_focus anchor=center x=480 y=-100 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_focus   anchor=center x=480 y=-152 w=420 h=40 text="Focus" size=30 align=center bold=1
 label  id=d_focus   anchor=center x=480 y=-116 w=420 h=30 text="+30 max mana" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_focus   anchor=center x=480 y=-88 w=420 h=26 text="First of its branch" size=17 align=center color=1,1,1,0.5
-button id=learn_focus anchor=center x=480 y=-46 w=300 h=44 text="{skill.focus}" size=22 enabled=skill.focus.can
-panel  id=box_clarity anchor=center x=480 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_clarity   anchor=center x=480 y=38 w=420 h=40 text="Clarity" size=30 align=center
+button id=learn_focus anchor=center x=480 y=-46 w=300 h=44 text="{skill.focus}" size=22 enabled=skill.focus.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_clarity anchor=center x=480 y=90 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_clarity   anchor=center x=480 y=38 w=420 h=40 text="Clarity" size=30 align=center bold=1
 label  id=d_clarity   anchor=center x=480 y=74 w=420 h=30 text="+40 max mana" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_clarity   anchor=center x=480 y=102 w=420 h=26 text="Needs Focus" size=17 align=center color=1,1,1,0.5
-button id=learn_clarity anchor=center x=480 y=144 w=300 h=44 text="{skill.clarity}" size=22 enabled=skill.clarity.can
-panel  id=box_veteran anchor=center x=480 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95
-label  id=n_veteran   anchor=center x=480 y=228 w=420 h=40 text="Veteran" size=30 align=center
+button id=learn_clarity anchor=center x=480 y=144 w=300 h=44 text="{skill.clarity}" size=22 enabled=skill.clarity.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+panel  id=box_veteran anchor=center x=480 y=280 w=440 h=168 color=0.1,0.13,0.19,0.95 radius=12 border=1,1,1,0.08 border_width=1.5 shadow=1
+label  id=n_veteran   anchor=center x=480 y=228 w=420 h=40 text="Veteran" size=30 align=center bold=1
 label  id=d_veteran   anchor=center x=480 y=264 w=420 h=30 text="+40 max health" size=20 align=center color=0.85,0.9,1,0.85
 label  id=r_veteran   anchor=center x=480 y=292 w=420 h=26 text="Needs Clarity + Toughness" size=17 align=center color=1,1,1,0.5
-button id=learn_veteran anchor=center x=480 y=334 w=300 h=44 text="{skill.veteran}" size=22 enabled=skill.veteran.can
-button id=skills_close anchor=center x=0 y=400 w=300 h=56 text="Close" size=28
+button id=learn_veteran anchor=center x=480 y=334 w=300 h=44 text="{skill.veteran}" size=22 enabled=skill.veteran.can color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+button id=skills_close anchor=center x=0 y=400 w=300 h=56 text="Close" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
