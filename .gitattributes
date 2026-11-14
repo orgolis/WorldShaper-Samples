@@ -22,6 +22,10 @@
 *.ogg   filter=lfs diff=lfs merge=lfs -text
 *.mp3   filter=lfs diff=lfs merge=lfs -text
 *.mp4   filter=lfs diff=lfs merge=lfs -text
+# Terrain and foliage data (heights, layer weights, density masks)
+*.r32   filter=lfs diff=lfs merge=lfs -text
+*.splat filter=lfs diff=lfs merge=lfs -text
+*.mask  filter=lfs diff=lfs merge=lfs -text
 # Cooked bundles
 *.pak   filter=lfs diff=lfs merge=lfs -text
 # Text project formats stay as text so they diff and merge normally
@@ -30,3 +34,7 @@
 *.gameplay text
 *.items    text
 *.schizo   text
+*.ui       text
+*.lgraph   text
+*.cfg      text
+*.mat      text

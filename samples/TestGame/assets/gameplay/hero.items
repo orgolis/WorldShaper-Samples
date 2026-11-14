@@ -1,0 +1,96 @@
+# The hero's progression: a skill tree, an ability learned from it, mana potions.
+# Skills cost the points the player earns by levelling up (XP for each creature).
+# In Play, K opens the tree. "unlocks" puts an ability on the Ability Bar (keys 1-8,
+# in the order learned); "grant" raises an attribute; "requires" needs that skill first.
+# Firebolt is the hero's from the start (the Ability Bar in the scene).
+
+item mana_potion
+  name Mana Potion
+  kind consumable
+  max_stack 10
+  weight 0.2
+  on_use Mana 50
+  about Restores 50 mana
+end
+
+ability lightning
+  name Lightning
+  cost Mana 30
+  cooldown 4
+  cast 0.2
+  target aimed
+  range 60
+  damage 55 shock
+  vfx lightning
+end
+
+skill frost
+  name Frost Nova
+  tree hero
+  cost 1
+  unlocks frost_nova
+end
+
+skill storm
+  name Lightning
+  tree hero
+  cost 2
+  requires frost
+  unlocks lightning
+end
+
+skill archmage
+  name Archmage
+  tree hero
+  cost 2
+  requires storm
+  requires clarity
+  grant Mana 60
+end
+
+skill tough
+  name Toughness
+  tree hero
+  cost 1
+  grant Health 25
+end
+
+skill mend_skill
+  name Mend
+  tree hero
+  cost 1
+  requires tough
+  unlocks mend
+end
+
+skill iron
+  name Iron Skin
+  tree hero
+  cost 2
+  requires mend_skill
+  grant Health 50
+end
+
+skill focus
+  name Focus
+  tree hero
+  cost 1
+  grant Mana 30
+end
+
+skill clarity
+  name Clarity
+  tree hero
+  cost 1
+  requires focus
+  grant Mana 40
+end
+
+skill veteran
+  name Veteran
+  tree hero
+  cost 2
+  requires clarity
+  requires tough
+  grant Health 40
+end

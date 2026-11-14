@@ -1,0 +1,24 @@
+VSCRIPT 2
+name	Goal
+graph	event	EventGraph	0	8
+node	1	event.trigger_enter	0.0	0.0		none	0	
+node	2	world.get_flag	300.0	140.0		none	0	
+pin	2	Key	string	game.cleared
+node	3	math.greater_equal	300.0	250.0		none	0	
+pin	3	B	int	1
+node	4	flow.branch	300.0	0.0		none	0	
+node	5	ui.show	600.0	0.0		none	0	
+pin	5	File	string	ui/win.ui
+node	6	world.set_flag	900.0	0.0		none	0	
+pin	6	Key	string	game.won
+pin	6	Value	int	1
+node	7	ui.show_message	1200.0	140.0		none	0	
+pin	7	Text	string	The beacon is dark: clear every creature camp first.
+pin	7	Seconds	float	4.0
+link	2	Value	3	A
+link	1	Then	4	In
+link	3	Result	4	Condition
+link	4	True	5	In
+link	5	Then	6	In
+link	4	False	7	In
+end

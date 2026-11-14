@@ -19,6 +19,14 @@ tools/       the regression harness that replays samples against a new engine ve
 Every sample is a **regression test**. If a sample breaks on a new engine version, a user's project will too —
 so the Hub's *upgrade preflight* runs against this repo's content.
 
+## Samples
+
+| Sample | Needs engine | What it is |
+|---|---|---|
+| [TestGame](samples/TestGame) -- "The Beacon" | 0.8.43+ | A complete first-person game: hills, creature camps, eight guns in three weapon slots, armour, grenades, a skill tree, menus, HUD, settings, checkpoints and a goal -- all project files (scenes, `.ui`, logic scripts, `.items`). |
+
+Open one from the Hub: **Projects > Add Existing Project...** and choose its folder (clone with Git LFS installed).
+
 ## Planned templates
 
 Taken from the engine's genre coverage matrix: open-world RPG, souls-like action-RPG, looter-shooter, MMO-lite,

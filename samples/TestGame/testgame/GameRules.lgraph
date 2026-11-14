@@ -1,0 +1,877 @@
+VSCRIPT 2
+name	GameRules
+var	Kills	int	0	0		
+var	Total	int	0	9		
+var	Picked	string	0			
+var	PickedId	string	0			
+graph	event	EventGraph	0	342
+node	1	event.begin_play	0.0	0.0		none	0	
+node	2	ui.show	300.0	0.0		none	0	
+pin	2	File	string	ui/hud.ui
+node	3	ui.show	600.0	0.0		none	0	
+pin	3	File	string	ui/menu.ui
+node	4	var.get	900.0	140.0	Total	none	0	
+node	5	math.add	900.0	0.0		string	0	
+pin	5	A	string	Creatures left: 
+node	6	ui.set_text	1200.0	0.0		none	0	
+pin	6	File	string	ui/hud.ui
+pin	6	Id	string	objective
+node	7	gameplay.set_skill_tree	1500.0	0.0		none	0	
+pin	7	Tree	string	hero
+node	8	gameplay.add_skill_points	1800.0	0.0		none	0	
+pin	8	Points	int	1
+node	9	entity.find	2100.0	140.0		none	0	
+pin	9	Name	string	Player
+node	10	entity.find	2100.0	250.0		none	0	
+pin	10	Name	string	Player
+node	11	event.ui_button	0.0	450.0	start	none	0	
+node	12	ui.hide	300.0	450.0		none	0	
+pin	12	File	string	ui/menu.ui
+node	13	event.ui_button	0.0	790.0	quit	none	0	
+node	14	game.quit	300.0	790.0		none	0	
+node	15	event.key_pressed	0.0	1130.0	Escape	none	0	
+node	16	ui.is_shown	300.0	1270.0		none	0	
+pin	16	File	string	ui/settings.ui
+node	17	flow.branch	300.0	1130.0		none	0	
+node	18	ui.hide	600.0	1270.0		none	0	
+pin	18	File	string	ui/settings.ui
+node	19	ui.is_shown	600.0	1380.0		none	0	
+pin	19	File	string	ui/menu.ui
+node	20	flow.branch	600.0	1130.0		none	0	
+node	21	ui.is_shown	900.0	1270.0		none	0	
+pin	21	File	string	ui/win.ui
+node	22	flow.branch	900.0	1130.0		none	0	
+node	23	ui.is_shown	1200.0	1270.0		none	0	
+pin	23	File	string	ui/pause.ui
+node	24	flow.branch	1200.0	1130.0		none	0	
+node	25	ui.hide	1500.0	1130.0		none	0	
+pin	25	File	string	ui/pause.ui
+node	26	ui.show	1800.0	1270.0		none	0	
+pin	26	File	string	ui/pause.ui
+node	27	ui.is_shown	1800.0	1380.0		none	0	
+pin	27	File	string	ui/inventory.ui
+node	28	flow.branch	1800.0	1130.0		none	0	
+node	29	ui.hide	2100.0	1270.0		none	0	
+pin	29	File	string	ui/inventory.ui
+node	30	ui.is_shown	2100.0	1380.0		none	0	
+pin	30	File	string	ui/skills.ui
+node	31	flow.branch	2100.0	1130.0		none	0	
+node	32	ui.hide	2400.0	1270.0		none	0	
+pin	32	File	string	ui/skills.ui
+node	33	event.ui_button	0.0	1580.0	resume	none	0	
+node	34	ui.hide	300.0	1580.0		none	0	
+pin	34	File	string	ui/pause.ui
+node	35	event.ui_button	0.0	1920.0	save	none	0	
+node	36	world.save_game	300.0	1920.0		none	0	
+pin	36	Slot	string	quick
+node	37	ui.hide	600.0	1920.0		none	0	
+pin	37	File	string	ui/pause.ui
+node	38	ui.show_message	900.0	1920.0		none	0	
+pin	38	Text	string	Game saved
+pin	38	Seconds	float	2.0
+node	39	event.ui_button	0.0	2260.0	load	none	0	
+node	40	ui.hide	300.0	2260.0		none	0	
+pin	40	File	string	ui/pause.ui
+node	41	world.load_game	600.0	2260.0		none	0	
+pin	41	Slot	string	quick
+node	42	flow.branch	900.0	2260.0		none	0	
+node	43	ui.show_message	1200.0	2260.0		none	0	
+pin	43	Text	string	Game loaded
+pin	43	Seconds	float	2.0
+node	44	ui.show_message	1500.0	2400.0		none	0	
+pin	44	Text	string	No saved game yet (save from this menu, or reach a checkpoint)
+pin	44	Seconds	float	3.0
+node	45	event.ui_button	0.0	2600.0	settings	none	0	
+node	46	ui.show	300.0	2600.0		none	0	
+pin	46	File	string	ui/settings.ui
+node	47	event.ui_button	0.0	2940.0	settings_back	none	0	
+node	48	ui.hide	300.0	2940.0		none	0	
+pin	48	File	string	ui/settings.ui
+node	49	event.ui_button	0.0	3280.0	reset_controls	none	0	
+node	50	controls.reset	300.0	3280.0		none	0	
+node	51	event.ui_button	0.0	3620.0	bind_move_forward	none	0	
+node	52	controls.rebind	300.0	3620.0		none	0	
+pin	52	Action	string	move_forward
+node	53	event.ui_button	0.0	3960.0	bind_move_back	none	0	
+node	54	controls.rebind	300.0	3960.0		none	0	
+pin	54	Action	string	move_back
+node	55	event.ui_button	0.0	4300.0	bind_move_left	none	0	
+node	56	controls.rebind	300.0	4300.0		none	0	
+pin	56	Action	string	move_left
+node	57	event.ui_button	0.0	4640.0	bind_move_right	none	0	
+node	58	controls.rebind	300.0	4640.0		none	0	
+pin	58	Action	string	move_right
+node	59	event.ui_button	0.0	4980.0	bind_jump	none	0	
+node	60	controls.rebind	300.0	4980.0		none	0	
+pin	60	Action	string	jump
+node	61	event.ui_button	0.0	5320.0	bind_sprint	none	0	
+node	62	controls.rebind	300.0	5320.0		none	0	
+pin	62	Action	string	sprint
+node	63	event.ui_button	0.0	5660.0	bind_crouch	none	0	
+node	64	controls.rebind	300.0	5660.0		none	0	
+pin	64	Action	string	crouch
+node	65	event.ui_button	0.0	6000.0	bind_dash	none	0	
+node	66	controls.rebind	300.0	6000.0		none	0	
+pin	66	Action	string	dash
+node	67	event.ui_button	0.0	6340.0	bind_interact	none	0	
+node	68	controls.rebind	300.0	6340.0		none	0	
+pin	68	Action	string	interact
+node	69	event.ui_button	0.0	6680.0	bind_inventory	none	0	
+node	70	controls.rebind	300.0	6680.0		none	0	
+pin	70	Action	string	inventory
+node	71	event.ui_button	0.0	7020.0	bind_skills	none	0	
+node	72	controls.rebind	300.0	7020.0		none	0	
+pin	72	Action	string	skills
+node	73	event.ui_button	0.0	7360.0	bind_fire	none	0	
+node	74	controls.rebind	300.0	7360.0		none	0	
+pin	74	Action	string	fire
+node	75	event.ui_button	0.0	7700.0	bind_aim	none	0	
+node	76	controls.rebind	300.0	7700.0		none	0	
+pin	76	Action	string	aim
+node	77	event.ui_button	0.0	8040.0	bind_reload	none	0	
+node	78	controls.rebind	300.0	8040.0		none	0	
+pin	78	Action	string	reload
+node	79	event.ui_button	0.0	8380.0	bind_next_weapon	none	0	
+node	80	controls.rebind	300.0	8380.0		none	0	
+pin	80	Action	string	next_weapon
+node	81	event.ui_button	0.0	8720.0	bind_prev_weapon	none	0	
+node	82	controls.rebind	300.0	8720.0		none	0	
+pin	82	Action	string	prev_weapon
+node	83	event.ui_button	0.0	9060.0	bind_last_weapon	none	0	
+node	84	controls.rebind	300.0	9060.0		none	0	
+pin	84	Action	string	last_weapon
+node	85	event.ui_button	0.0	9400.0	bind_weapon_1	none	0	
+node	86	controls.rebind	300.0	9400.0		none	0	
+pin	86	Action	string	weapon_1
+node	87	event.ui_button	0.0	9740.0	bind_weapon_2	none	0	
+node	88	controls.rebind	300.0	9740.0		none	0	
+pin	88	Action	string	weapon_2
+node	89	event.ui_button	0.0	10080.0	bind_weapon_3	none	0	
+node	90	controls.rebind	300.0	10080.0		none	0	
+pin	90	Action	string	weapon_3
+node	91	event.ui_button	0.0	10420.0	bind_grenade	none	0	
+node	92	controls.rebind	300.0	10420.0		none	0	
+pin	92	Action	string	grenade
+node	93	event.ui_button	0.0	10760.0	bind_ability_1	none	0	
+node	94	controls.rebind	300.0	10760.0		none	0	
+pin	94	Action	string	ability_1
+node	95	event.ui_button	0.0	11100.0	bind_ability_2	none	0	
+node	96	controls.rebind	300.0	11100.0		none	0	
+pin	96	Action	string	ability_2
+node	97	event.ui_button	0.0	11440.0	bind_ability_3	none	0	
+node	98	controls.rebind	300.0	11440.0		none	0	
+pin	98	Action	string	ability_3
+node	99	event.ui_button	0.0	11780.0	bind_ability_4	none	0	
+node	100	controls.rebind	300.0	11780.0		none	0	
+pin	100	Action	string	ability_4
+node	101	event.ui_button	0.0	12120.0	set_quality	none	0	
+node	102	settings.next	300.0	12120.0		none	0	
+pin	102	Name	string	quality
+node	103	event.ui_button	0.0	12460.0	set_ambient_occlusion	none	0	
+node	104	settings.next	300.0	12460.0		none	0	
+pin	104	Name	string	ambient_occlusion
+node	105	event.ui_button	0.0	12800.0	set_reflections	none	0	
+node	106	settings.next	300.0	12800.0		none	0	
+pin	106	Name	string	reflections
+node	107	event.ui_button	0.0	13140.0	set_clouds	none	0	
+node	108	settings.next	300.0	13140.0		none	0	
+pin	108	Name	string	clouds
+node	109	event.ui_button	0.0	13480.0	set_volumetric	none	0	
+node	110	settings.next	300.0	13480.0		none	0	
+pin	110	Name	string	volumetric
+node	111	event.ui_button	0.0	13820.0	set_shadow_quality	none	0	
+node	112	settings.next	300.0	13820.0		none	0	
+pin	112	Name	string	shadow_quality
+node	113	event.ui_button	0.0	14160.0	set_render_scale	none	0	
+node	114	settings.next	300.0	14160.0		none	0	
+pin	114	Name	string	render_scale
+node	115	event.ui_button	0.0	14500.0	set_vsync	none	0	
+node	116	settings.next	300.0	14500.0		none	0	
+pin	116	Name	string	vsync
+node	117	event.ui_button	0.0	14840.0	set_fov	none	0	
+node	118	settings.next	300.0	14840.0		none	0	
+pin	118	Name	string	fov
+node	119	event.ui_button	0.0	15180.0	set_invert_y	none	0	
+node	120	settings.next	300.0	15180.0		none	0	
+pin	120	Name	string	invert_y
+node	121	event.ui_button	0.0	15520.0	sens_down	none	0	
+node	122	settings.get	300.0	15660.0		none	0	
+pin	122	Name	string	mouse_sensitivity
+node	123	string.to_float	300.0	15770.0		none	0	
+node	124	math.sub	300.0	15880.0		float	0	
+pin	124	B	float	0.25
+node	125	settings.set	300.0	15520.0		none	0	
+pin	125	Name	string	mouse_sensitivity
+node	126	event.ui_button	0.0	16080.0	sens_up	none	0	
+node	127	settings.get	300.0	16220.0		none	0	
+pin	127	Name	string	mouse_sensitivity
+node	128	string.to_float	300.0	16330.0		none	0	
+node	129	math.add	300.0	16440.0		float	0	
+pin	129	B	float	0.25
+node	130	settings.set	300.0	16080.0		none	0	
+pin	130	Name	string	mouse_sensitivity
+node	131	event.action_pressed	0.0	16640.0	inventory	none	0	
+node	132	ui.is_shown	300.0	16780.0		none	0	
+pin	132	File	string	ui/inventory.ui
+node	133	flow.branch	300.0	16640.0		none	0	
+node	134	ui.hide	600.0	16780.0		none	0	
+pin	134	File	string	ui/inventory.ui
+node	135	ui.is_shown	600.0	16890.0		none	0	
+pin	135	File	string	ui/menu.ui
+node	136	ui.is_shown	600.0	17000.0		none	0	
+pin	136	File	string	ui/pause.ui
+node	137	bool.or	600.0	17110.0		none	0	
+node	138	ui.is_shown	600.0	17220.0		none	0	
+pin	138	File	string	ui/win.ui
+node	139	bool.or	600.0	17330.0		none	0	
+node	140	ui.is_shown	600.0	17440.0		none	0	
+pin	140	File	string	ui/settings.ui
+node	141	bool.or	600.0	17550.0		none	0	
+node	142	flow.branch	600.0	16640.0		none	0	
+node	143	ui.hide	900.0	16640.0		none	0	
+pin	143	File	string	ui/skills.ui
+node	144	ui.show	1200.0	16640.0		none	0	
+pin	144	File	string	ui/inventory.ui
+node	145	event.action_pressed	0.0	17750.0	skills	none	0	
+node	146	ui.is_shown	300.0	17890.0		none	0	
+pin	146	File	string	ui/skills.ui
+node	147	flow.branch	300.0	17750.0		none	0	
+node	148	ui.hide	600.0	17890.0		none	0	
+pin	148	File	string	ui/skills.ui
+node	149	ui.is_shown	600.0	18000.0		none	0	
+pin	149	File	string	ui/menu.ui
+node	150	ui.is_shown	600.0	18110.0		none	0	
+pin	150	File	string	ui/pause.ui
+node	151	bool.or	600.0	18220.0		none	0	
+node	152	ui.is_shown	600.0	18330.0		none	0	
+pin	152	File	string	ui/win.ui
+node	153	bool.or	600.0	18440.0		none	0	
+node	154	ui.is_shown	600.0	18550.0		none	0	
+pin	154	File	string	ui/settings.ui
+node	155	bool.or	600.0	18660.0		none	0	
+node	156	flow.branch	600.0	17750.0		none	0	
+node	157	ui.hide	900.0	17750.0		none	0	
+pin	157	File	string	ui/inventory.ui
+node	158	ui.show	1200.0	17750.0		none	0	
+pin	158	File	string	ui/skills.ui
+node	159	event.ui_button	0.0	18860.0	inventory_close	none	0	
+node	160	ui.hide	300.0	18860.0		none	0	
+pin	160	File	string	ui/inventory.ui
+node	161	event.ui_button	0.0	19200.0	skills_close	none	0	
+node	162	ui.hide	300.0	19200.0		none	0	
+pin	162	File	string	ui/skills.ui
+node	163	event.ui_button	0.0	19540.0	use_item	none	0	
+node	164	ui.selected_slot	300.0	19680.0		none	0	
+pin	164	File	string	ui/inventory.ui
+pin	164	Id	string	bag
+node	165	items.in_slot	300.0	19790.0		none	0	
+node	166	var.set	300.0	19540.0	Picked	none	0	
+node	167	var.set	600.0	19540.0	PickedId	none	0	
+node	168	items.use	900.0	19540.0		none	0	
+node	169	flow.branch	1200.0	19540.0		none	0	
+node	170	var.get	1500.0	19680.0	Picked	none	0	
+node	171	var.get	1500.0	19790.0	PickedId	none	0	
+node	172	math.equal	1500.0	19900.0		string	0	
+pin	172	B	string	combat_helmet
+node	173	math.equal	1500.0	20010.0		string	0	
+pin	173	B	string	kevlar_vest
+node	174	math.equal	1500.0	20120.0		string	0	
+pin	174	B	string	mage_hood
+node	175	bool.or	1500.0	20230.0		none	0	
+node	176	bool.or	1500.0	20340.0		none	0	
+node	177	math.equal	1500.0	20450.0		string	0	
+pin	177	B	string	starter_rifle
+node	178	math.equal	1500.0	20560.0		string	0	
+pin	178	B	string	pistol
+node	179	math.equal	1500.0	20670.0		string	0	
+pin	179	B	string	shotgun
+node	180	math.equal	1500.0	20780.0		string	0	
+pin	180	B	string	marksman
+node	181	math.equal	1500.0	20890.0		string	0	
+pin	181	B	string	smg
+node	182	math.equal	1500.0	21000.0		string	0	
+pin	182	B	string	carbine
+node	183	math.equal	1500.0	21110.0		string	0	
+pin	183	B	string	lmg
+node	184	math.equal	1500.0	21220.0		string	0	
+pin	184	B	string	revolver
+node	185	bool.or	1500.0	21330.0		none	0	
+node	186	bool.or	1500.0	21440.0		none	0	
+node	187	bool.or	1500.0	21550.0		none	0	
+node	188	bool.or	1500.0	21660.0		none	0	
+node	189	bool.or	1500.0	21770.0		none	0	
+node	190	bool.or	1500.0	21880.0		none	0	
+node	191	bool.or	1500.0	21990.0		none	0	
+node	192	flow.select_bool	1500.0	22100.0		string	0	
+pin	192	True	string	Equipped: 
+pin	192	False	string	Used: 
+node	193	flow.select_bool	1500.0	22210.0		string	0	
+pin	193	True	string	Wearing: 
+node	194	math.add	1500.0	22320.0		string	0	
+node	195	ui.show_message	1500.0	19540.0		none	0	
+pin	195	Seconds	float	2.0
+node	196	var.get	1800.0	19680.0	Picked	none	0	
+node	197	math.add	1800.0	19790.0		string	0	
+pin	197	B	string	 can't be used
+node	198	ui.show_message	1800.0	19900.0		none	0	
+pin	198	Seconds	float	2.0
+node	199	entity.find	1800.0	20010.0		none	0	
+pin	199	Name	string	Player
+node	200	entity.find	1800.0	20120.0		none	0	
+pin	200	Name	string	Player
+node	201	event.ui_button	0.0	22520.0	learn_frost	none	0	
+node	202	gameplay.unlock_skill	300.0	22520.0		none	0	
+pin	202	Skill	string	frost
+node	203	flow.branch	600.0	22520.0		none	0	
+node	204	ui.show_message	900.0	22520.0		none	0	
+pin	204	Text	string	Learned Frost Nova -- it is on your ability bar
+pin	204	Seconds	float	3.0
+node	205	entity.find	1200.0	22660.0		none	0	
+pin	205	Name	string	Player
+node	206	event.ui_button	0.0	22860.0	learn_storm	none	0	
+node	207	gameplay.unlock_skill	300.0	22860.0		none	0	
+pin	207	Skill	string	storm
+node	208	flow.branch	600.0	22860.0		none	0	
+node	209	ui.show_message	900.0	22860.0		none	0	
+pin	209	Text	string	Learned Lightning -- it is on your ability bar
+pin	209	Seconds	float	3.0
+node	210	entity.find	1200.0	23000.0		none	0	
+pin	210	Name	string	Player
+node	211	event.ui_button	0.0	23200.0	learn_archmage	none	0	
+node	212	gameplay.unlock_skill	300.0	23200.0		none	0	
+pin	212	Skill	string	archmage
+node	213	flow.branch	600.0	23200.0		none	0	
+node	214	ui.show_message	900.0	23200.0		none	0	
+pin	214	Text	string	Learned Archmage: +60 max mana
+pin	214	Seconds	float	3.0
+node	215	entity.find	1200.0	23340.0		none	0	
+pin	215	Name	string	Player
+node	216	event.ui_button	0.0	23540.0	learn_tough	none	0	
+node	217	gameplay.unlock_skill	300.0	23540.0		none	0	
+pin	217	Skill	string	tough
+node	218	flow.branch	600.0	23540.0		none	0	
+node	219	ui.show_message	900.0	23540.0		none	0	
+pin	219	Text	string	Learned Toughness: +25 max health
+pin	219	Seconds	float	3.0
+node	220	entity.find	1200.0	23680.0		none	0	
+pin	220	Name	string	Player
+node	221	event.ui_button	0.0	23880.0	learn_mend_skill	none	0	
+node	222	gameplay.unlock_skill	300.0	23880.0		none	0	
+pin	222	Skill	string	mend_skill
+node	223	flow.branch	600.0	23880.0		none	0	
+node	224	ui.show_message	900.0	23880.0		none	0	
+pin	224	Text	string	Learned Mend -- it is on your ability bar
+pin	224	Seconds	float	3.0
+node	225	entity.find	1200.0	24020.0		none	0	
+pin	225	Name	string	Player
+node	226	event.ui_button	0.0	24220.0	learn_iron	none	0	
+node	227	gameplay.unlock_skill	300.0	24220.0		none	0	
+pin	227	Skill	string	iron
+node	228	flow.branch	600.0	24220.0		none	0	
+node	229	ui.show_message	900.0	24220.0		none	0	
+pin	229	Text	string	Learned Iron Skin: +50 max health
+pin	229	Seconds	float	3.0
+node	230	entity.find	1200.0	24360.0		none	0	
+pin	230	Name	string	Player
+node	231	event.ui_button	0.0	24560.0	learn_focus	none	0	
+node	232	gameplay.unlock_skill	300.0	24560.0		none	0	
+pin	232	Skill	string	focus
+node	233	flow.branch	600.0	24560.0		none	0	
+node	234	ui.show_message	900.0	24560.0		none	0	
+pin	234	Text	string	Learned Focus: +30 max mana
+pin	234	Seconds	float	3.0
+node	235	entity.find	1200.0	24700.0		none	0	
+pin	235	Name	string	Player
+node	236	event.ui_button	0.0	24900.0	learn_clarity	none	0	
+node	237	gameplay.unlock_skill	300.0	24900.0		none	0	
+pin	237	Skill	string	clarity
+node	238	flow.branch	600.0	24900.0		none	0	
+node	239	ui.show_message	900.0	24900.0		none	0	
+pin	239	Text	string	Learned Clarity: +40 max mana
+pin	239	Seconds	float	3.0
+node	240	entity.find	1200.0	25040.0		none	0	
+pin	240	Name	string	Player
+node	241	event.ui_button	0.0	25240.0	learn_veteran	none	0	
+node	242	gameplay.unlock_skill	300.0	25240.0		none	0	
+pin	242	Skill	string	veteran
+node	243	flow.branch	600.0	25240.0		none	0	
+node	244	ui.show_message	900.0	25240.0		none	0	
+pin	244	Text	string	Learned Veteran: +40 max health
+pin	244	Seconds	float	3.0
+node	245	entity.find	1200.0	25380.0		none	0	
+pin	245	Name	string	Player
+node	246	event.ui_button	0.0	25580.0	guns	none	0	
+node	247	weapons.select	300.0	25580.0		none	0	
+node	248	entity.find	600.0	25720.0		none	0	
+pin	248	Name	string	Player
+node	249	event.ui_button	0.0	25920.0	stow_gun	none	0	
+node	250	ui.selected_slot	300.0	26060.0		none	0	
+pin	250	File	string	ui/inventory.ui
+pin	250	Id	string	guns
+node	251	weapons.in_slot	300.0	26170.0		none	0	
+node	252	var.set	300.0	25920.0	Picked	none	0	
+node	253	weapons.stow	600.0	25920.0		none	0	
+node	254	flow.branch	900.0	25920.0		none	0	
+node	255	var.get	1200.0	26060.0	Picked	none	0	
+node	256	math.add	1200.0	26170.0		string	0	
+pin	256	A	string	Put in the bag: 
+node	257	ui.show_message	1200.0	25920.0		none	0	
+pin	257	Seconds	float	2.0
+node	258	ui.show_message	1500.0	26060.0		none	0	
+pin	258	Text	string	No room in the bag
+pin	258	Seconds	float	2.0
+node	259	entity.find	1500.0	26170.0		none	0	
+pin	259	Name	string	Player
+node	260	entity.find	1500.0	26280.0		none	0	
+pin	260	Name	string	Player
+node	261	event.ui_button	0.0	26480.0	eq_head	none	0	
+node	262	items.unequip	300.0	26480.0		none	0	
+pin	262	Slot	string	head
+node	263	ui.show_message	600.0	26620.0		none	0	
+pin	263	Text	string	No room in the bag
+pin	263	Seconds	float	2.0
+node	264	flow.branch	600.0	26480.0		none	0	
+node	265	entity.find	900.0	26620.0		none	0	
+pin	265	Name	string	Player
+node	266	event.ui_button	0.0	26820.0	eq_chest	none	0	
+node	267	items.unequip	300.0	26820.0		none	0	
+pin	267	Slot	string	chest
+node	268	ui.show_message	600.0	26960.0		none	0	
+pin	268	Text	string	No room in the bag
+pin	268	Seconds	float	2.0
+node	269	flow.branch	600.0	26820.0		none	0	
+node	270	entity.find	900.0	26960.0		none	0	
+pin	270	Name	string	Player
+node	271	event.action_pressed	0.0	27160.0	grenade	none	0	
+node	272	ui.is_shown	300.0	27300.0		none	0	
+pin	272	File	string	ui/menu.ui
+node	273	ui.is_shown	300.0	27410.0		none	0	
+pin	273	File	string	ui/pause.ui
+node	274	ui.is_shown	300.0	27520.0		none	0	
+pin	274	File	string	ui/win.ui
+node	275	ui.is_shown	300.0	27630.0		none	0	
+pin	275	File	string	ui/settings.ui
+node	276	ui.is_shown	300.0	27740.0		none	0	
+pin	276	File	string	ui/inventory.ui
+node	277	ui.is_shown	300.0	27850.0		none	0	
+pin	277	File	string	ui/skills.ui
+node	278	bool.or	300.0	27960.0		none	0	
+node	279	bool.or	300.0	28070.0		none	0	
+node	280	bool.or	300.0	28180.0		none	0	
+node	281	bool.or	300.0	28290.0		none	0	
+node	282	bool.or	300.0	28400.0		none	0	
+node	283	flow.branch	300.0	27160.0		none	0	
+node	284	items.use	600.0	27160.0		none	0	
+pin	284	Item	string	frag_grenade
+node	285	flow.branch	900.0	27160.0		none	0	
+node	286	ui.show_message	1200.0	27160.0		none	0	
+pin	286	Text	string	No grenades left
+pin	286	Seconds	float	1.5
+node	287	entity.find	1500.0	27300.0		none	0	
+pin	287	Name	string	Player
+node	288	event.gameplay	0.0	28600.0	weapon.given	none	0	
+node	289	controls.key	300.0	28740.0		none	0	
+pin	289	Action	string	next_weapon
+node	290	controls.key	300.0	28850.0		none	0	
+pin	290	Action	string	inventory
+node	291	math.add	300.0	28960.0		string	0	
+pin	291	A	string	New gun! 
+node	292	math.add	300.0	29070.0		string	0	
+pin	292	B	string	 switches guns; 
+node	293	math.add	300.0	29180.0		string	0	
+node	294	math.add	300.0	29290.0		string	0	
+pin	294	B	string	 shows your 3 weapon slots
+node	295	ui.show_message	300.0	28600.0		none	0	
+pin	295	Seconds	float	4.0
+node	296	event.gameplay	0.0	29490.0	weapon.bagged	none	0	
+node	297	controls.key	300.0	29630.0		none	0	
+pin	297	Action	string	inventory
+node	298	math.add	300.0	29740.0		string	0	
+pin	298	A	string	All 3 weapon slots are full -- the gun went into the bag. 
+node	299	math.add	300.0	29850.0		string	0	
+pin	299	B	string	: pick it, then Use / equip to swap it in
+node	300	ui.show_message	300.0	29490.0		none	0	
+pin	300	Seconds	float	5.0
+node	301	event.gameplay	0.0	30050.0	pickup	none	0	
+node	302	math.equal	300.0	30190.0		string	0	
+pin	302	B	string	combat_helmet
+node	303	math.equal	300.0	30300.0		string	0	
+pin	303	B	string	kevlar_vest
+node	304	math.equal	300.0	30410.0		string	0	
+pin	304	B	string	mage_hood
+node	305	bool.or	300.0	30520.0		none	0	
+node	306	bool.or	300.0	30630.0		none	0	
+node	307	flow.branch	300.0	30050.0		none	0	
+node	308	controls.key	600.0	30190.0		none	0	
+pin	308	Action	string	inventory
+node	309	math.add	600.0	30300.0		string	0	
+pin	309	A	string	New gear! 
+node	310	math.add	600.0	30410.0		string	0	
+pin	310	B	string	 opens the inventory: pick it, then Use / wear
+node	311	ui.show_message	600.0	30050.0		none	0	
+pin	311	Seconds	float	4.0
+node	312	event.gameplay	0.0	30830.0	level.up	none	0	
+node	313	controls.key	300.0	30970.0		none	0	
+pin	313	Action	string	skills
+node	314	math.add	300.0	31080.0		string	0	
+pin	314	A	string	Level up! A skill point to spend -- 
+node	315	math.add	300.0	31190.0		string	0	
+pin	315	B	string	 opens the skill tree
+node	316	ui.show_message	300.0	30830.0		none	0	
+pin	316	Seconds	float	4.0
+node	317	event.gameplay	0.0	31390.0	died	none	0	
+node	318	math.equal	300.0	31530.0		string	0	
+pin	318	B	string	enemy
+node	319	flow.branch	300.0	31390.0		none	0	
+node	320	var.get	600.0	31530.0	Kills	none	0	
+node	321	math.add	600.0	31640.0		none	0	
+pin	321	B	int	1
+node	322	var.set	600.0	31390.0	Kills	none	0	
+node	323	var.get	900.0	31530.0	Total	none	0	
+node	324	math.sub	900.0	31640.0		none	0	
+node	325	math.add	900.0	31750.0		string	0	
+pin	325	A	string	Creatures left: 
+node	326	ui.set_text	900.0	31390.0		none	0	
+pin	326	File	string	ui/hud.ui
+pin	326	Id	string	objective
+node	327	math.greater_equal	1200.0	31530.0		none	0	
+node	328	var.get	1200.0	31640.0	Total	none	0	
+node	329	flow.branch	1200.0	31390.0		none	0	
+node	330	world.set_flag	1500.0	31390.0		none	0	
+pin	330	Key	string	game.cleared
+pin	330	Value	int	1
+node	331	ui.set_text	1800.0	31390.0		none	0	
+pin	331	File	string	ui/hud.ui
+pin	331	Id	string	objective
+pin	331	Text	string	Every camp is cleared -- reach the beacon
+node	332	ui.show_message	2100.0	31390.0		none	0	
+pin	332	Text	string	Every camp is cleared. Head for the beacon!
+pin	332	Seconds	float	5.0
+node	333	gameplay.grant_xp	2400.0	31530.0		none	0	
+pin	333	Amount	float	100.0
+node	334	items.add	2400.0	31640.0		none	0	
+pin	334	Item	string	rifle_rounds
+pin	334	Quantity	int	20
+node	335	entity.find	2400.0	31750.0		none	0	
+pin	335	Name	string	Player
+node	336	entity.find	2400.0	31860.0		none	0	
+pin	336	Name	string	Player
+node	337	items.add	2400.0	31970.0		none	0	
+pin	337	Item	string	pistol_rounds
+pin	337	Quantity	int	12
+node	338	entity.find	2400.0	32080.0		none	0	
+pin	338	Name	string	Player
+node	339	items.add	2400.0	32190.0		none	0	
+pin	339	Item	string	shotgun_shells
+pin	339	Quantity	int	4
+node	340	entity.find	2400.0	32300.0		none	0	
+pin	340	Name	string	Player
+node	341	ui.show_message	2400.0	32410.0		none	0	
+pin	341	Text	string	+100 XP   +ammunition
+pin	341	Seconds	float	1.5
+link	1	Then	2	In
+link	2	Then	3	In
+link	3	Then	6	In
+link	6	Then	7	In
+link	7	Then	8	In
+link	4	Value	5	B
+link	5	Result	6	Text
+link	9	Entity	7	Entity
+link	10	Entity	8	Entity
+link	11	Then	12	In
+link	13	Then	14	In
+link	15	Then	17	In
+link	16	Shown	17	Condition
+link	17	True	18	In
+link	17	False	20	In
+link	19	Shown	20	Condition
+link	20	False	22	In
+link	21	Shown	22	Condition
+link	22	False	28	In
+link	27	Shown	28	Condition
+link	28	True	29	In
+link	28	False	31	In
+link	30	Shown	31	Condition
+link	31	True	32	In
+link	31	False	24	In
+link	23	Shown	24	Condition
+link	24	True	25	In
+link	24	False	26	In
+link	33	Then	34	In
+link	35	Then	36	In
+link	36	Then	37	In
+link	37	Then	38	In
+link	39	Then	40	In
+link	40	Then	41	In
+link	41	Then	42	In
+link	41	Loaded	42	Condition
+link	42	True	43	In
+link	42	False	44	In
+link	45	Then	46	In
+link	47	Then	48	In
+link	49	Then	50	In
+link	51	Then	52	In
+link	53	Then	54	In
+link	55	Then	56	In
+link	57	Then	58	In
+link	59	Then	60	In
+link	61	Then	62	In
+link	63	Then	64	In
+link	65	Then	66	In
+link	67	Then	68	In
+link	69	Then	70	In
+link	71	Then	72	In
+link	73	Then	74	In
+link	75	Then	76	In
+link	77	Then	78	In
+link	79	Then	80	In
+link	81	Then	82	In
+link	83	Then	84	In
+link	85	Then	86	In
+link	87	Then	88	In
+link	89	Then	90	In
+link	91	Then	92	In
+link	93	Then	94	In
+link	95	Then	96	In
+link	97	Then	98	In
+link	99	Then	100	In
+link	101	Then	102	In
+link	103	Then	104	In
+link	105	Then	106	In
+link	107	Then	108	In
+link	109	Then	110	In
+link	111	Then	112	In
+link	113	Then	114	In
+link	115	Then	116	In
+link	117	Then	118	In
+link	119	Then	120	In
+link	121	Then	125	In
+link	122	Value	123	A
+link	123	Result	124	A
+link	124	Result	125	Value
+link	126	Then	130	In
+link	127	Value	128	A
+link	128	Result	129	A
+link	129	Result	130	Value
+link	135	Shown	137	A
+link	136	Shown	137	B
+link	137	Result	139	A
+link	138	Shown	139	B
+link	139	Result	141	A
+link	140	Shown	141	B
+link	131	Then	133	In
+link	132	Shown	133	Condition
+link	133	True	134	In
+link	133	False	142	In
+link	141	Result	142	Condition
+link	142	False	143	In
+link	143	Then	144	In
+link	149	Shown	151	A
+link	150	Shown	151	B
+link	151	Result	153	A
+link	152	Shown	153	B
+link	153	Result	155	A
+link	154	Shown	155	B
+link	145	Then	147	In
+link	146	Shown	147	Condition
+link	147	True	148	In
+link	147	False	156	In
+link	155	Result	156	Condition
+link	156	False	157	In
+link	157	Then	158	In
+link	159	Then	160	In
+link	161	Then	162	In
+link	171	Value	172	A
+link	171	Value	173	A
+link	171	Value	174	A
+link	172	Result	175	A
+link	173	Result	175	B
+link	175	Result	176	A
+link	174	Result	176	B
+link	171	Value	177	A
+link	171	Value	178	A
+link	171	Value	179	A
+link	171	Value	180	A
+link	171	Value	181	A
+link	171	Value	182	A
+link	171	Value	183	A
+link	171	Value	184	A
+link	177	Result	185	A
+link	178	Result	185	B
+link	185	Result	186	A
+link	179	Result	186	B
+link	186	Result	187	A
+link	180	Result	187	B
+link	187	Result	188	A
+link	181	Result	188	B
+link	188	Result	189	A
+link	182	Result	189	B
+link	189	Result	190	A
+link	183	Result	190	B
+link	190	Result	191	A
+link	184	Result	191	B
+link	191	Result	192	Condition
+link	176	Result	193	Condition
+link	192	Result	193	False
+link	193	Result	194	A
+link	199	Entity	165	Entity
+link	164	Index	165	Index
+link	165	Name	166	Value
+link	165	Item	167	Value
+link	200	Entity	168	Entity
+link	165	Item	168	Item
+link	163	Then	166	In
+link	166	Then	167	In
+link	167	Then	168	In
+link	168	Then	169	In
+link	168	Used	169	Condition
+link	170	Value	194	B
+link	194	Result	195	Text
+link	169	True	195	In
+link	196	Value	197	A
+link	197	Result	198	Text
+link	169	False	198	In
+link	205	Entity	202	Entity
+link	201	Then	202	In
+link	202	Then	203	In
+link	202	Unlocked	203	Condition
+link	203	True	204	In
+link	210	Entity	207	Entity
+link	206	Then	207	In
+link	207	Then	208	In
+link	207	Unlocked	208	Condition
+link	208	True	209	In
+link	215	Entity	212	Entity
+link	211	Then	212	In
+link	212	Then	213	In
+link	212	Unlocked	213	Condition
+link	213	True	214	In
+link	220	Entity	217	Entity
+link	216	Then	217	In
+link	217	Then	218	In
+link	217	Unlocked	218	Condition
+link	218	True	219	In
+link	225	Entity	222	Entity
+link	221	Then	222	In
+link	222	Then	223	In
+link	222	Unlocked	223	Condition
+link	223	True	224	In
+link	230	Entity	227	Entity
+link	226	Then	227	In
+link	227	Then	228	In
+link	227	Unlocked	228	Condition
+link	228	True	229	In
+link	235	Entity	232	Entity
+link	231	Then	232	In
+link	232	Then	233	In
+link	232	Unlocked	233	Condition
+link	233	True	234	In
+link	240	Entity	237	Entity
+link	236	Then	237	In
+link	237	Then	238	In
+link	237	Unlocked	238	Condition
+link	238	True	239	In
+link	245	Entity	242	Entity
+link	241	Then	242	In
+link	242	Then	243	In
+link	242	Unlocked	243	Condition
+link	243	True	244	In
+link	248	Entity	247	Entity
+link	246	Index	247	Index
+link	246	Then	247	In
+link	259	Entity	251	Entity
+link	250	Index	251	Index
+link	251	Name	252	Value
+link	260	Entity	253	Entity
+link	250	Index	253	Index
+link	249	Then	252	In
+link	252	Then	253	In
+link	253	Then	254	In
+link	253	Stowed	254	Condition
+link	255	Value	256	B
+link	256	Result	257	Text
+link	254	True	257	In
+link	254	False	258	In
+link	265	Entity	262	Entity
+link	261	Then	262	In
+link	262	Then	264	In
+link	262	Unequipped	264	Condition
+link	264	False	263	In
+link	270	Entity	267	Entity
+link	266	Then	267	In
+link	267	Then	269	In
+link	267	Unequipped	269	Condition
+link	269	False	268	In
+link	272	Shown	278	A
+link	273	Shown	278	B
+link	278	Result	279	A
+link	274	Shown	279	B
+link	279	Result	280	A
+link	275	Shown	280	B
+link	280	Result	281	A
+link	276	Shown	281	B
+link	281	Result	282	A
+link	277	Shown	282	B
+link	271	Then	283	In
+link	282	Result	283	Condition
+link	283	False	284	In
+link	287	Entity	284	Entity
+link	284	Then	285	In
+link	284	Used	285	Condition
+link	285	False	286	In
+link	289	Key	291	B
+link	291	Result	292	A
+link	292	Result	293	A
+link	290	Key	293	B
+link	293	Result	294	A
+link	294	Result	295	Text
+link	288	Then	295	In
+link	297	Key	298	B
+link	298	Result	299	A
+link	299	Result	300	Text
+link	296	Then	300	In
+link	301	Param	302	A
+link	301	Param	303	A
+link	301	Param	304	A
+link	302	Result	305	A
+link	303	Result	305	B
+link	305	Result	306	A
+link	304	Result	306	B
+link	301	Then	307	In
+link	306	Result	307	Condition
+link	307	True	311	In
+link	308	Key	309	B
+link	309	Result	310	A
+link	310	Result	311	Text
+link	313	Key	314	B
+link	314	Result	315	A
+link	315	Result	316	Text
+link	312	Then	316	In
+link	317	Param	318	A
+link	317	Then	319	In
+link	318	Result	319	Condition
+link	335	Entity	333	Entity
+link	336	Entity	334	Entity
+link	338	Entity	337	Entity
+link	340	Entity	339	Entity
+link	320	Value	321	A
+link	319	True	333	In
+link	333	Then	334	In
+link	334	Then	337	In
+link	337	Then	339	In
+link	339	Then	322	In
+link	321	Result	322	Value
+link	323	Value	324	A
+link	322	Value	324	B
+link	324	Result	325	B
+link	322	Then	326	In
+link	325	Result	326	Text
+link	322	Value	327	A
+link	328	Value	327	B
+link	326	Then	329	In
+link	327	Result	329	Condition
+link	330	Then	331	In
+link	331	Then	332	In
+link	329	True	330	In
+link	329	False	341	In
+end

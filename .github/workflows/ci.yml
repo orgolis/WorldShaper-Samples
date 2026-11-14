@@ -1,6 +1,6 @@
 # ============================================================================
 # CI — verify the latest engine release actually works, and that every template
-# opens in it.
+# and sample opens in it.
 #
 # WHY THIS EXISTS: this repository's content is only useful if it is known to
 # work. Every template and sample doubles as a regression test — if one breaks
@@ -39,6 +39,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true   # samples keep their terrain in Git LFS
 
       - name: Download the latest engine release
         shell: bash
@@ -131,3 +133,33 @@ jobs:
             echo "$found template(s) opened in the latest engine"
             echo "### $found template(s) verified" >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Every sample opens and runs
+        if: steps.cli.outputs.has_cli == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          found=0
+          for manifest in samples/*/project.schizo; do
+            dir=$(dirname "$manifest")
+            echo "::group::$dir"
+            ./engine/gws.exe validate "$dir"
+            # The game data the editor saves beside each scene (<scene>.gameplay):
+            # loaded and simulated, so a sample the new engine can no longer read
+            # fails here before a user's project does.
+            for data in "$dir"/scenes/*.gameplay; do
+              ./engine/gws.exe run --load "$data" --frames 60 --json | tee run.json
+              python - "$data" <<'PY'
+          import json, sys
+          d = json.load(open("run.json"))
+          assert d["ok"], d
+          assert d["entities"] > 0, f"{sys.argv[1]}: nothing was loaded"
+          print("OK:", sys.argv[1], d["entities"], "entities")
+          PY
+            done
+            echo "::endgroup::"
+            found=$((found+1))
+          done
+          echo "$found sample(s) opened and ran in the latest engine"
+          echo "### $found sample(s) verified" >> "$GITHUB_STEP_SUMMARY"

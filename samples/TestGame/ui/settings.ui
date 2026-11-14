@@ -1,0 +1,85 @@
+# Settings: controls (click one, then press the new key; Esc cancels) and graphics.
+ui modal pause layer=50
+panel  id=dim     anchor=fill color=0,0,0,0.65
+panel  id=card    anchor=center x=0 y=0 w=1800 h=940 color=0.06,0.08,0.12,0.95
+label  id=title   anchor=center x=0 y=-420 w=800 h=70 text="Settings" size=52 align=center
+label  id=h_ctrl  anchor=center x=-450 y=-350 w=640 h=44 text="Controls" size=32 align=center color=1,0.86,0.5,1
+label  id=hint    anchor=center x=-450 y=-312 w=820 h=30 text="Click a control, then press the new key, mouse button or wheel (Esc cancels)" size=18 align=center color=1,1,1,0.55
+label  id=l_move_forward   anchor=center x=-770 y=-268 w=250 h=38 text="Move forward" size=21
+button id=bind_move_forward anchor=center x=-555 y=-268 w=170 h=38 text="{key.move_forward}" size=19
+label  id=l_move_back      anchor=center x=-770 y=-222 w=250 h=38 text="Move back" size=21
+button id=bind_move_back   anchor=center x=-555 y=-222 w=170 h=38 text="{key.move_back}" size=19
+label  id=l_move_left      anchor=center x=-770 y=-176 w=250 h=38 text="Move left" size=21
+button id=bind_move_left   anchor=center x=-555 y=-176 w=170 h=38 text="{key.move_left}" size=19
+label  id=l_move_right     anchor=center x=-770 y=-130 w=250 h=38 text="Move right" size=21
+button id=bind_move_right  anchor=center x=-555 y=-130 w=170 h=38 text="{key.move_right}" size=19
+label  id=l_jump           anchor=center x=-770 y=-84 w=250 h=38 text="Jump / climb" size=21
+button id=bind_jump        anchor=center x=-555 y=-84 w=170 h=38 text="{key.jump}" size=19
+label  id=l_sprint         anchor=center x=-770 y=-38 w=250 h=38 text="Sprint" size=21
+button id=bind_sprint      anchor=center x=-555 y=-38 w=170 h=38 text="{key.sprint}" size=19
+label  id=l_crouch         anchor=center x=-770 y=8 w=250 h=38 text="Crouch / slide" size=21
+button id=bind_crouch      anchor=center x=-555 y=8 w=170 h=38 text="{key.crouch}" size=19
+label  id=l_dash           anchor=center x=-770 y=54 w=250 h=38 text="Dash" size=21
+button id=bind_dash        anchor=center x=-555 y=54 w=170 h=38 text="{key.dash}" size=19
+label  id=l_interact       anchor=center x=-770 y=100 w=250 h=38 text="Use / pick up" size=21
+button id=bind_interact    anchor=center x=-555 y=100 w=170 h=38 text="{key.interact}" size=19
+label  id=l_inventory      anchor=center x=-770 y=146 w=250 h=38 text="Inventory" size=21
+button id=bind_inventory   anchor=center x=-555 y=146 w=170 h=38 text="{key.inventory}" size=19
+label  id=l_skills         anchor=center x=-770 y=192 w=250 h=38 text="Skill tree" size=21
+button id=bind_skills      anchor=center x=-555 y=192 w=170 h=38 text="{key.skills}" size=19
+label  id=l_fire           anchor=center x=-770 y=238 w=250 h=38 text="Fire" size=21
+button id=bind_fire        anchor=center x=-555 y=238 w=170 h=38 text="{key.fire}" size=19
+label  id=l_aim            anchor=center x=-770 y=284 w=250 h=38 text="Aim" size=21
+button id=bind_aim         anchor=center x=-555 y=284 w=170 h=38 text="{key.aim}" size=19
+label  id=l_reload         anchor=center x=-300 y=-268 w=250 h=38 text="Reload" size=21
+button id=bind_reload      anchor=center x=-85 y=-268 w=170 h=38 text="{key.reload}" size=19
+label  id=l_next_weapon    anchor=center x=-300 y=-222 w=250 h=38 text="Next weapon" size=21
+button id=bind_next_weapon anchor=center x=-85 y=-222 w=170 h=38 text="{key.next_weapon}" size=19
+label  id=l_prev_weapon    anchor=center x=-300 y=-176 w=250 h=38 text="Previous weapon" size=21
+button id=bind_prev_weapon anchor=center x=-85 y=-176 w=170 h=38 text="{key.prev_weapon}" size=19
+label  id=l_last_weapon    anchor=center x=-300 y=-130 w=250 h=38 text="Last weapon" size=21
+button id=bind_last_weapon anchor=center x=-85 y=-130 w=170 h=38 text="{key.last_weapon}" size=19
+label  id=l_weapon_1       anchor=center x=-300 y=-84 w=250 h=38 text="Weapon slot 1" size=21
+button id=bind_weapon_1    anchor=center x=-85 y=-84 w=170 h=38 text="{key.weapon_1}" size=19
+label  id=l_weapon_2       anchor=center x=-300 y=-38 w=250 h=38 text="Weapon slot 2" size=21
+button id=bind_weapon_2    anchor=center x=-85 y=-38 w=170 h=38 text="{key.weapon_2}" size=19
+label  id=l_weapon_3       anchor=center x=-300 y=8 w=250 h=38 text="Weapon slot 3" size=21
+button id=bind_weapon_3    anchor=center x=-85 y=8 w=170 h=38 text="{key.weapon_3}" size=19
+label  id=l_grenade        anchor=center x=-300 y=54 w=250 h=38 text="Throw grenade" size=21
+button id=bind_grenade     anchor=center x=-85 y=54 w=170 h=38 text="{key.grenade}" size=19
+label  id=l_ability_1      anchor=center x=-300 y=100 w=250 h=38 text="Ability 1" size=21
+button id=bind_ability_1   anchor=center x=-85 y=100 w=170 h=38 text="{key.ability_1}" size=19
+label  id=l_ability_2      anchor=center x=-300 y=146 w=250 h=38 text="Ability 2" size=21
+button id=bind_ability_2   anchor=center x=-85 y=146 w=170 h=38 text="{key.ability_2}" size=19
+label  id=l_ability_3      anchor=center x=-300 y=192 w=250 h=38 text="Ability 3" size=21
+button id=bind_ability_3   anchor=center x=-85 y=192 w=170 h=38 text="{key.ability_3}" size=19
+label  id=l_ability_4      anchor=center x=-300 y=238 w=250 h=38 text="Ability 4" size=21
+button id=bind_ability_4   anchor=center x=-85 y=238 w=170 h=38 text="{key.ability_4}" size=19
+label  id=h_mouse anchor=center x=470 y=-350 w=640 h=44 text="Mouse" size=32 align=center color=1,0.86,0.5,1
+label  id=l_sens  anchor=center x=260 y=-290 w=330 h=40 text="Sensitivity" size=24
+button id=sens_down anchor=center x=520 y=-290 w=56 h=40 text="-" size=28
+label  id=sens    anchor=center x=610 y=-290 w=110 h=40 text="{setting.mouse_sensitivity}" size=24 align=center
+button id=sens_up anchor=center x=700 y=-290 w=56 h=40 text="+" size=28
+label  id=l_inv   anchor=center x=260 y=-244 w=330 h=40 text="Invert look up/down" size=24
+button id=set_invert_y anchor=center x=610 y=-244 w=260 h=40 text="{setting.invert_y}" size=22
+label  id=h_gfx   anchor=center x=470 y=-180 w=640 h=44 text="Graphics" size=32 align=center color=1,0.86,0.5,1
+label  id=l_quality            anchor=center x=260 y=-130 w=330 h=40 text="Quality" size=24
+button id=set_quality         anchor=center x=610 y=-130 w=260 h=40 text="{setting.quality}" size=22
+label  id=l_ambient_occlusion  anchor=center x=260 y=-84 w=330 h=40 text="Ambient occlusion" size=24
+button id=set_ambient_occlusion anchor=center x=610 y=-84 w=260 h=40 text="{setting.ambient_occlusion}" size=22
+label  id=l_reflections        anchor=center x=260 y=-38 w=330 h=40 text="Reflections" size=24
+button id=set_reflections     anchor=center x=610 y=-38 w=260 h=40 text="{setting.reflections}" size=22
+label  id=l_clouds             anchor=center x=260 y=8 w=330 h=40 text="Clouds" size=24
+button id=set_clouds          anchor=center x=610 y=8 w=260 h=40 text="{setting.clouds}" size=22
+label  id=l_volumetric         anchor=center x=260 y=54 w=330 h=40 text="Volumetric light" size=24
+button id=set_volumetric      anchor=center x=610 y=54 w=260 h=40 text="{setting.volumetric}" size=22
+label  id=l_shadow_quality     anchor=center x=260 y=100 w=330 h=40 text="Shadow quality" size=24
+button id=set_shadow_quality  anchor=center x=610 y=100 w=260 h=40 text="{setting.shadow_quality}" size=22
+label  id=l_render_scale       anchor=center x=260 y=146 w=330 h=40 text="Render scale (on restart)" size=24
+button id=set_render_scale    anchor=center x=610 y=146 w=260 h=40 text="{setting.render_scale}" size=22
+label  id=l_vsync              anchor=center x=260 y=192 w=330 h=40 text="VSync (on restart)" size=24
+button id=set_vsync           anchor=center x=610 y=192 w=260 h=40 text="{setting.vsync}" size=22
+label  id=l_fov                anchor=center x=260 y=238 w=330 h=40 text="Field of view" size=24
+button id=set_fov             anchor=center x=610 y=238 w=260 h=40 text="{setting.fov}" size=22
+button id=reset_controls anchor=center x=-450 y=410 w=340 h=60 text="Reset controls" size=26
+button id=settings_back  anchor=center x=450 y=410 w=340 h=60 text="Back" size=26

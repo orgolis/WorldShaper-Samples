@@ -1,0 +1,6 @@
+# The end: every camp cleared and the beacon reached.
+ui modal pause layer=40
+panel  id=bg     anchor=fill color=0.02,0.03,0.05,0.8
+label  id=title  anchor=center x=0 y=-150 w=1200 h=120 text="You win!" size=96 align=center color=1,0.84,0.32,1
+label  id=text   anchor=center x=0 y=-50 w=1400 h=50 text="The beacon is lit and the hills are quiet." size=30 align=center color=0.92,0.94,1,0.9
+button id=quit   anchor=center x=0 y=80 w=440 h=76 text="Quit" size=34

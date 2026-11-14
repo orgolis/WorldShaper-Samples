@@ -1,0 +1,8 @@
+# The title screen, shown when the game starts.
+ui modal pause layer=20
+panel  id=bg       anchor=fill color=0.02,0.03,0.05,0.85
+label  id=title    anchor=center x=0 y=-280 w=1400 h=130 text="THE BEACON" size=104 align=center color=1,0.84,0.32,1
+label  id=intro    anchor=center x=0 y=-170 w=1500 h=50 text="Clear the creature camps in the hills, then reach the beacon on the far side." size=28 align=center color=0.9,0.92,1,0.9
+button id=start    anchor=center x=0 y=-50 w=440 h=76 text="Start" size=34
+button id=settings anchor=center x=0 y=50 w=440 h=76 text="Settings" size=34
+button id=quit     anchor=center x=0 y=150 w=440 h=76 text="Quit" size=34

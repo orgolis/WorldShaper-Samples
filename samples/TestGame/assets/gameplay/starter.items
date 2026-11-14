@@ -1,0 +1,70 @@
+# Starter gameplay data, written by Create > Player templates.
+# Open it in the Items editor (double-click) and change anything.
+
+item rifle_rounds
+  name Rifle Rounds
+  kind material
+  max_stack 300
+  weight 0.01
+  about Ammunition for the rifle, marksman rifle, carbine and machine gun
+end
+
+item health_potion
+  name Health Potion
+  kind consumable
+  max_stack 10
+  weight 0.2
+  on_use Health 40
+  about Restores 40 health
+end
+
+weapon starter_rifle
+  name Rifle
+  fire auto
+  damage 18 kinetic
+  rpm 600
+  magazine 30
+  reload 1.8
+  spread 0.5
+  bloom 0.3 4 6
+  recoil 0.6 0.25
+  aim 0.7 0.35 0.15
+  range 150
+  tracer 3
+  impact 0.12
+  flash
+  ammo rifle_rounds
+end
+
+ability firebolt
+  name Firebolt
+  cost Mana 15
+  cooldown 1.5
+  cast 0.35
+  target aimed
+  range 35
+  damage 30 fire
+  vfx firebolt
+end
+
+ability frost_nova
+  name Frost Nova
+  cost Mana 25
+  cooldown 8
+  target area
+  radius 5
+  damage 15 cold
+  effect Speed -3 3
+  vfx frost_nova
+end
+
+ability mend
+  name Mend
+  cost Mana 20
+  cooldown 12
+  cast 1.5
+  still
+  target self
+  self Health 40
+  vfx mend
+end

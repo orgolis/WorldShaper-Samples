@@ -1,0 +1,201 @@
+# Guns and gear. The rifle is in starter.items.
+# Guns: the player has three weapon slots (keys 1, 2, 3; the mouse wheel or Q
+# switches too). A gun found while all three are full goes into the bag: pick it
+# in the inventory (I) and Use to swap it with the gun in hand. "draw" is how
+# long a gun takes to come up. Gear: pick it in the inventory and Use to wear
+# it -- what it replaces goes back into the bag. "resist.physical" is the share
+# of the creatures' damage it takes off. Grenades: G throws one where you aim
+# ("casts" an ability when used).
+
+weapon pistol
+  name Pistol
+  fire semi
+  damage 24 kinetic
+  rpm 400
+  magazine 12
+  reload 1.2
+  draw 0.25
+  spread 0.4
+  bloom 0.6 3 8
+  recoil 0.9 0.2
+  aim 0.85 0.4 0.1
+  range 80
+  impact 0.08
+  flash
+  ammo pistol_rounds
+end
+
+weapon shotgun
+  name Shotgun
+  fire semi
+  damage 11 kinetic
+  pellets 9
+  rpm 70
+  magazine 6
+  reload 2.4
+  draw 0.6
+  spread 5
+  recoil 3 0.6
+  aim 0.9 0.8 0.2
+  range 35
+  impact 0.1
+  flash
+  ammo shotgun_shells
+end
+
+weapon marksman
+  name Marksman Rifle
+  fire semi
+  damage 75 kinetic
+  rpm 90
+  magazine 8
+  reload 2.2
+  draw 0.7
+  spread 1.5
+  recoil 2.5 0.3
+  aim 0.35 0.05 0.25
+  range 300
+  tracer 1
+  impact 0.12
+  flash
+  ammo rifle_rounds
+end
+
+weapon smg
+  name SMG
+  fire auto
+  damage 12 kinetic
+  rpm 850
+  magazine 32
+  reload 1.6
+  draw 0.3
+  spread 1.6
+  bloom 0.35 5 9
+  recoil 0.5 0.35
+  aim 0.85 0.5 0.12
+  range 60
+  tracer 4
+  impact 0.07
+  flash
+  ammo pistol_rounds
+end
+
+weapon carbine
+  name Burst Carbine
+  fire burst
+  burst 3
+  damage 22 kinetic
+  rpm 720
+  magazine 30
+  reload 2.0
+  draw 0.45
+  spread 0.5
+  bloom 0.4 3 7
+  recoil 1.0 0.25
+  aim 0.7 0.3 0.15
+  range 140
+  tracer 3
+  impact 0.08
+  flash
+  ammo rifle_rounds
+end
+
+weapon lmg
+  name Light Machine Gun
+  fire auto
+  damage 20 kinetic
+  rpm 650
+  magazine 80
+  reload 4.0
+  draw 0.9
+  spread 1.8
+  bloom 0.25 6 5
+  recoil 0.9 0.5
+  aim 0.8 0.6 0.3
+  range 120
+  tracer 3
+  impact 0.09
+  flash
+  ammo rifle_rounds
+end
+
+weapon revolver
+  name Revolver
+  fire semi
+  damage 55 kinetic
+  rpm 120
+  magazine 6
+  reload 2.6
+  draw 0.3
+  spread 0.3
+  bloom 1.2 4 6
+  recoil 3.5 0.4
+  aim 0.8 0.3 0.12
+  range 90
+  impact 0.1
+  flash
+  ammo pistol_rounds
+end
+
+item pistol_rounds
+  name Pistol Rounds
+  kind material
+  max_stack 200
+  weight 0.01
+  about Ammunition for the pistol, the SMG and the revolver
+end
+
+item shotgun_shells
+  name Shotgun Shells
+  kind material
+  max_stack 60
+  weight 0.03
+  about Ammunition for the shotgun
+end
+
+item combat_helmet
+  name Combat Helmet
+  kind armor
+  slot head
+  weight 1.2
+  mod Health 20
+  mod resist.physical 0.1
+  about Head: +20 max health, 10% less damage
+end
+
+item mage_hood
+  name Mage Hood
+  kind armor
+  slot head
+  weight 0.4
+  mod Mana 50
+  about Head: +50 max mana
+end
+
+item kevlar_vest
+  name Kevlar Vest
+  kind armor
+  slot chest
+  weight 3
+  mod Health 30
+  mod resist.physical 0.2
+  about Chest: +30 max health, 20% less damage
+end
+
+item frag_grenade
+  name Frag Grenade
+  kind consumable
+  max_stack 5
+  weight 0.4
+  casts frag
+  about Thrown where you aim (G): 90 damage within 5 m
+end
+
+ability frag
+  name Frag Grenade
+  target area_at_aim
+  range 25
+  radius 5
+  damage 90 explosive
+  vfx frag
+end
