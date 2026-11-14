@@ -7,11 +7,11 @@ Everything in it is ordinary project content -- scenes, UI documents, logic scri
 item and effect files -- so every part of it can be opened and changed in the editor.
 Nothing about this game is built into the engine.
 
-**Needs engine 0.8.44 or newer.**
+**Needs engine 0.8.45 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.44 (or newer) from the Hub.
+1. Install engine 0.8.45 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain and sky are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
@@ -20,8 +20,9 @@ Nothing about this game is built into the engine.
 ## What is in it
 
 - **The world** (`scenes/main.scene`): rolling hills with rivers under an HDR sky, forests
-  of trees from 5 to 18 m tall, grass and rocks. Trees and rocks are solid: they stop
-  the player, rounds, grenades, sight and creatures.
+  of trees from 5 to 18 m tall, grass and rocks. The sun shines from where the sky's sun
+  is: trees cast shadows and, with Volumetric light on, light shafts. Trees and rocks are
+  solid: they stop the player, rounds, grenades, sight and creatures.
 - **The player**: first person, with sprint, crouch, slide, dash, mantle and climb. It has
   three weapon slots, holding a rifle and a pistol at the start, plus frag grenades
   (thrown: aim up to throw far), a Firebolt spell that flies and potions.
@@ -37,9 +38,10 @@ Nothing about this game is built into the engine.
   give up far from home. Melee creatures rear up (a red glow) before they claw; spitters
   keep their distance and spit globs that arc and can be dodged. Their attacks are
   abilities in `assets/gameplay/creatures.items`.
-- **Effects**: muzzle flashes and smoke, tracers, sparks and dust, fiery trails, blasts.
+- **Effects**: muzzle flashes that light their surroundings, smoke that drifts as a cloud,
+  tracers, sparks and dust, fiery trails, blasts that glow and bloom.
   The engine has a built-in look for every gun and ability; this game gives the
-  creatures' attacks and the shotgun its own (`assets/gameplay/effects.items`).
+  creatures' attacks and the shotgun a heavier muzzle flash of its own (`assets/gameplay/effects.items`).
 - **Screens** (`ui/*.ui`): title menu, HUD, inventory, skill tree, pause menu, settings
   (every control rebindable, mouse and graphics options) and a win screen. The HUD shows
   where a hit came from and glows red at low health.
