@@ -25,7 +25,12 @@ so the Hub's *upgrade preflight* runs against this repo's content.
 |---|---|---|
 | [TestGame](samples/TestGame) -- "The Beacon" | 0.8.43+ | A complete first-person game: hills, creature camps, eight guns in three weapon slots, armour, grenades, a skill tree, menus, HUD, settings, checkpoints and a goal -- all project files (scenes, `.ui`, logic scripts, `.items`). |
 
-Open one from the Hub: **Projects > Add Existing Project...** and choose its folder (clone with Git LFS installed).
+**Download:** each sample is a zip on the [Releases](https://github.com/orgolis/WorldShaper-Samples/releases) page -- the newest TestGame is always at
+https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip. Unzip it, then in the Hub:
+**Projects > Add Existing Project...** and choose the unzipped folder. (Or clone this repository with Git LFS installed.)
+
+**Releasing:** push a tag (`v1.1.0`, ...). The Release workflow opens every sample in the latest engine, then publishes
+one zip per sample and template (`tools/package_samples.py`).
 
 ## Planned templates
 

@@ -7,3 +7,5 @@ editor.ini
 # A project's own saved games and editor layout, made when it is opened
 saves/
 editor_layout.version
+# Release zips made by tools/package_samples.py
+dist/

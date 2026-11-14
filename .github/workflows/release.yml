@@ -1,0 +1,68 @@
+# ============================================================================
+# Release -- every sample and template as a zip, for download.
+#
+# Push a tag (v1.0.0, v1.1.0, ...) and this publishes a GitHub release with one
+# <Name>.zip per project (the folder at the root of the zip). Asset names carry
+# no version, so releases/latest/download/<Name>.zip is a permanent link.
+#
+# Before publishing, each sample is opened in the latest engine release, as the
+# CI workflow does: a release never ships a sample the current engine cannot read.
+#
+# NOTE for editors: never put `shell:` on a `uses:` step -- invalid, fails in 0s.
+# ============================================================================
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write   # create the release and upload its assets
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true   # the terrain is in Git LFS; the packager refuses pointer files
+
+      - name: Download the latest engine release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSL "https://api.github.com/repos/orgolis/c-Engine-Game/releases/latest" -o release.json
+          url=$(python -c "import json;d=json.load(open('release.json'));c=[a for a in d['assets'] if '-win64.zip' in a['name']];assert len(c)==1,c;print(c[0]['browser_download_url'])")
+          curl -sSL "$url" -o engine.zip
+          mkdir -p engine && cd engine && unzip -q ../engine.zip
+          test -f gws.exe
+
+      - name: Every sample opens in it
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for manifest in samples/*/project.schizo templates/*/project.schizo; do
+            dir=$(dirname "$manifest")
+            ./engine/gws.exe validate "$dir"
+            for data in "$dir"/scenes/*.gameplay; do
+              ./engine/gws.exe run --load "$data" --frames 60 --json
+            done
+          done
+
+      - name: Package
+        shell: bash
+        run: python tools/package_samples.py "${{ github.ref_name }}" dist
+
+      - name: Publish the release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "${{ github.ref_name }}" dist/*.zip \
+            --repo "${{ github.repository }}" \
+            --title "Samples ${{ github.ref_name }}" \
+            --notes-file dist/NOTES.md

@@ -12,8 +12,8 @@ this game is built into the engine.
 ## Open it
 
 1. Install engine 0.8.43 (or newer) from the Hub.
-2. Get this folder: clone this repository (with Git LFS installed -- the terrain is
-   stored with it) or download it.
+2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
+   and unzip it (or clone this repository with Git LFS installed -- the terrain is stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
 4. Open it, press **Play**.
 
