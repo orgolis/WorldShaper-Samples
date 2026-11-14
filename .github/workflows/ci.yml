@@ -44,13 +44,21 @@ jobs:
 
       - name: Download the latest engine release
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           # Resolve exactly the way the Hub does: the asset whose name contains
           # "-win64.zip". NOT plain ".zip" — the symbols archive would match that
           # and sort first. This assertion is the point of the step.
           api="https://api.github.com/repos/orgolis/c-Engine-Game/releases/latest"
-          curl -sSL "$api" -o release.json
+          # Authenticated with the workflow's token (unauthenticated calls from
+          # shared runners hit GitHub's rate limit), and tried a few times.
+          for i in 1 2 3 4; do
+            if curl -sSfL -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$api" -o release.json; then break; fi
+            echo "the GitHub API did not answer (try $i); waiting"; sleep 10
+          done
+          python -c "import json;d=json.load(open('release.json'));assert 'assets' in d, d"
           tag=$(python -c "import json;print(json.load(open('release.json'))['tag_name'])")
           url=$(python - <<'PY'
           import json

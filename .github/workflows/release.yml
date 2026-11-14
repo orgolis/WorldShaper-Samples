@@ -31,9 +31,18 @@ jobs:
 
       - name: Download the latest engine release
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          curl -sSL "https://api.github.com/repos/orgolis/c-Engine-Game/releases/latest" -o release.json
+          api="https://api.github.com/repos/orgolis/c-Engine-Game/releases/latest"
+          # Authenticated with the workflow's token (unauthenticated calls from
+          # shared runners hit GitHub's rate limit), and tried a few times.
+          for i in 1 2 3 4; do
+            if curl -sSfL -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$api" -o release.json; then break; fi
+            echo "the GitHub API did not answer (try $i); waiting"; sleep 10
+          done
+          python -c "import json;d=json.load(open('release.json'));assert 'assets' in d, d"
           url=$(python -c "import json;d=json.load(open('release.json'));c=[a for a in d['assets'] if '-win64.zip' in a['name']];assert len(c)==1,c;print(c[0]['browser_download_url'])")
           curl -sSL "$url" -o engine.zip
           mkdir -p engine && cd engine && unzip -q ../engine.zip
