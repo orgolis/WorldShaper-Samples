@@ -7,11 +7,11 @@ Everything in it is ordinary project content -- scenes, UI documents, logic scri
 item and effect files -- so every part of it can be opened and changed in the editor.
 Nothing about this game is built into the engine.
 
-**Needs engine 0.8.48 or newer.**
+**Needs engine 0.8.49 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.48 (or newer) from the Hub.
+1. Install engine 0.8.49 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
@@ -20,7 +20,8 @@ Nothing about this game is built into the engine.
 ## What is in it
 
 - **The world** (`scenes/main.scene`): 1024 m of rolling hills with four rivers and their
-  lakes under an HDR sky, grass that moves in the wind, forests
+  lakes (water that splashes and rings where anything touches it) under an HDR sky, grass
+  that moves in the wind, forests
   of trees from 5 to 18 m tall, grass and rocks. The sun shines from where the sky's sun
   is: trees cast shadows and, with Volumetric light on, light shafts. Trees and rocks are
   solid: they stop the player, rounds, grenades, sight and creatures.
