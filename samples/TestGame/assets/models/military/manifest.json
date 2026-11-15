@@ -1,0 +1,490 @@
+{
+  "units": "metres",
+  "blender_forward": "-Y",
+  "gltf_forward": "+Z",
+  "gltf_up": "+Y",
+  "fps": 30,
+  "characters": {
+    "player": {
+      "file": "assets/models/military/characters/player.glb",
+      "source": "art_source/military_pack/player.blend",
+      "vertices": 18712,
+      "triangles": 36792,
+      "bones": 43,
+      "clips": [
+        {
+          "name": "00_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "01_Walk",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "02_Run",
+          "duration": 0.8,
+          "loop": true
+        },
+        {
+          "name": "03_Crouch_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "04_Crouch_Walk",
+          "duration": 1.3333333333333333,
+          "loop": true
+        },
+        {
+          "name": "05_Aim_Rifle",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "06_Fire_Rifle",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "07_Reload_Rifle",
+          "duration": 1.8,
+          "loop": false
+        },
+        {
+          "name": "08_Draw_Rifle",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "09_Hit_Reaction",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "10_Death_Back",
+          "duration": 1.5,
+          "loop": false
+        },
+        {
+          "name": "11_Aim_Pistol",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "12_Fire_Pistol",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "13_Reload_Pistol",
+          "duration": 1.2,
+          "loop": false
+        },
+        {
+          "name": "14_Strafe_Left",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "15_Strafe_Right",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "16_Reload_Shotgun",
+          "duration": 2.4,
+          "loop": false
+        },
+        {
+          "name": "17_Reload_LMG",
+          "duration": 4.0,
+          "loop": false
+        },
+        {
+          "name": "18_Reload_Revolver",
+          "duration": 2.6,
+          "loop": false
+        },
+        {
+          "name": "19_Reload_SMG",
+          "duration": 1.6,
+          "loop": false
+        },
+        {
+          "name": "20_Reload_Carbine",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "21_Reload_Marksman",
+          "duration": 2.2,
+          "loop": false
+        }
+      ]
+    },
+    "rifleman": {
+      "file": "assets/models/military/characters/rifleman.glb",
+      "source": "art_source/military_pack/rifleman.blend",
+      "vertices": 18844,
+      "triangles": 37044,
+      "bones": 43,
+      "clips": [
+        {
+          "name": "00_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "01_Walk",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "02_Run",
+          "duration": 0.8,
+          "loop": true
+        },
+        {
+          "name": "03_Crouch_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "04_Crouch_Walk",
+          "duration": 1.3333333333333333,
+          "loop": true
+        },
+        {
+          "name": "05_Aim_Rifle",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "06_Fire_Rifle",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "07_Reload_Rifle",
+          "duration": 1.8,
+          "loop": false
+        },
+        {
+          "name": "08_Draw_Rifle",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "09_Hit_Reaction",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "10_Death_Back",
+          "duration": 1.5,
+          "loop": false
+        },
+        {
+          "name": "11_Aim_Pistol",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "12_Fire_Pistol",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "13_Reload_Pistol",
+          "duration": 1.2,
+          "loop": false
+        },
+        {
+          "name": "14_Strafe_Left",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "15_Strafe_Right",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "16_Reload_Shotgun",
+          "duration": 2.4,
+          "loop": false
+        },
+        {
+          "name": "17_Reload_LMG",
+          "duration": 4.0,
+          "loop": false
+        },
+        {
+          "name": "18_Reload_Revolver",
+          "duration": 2.6,
+          "loop": false
+        },
+        {
+          "name": "19_Reload_SMG",
+          "duration": 1.6,
+          "loop": false
+        },
+        {
+          "name": "20_Reload_Carbine",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "21_Reload_Marksman",
+          "duration": 2.2,
+          "loop": false
+        }
+      ]
+    },
+    "heavy": {
+      "file": "assets/models/military/characters/heavy.glb",
+      "source": "art_source/military_pack/heavy.blend",
+      "vertices": 19512,
+      "triangles": 38356,
+      "bones": 43,
+      "clips": [
+        {
+          "name": "00_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "01_Walk",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "02_Run",
+          "duration": 0.8,
+          "loop": true
+        },
+        {
+          "name": "03_Crouch_Idle",
+          "duration": 2.0,
+          "loop": true
+        },
+        {
+          "name": "04_Crouch_Walk",
+          "duration": 1.3333333333333333,
+          "loop": true
+        },
+        {
+          "name": "05_Aim_Rifle",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "06_Fire_Rifle",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "07_Reload_Rifle",
+          "duration": 1.8,
+          "loop": false
+        },
+        {
+          "name": "08_Draw_Rifle",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "09_Hit_Reaction",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "10_Death_Back",
+          "duration": 1.5,
+          "loop": false
+        },
+        {
+          "name": "11_Aim_Pistol",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "12_Fire_Pistol",
+          "duration": 0.2,
+          "loop": false
+        },
+        {
+          "name": "13_Reload_Pistol",
+          "duration": 1.2,
+          "loop": false
+        },
+        {
+          "name": "14_Strafe_Left",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "15_Strafe_Right",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "16_Reload_Shotgun",
+          "duration": 2.4,
+          "loop": false
+        },
+        {
+          "name": "17_Reload_LMG",
+          "duration": 4.0,
+          "loop": false
+        },
+        {
+          "name": "18_Reload_Revolver",
+          "duration": 2.6,
+          "loop": false
+        },
+        {
+          "name": "19_Reload_SMG",
+          "duration": 1.6,
+          "loop": false
+        },
+        {
+          "name": "20_Reload_Carbine",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "21_Reload_Marksman",
+          "duration": 2.2,
+          "loop": false
+        }
+      ]
+    }
+  },
+  "weapons": {
+    "starter_rifle": {
+      "file": "assets/models/military/weapons/starter_rifle.glb",
+      "source": "art_source/military_pack/starter_rifle.blend",
+      "vertices": 6028,
+      "triangles": 11676,
+      "bones": 7,
+      "label": "Rifle",
+      "length": 0.91,
+      "reload": 1.8,
+      "draw": 0.45,
+      "style": "rifle",
+      "socket": "muzzle"
+    },
+    "pistol": {
+      "file": "assets/models/military/weapons/pistol.glb",
+      "source": "art_source/military_pack/pistol.blend",
+      "vertices": 2254,
+      "triangles": 4360,
+      "bones": 7,
+      "label": "Pistol",
+      "length": 0.205,
+      "reload": 1.2,
+      "draw": 0.25,
+      "style": "pistol",
+      "socket": "muzzle"
+    },
+    "shotgun": {
+      "file": "assets/models/military/weapons/shotgun.glb",
+      "source": "art_source/military_pack/shotgun.blend",
+      "vertices": 7354,
+      "triangles": 14244,
+      "bones": 7,
+      "label": "Shotgun",
+      "length": 1.02,
+      "reload": 2.4,
+      "draw": 0.6,
+      "style": "shotgun",
+      "socket": "muzzle"
+    },
+    "marksman": {
+      "file": "assets/models/military/weapons/marksman.glb",
+      "source": "art_source/military_pack/marksman.blend",
+      "vertices": 7484,
+      "triangles": 14516,
+      "bones": 7,
+      "label": "Marksman Rifle",
+      "length": 1.13,
+      "reload": 2.2,
+      "draw": 0.7,
+      "style": "marksman",
+      "socket": "muzzle"
+    },
+    "smg": {
+      "file": "assets/models/military/weapons/smg.glb",
+      "source": "art_source/military_pack/smg.blend",
+      "vertices": 4396,
+      "triangles": 8528,
+      "bones": 7,
+      "label": "SMG",
+      "length": 0.58,
+      "reload": 1.6,
+      "draw": 0.3,
+      "style": "smg",
+      "socket": "muzzle"
+    },
+    "carbine": {
+      "file": "assets/models/military/weapons/carbine.glb",
+      "source": "art_source/military_pack/carbine.blend",
+      "vertices": 4964,
+      "triangles": 9624,
+      "bones": 7,
+      "label": "Burst Carbine",
+      "length": 0.76,
+      "reload": 2.0,
+      "draw": 0.45,
+      "style": "carbine",
+      "socket": "muzzle"
+    },
+    "lmg": {
+      "file": "assets/models/military/weapons/lmg.glb",
+      "source": "art_source/military_pack/lmg.blend",
+      "vertices": 7162,
+      "triangles": 13864,
+      "bones": 7,
+      "label": "Light Machine Gun",
+      "length": 1.1,
+      "reload": 4.0,
+      "draw": 0.9,
+      "style": "lmg",
+      "socket": "muzzle"
+    },
+    "revolver": {
+      "file": "assets/models/military/weapons/revolver.glb",
+      "source": "art_source/military_pack/revolver.blend",
+      "vertices": 2482,
+      "triangles": 4836,
+      "bones": 8,
+      "label": "Revolver",
+      "length": 0.29,
+      "reload": 2.6,
+      "draw": 0.3,
+      "style": "revolver",
+      "socket": "muzzle"
+    }
+  },
+  "weapon_attachment_correction_column_major": [
+    -1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ]
+}

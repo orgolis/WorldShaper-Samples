@@ -1,29 +1,31 @@
 # TestGame -- "The Beacon"
 
 A small, complete first-person game made with GameWorldshaper's own tools. Clear the
-creature camps in the hills, then reach the beacon on the far side.
+soldiers' outposts and the creature camps in the hills, then reach the beacon on the far side.
 
 Everything in it is ordinary project content -- scenes, UI documents, logic scripts,
 item and effect files -- so every part of it can be opened and changed in the editor.
 Nothing about this game is built into the engine.
 
-**Needs engine 0.8.45 or newer.**
+**Needs engine 0.8.48 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.45 (or newer) from the Hub.
+1. Install engine 0.8.48 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
-   and unzip it (or clone this repository with Git LFS installed -- the terrain and sky are stored with it).
+   and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
 4. Open it, press **Play**.
 
 ## What is in it
 
-- **The world** (`scenes/main.scene`): rolling hills with rivers under an HDR sky, forests
+- **The world** (`scenes/main.scene`): 1024 m of rolling hills with four rivers and their
+  lakes under an HDR sky, grass that moves in the wind, forests
   of trees from 5 to 18 m tall, grass and rocks. The sun shines from where the sky's sun
   is: trees cast shadows and, with Volumetric light on, light shafts. Trees and rocks are
   solid: they stop the player, rounds, grenades, sight and creatures.
-- **The player**: first person, with sprint, crouch, slide, dash, mantle and climb. It has
+- **The player**: first person -- a rigged soldier (seen in its shadow), the gun in hand
+  seen and animated -- with sprint, crouch, slide, dash, mantle and climb. It has
   three weapon slots, holding a rifle and a pistol at the start, plus frag grenades
   (thrown: aim up to throw far), a Firebolt spell that flies and potions.
 - **Eight guns** (`assets/gameplay/arsenal.items`, `starter.items`): rifle, pistol,
@@ -33,6 +35,9 @@ Nothing about this game is built into the engine.
   to swap it with the gun in hand.
 - **Levels and a skill tree** (`assets/gameplay/hero.items`): XP for each creature, a
   skill point a level, three branches of skills and abilities.
+- **Soldiers** (`assets/gameplay/soldiers.items`): three outposts of riflemen and heavy
+  gunners -- rigged, animated models (`assets/models/military/`) with guns in their hands --
+  who patrol, aim and shoot, stagger when hit and fall when killed.
 - **Creature camps**: creatures wander about their camp, see you only with a clear line,
   hear gunfire and call their camp in. They chase, search where you were last seen, and
   give up far from home. Melee creatures rear up (a red glow) before they claw; spitters
@@ -46,7 +51,7 @@ Nothing about this game is built into the engine.
   (every control rebindable, mouse and graphics options) and a win screen. The HUD shows
   where a hit came from and glows red at low health.
 - **The rules** (`testgame/*.lgraph`, logic scripts): `GameRules` (menus, keys, XP and
-  loot, counting the creatures, the inventory and skill screens), `Checkpoint` (saves
+  loot, counting the enemies, the inventory and skill screens), `Checkpoint` (saves
   when you walk through one), `Goal` (the beacon).
 
 ## Keys
@@ -62,9 +67,9 @@ All except Esc can be rebound in the game's Settings. The defaults are in `input
 
 ## Known limits
 
-- Creatures are capsules (no rigged models yet); they steer round trees but can get
-  stuck in a dense thicket.
-- No gun models in the hand.
+- Creatures are capsules (the soldiers are rigged models); they steer round trees but can
+  get stuck in a dense thicket.
+- No inverse kinematics: a soldier's support hand follows its clip, not the gun.
 - Starting Play bakes the navmesh from the full terrain, which pauses for a few seconds.
 
 ## Credits

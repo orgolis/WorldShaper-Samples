@@ -1,0 +1,56 @@
+# What the soldiers shoot with (their NPC Agent names one). Hitscan, with a
+# spread: they miss more the farther you are. The cast time is how long they
+# aim before each shot; the cooldown is the gap between shots.
+
+ability rifle_shot
+  name Rifle shot
+  cooldown 0.7
+  cast 0.25
+  target aimed
+  range 48
+  spread 2.8
+  damage 7 kinetic
+  vfx soldier_rifle
+end
+
+ability lmg_burst
+  name LMG burst
+  cooldown 0.14
+  cast 0.06
+  target aimed
+  range 40
+  spread 4.5
+  damage 4 kinetic
+  vfx soldier_lmg
+end
+
+# Their muzzle flash, tracer and impact (the stages of an ability's effect).
+effect soldier_rifle_cast
+  light 1 0.62 0.28 12 7 0.06
+  layer core   count 2  life 0.035 0.05 size 0.22 0.1 color 9 5.5 2.2 1 to 4 1.6 0.4 0 jitter 0.008
+  layer cone   count 5  life 0.03 0.05 speed 1.5 4 spread 6 size 0.13 0.05 color 7 3.6 1.1 1 to 3 1 0.2 0 streak 0.07
+  layer smoke  count 5  life 0.5 1.0 speed 0.3 1 spread 16 size 0.05 0.32 color 0.6 0.58 0.55 0.2 to 0.62 0.62 0.62 0 blend drag 4 gravity -0.5
+end
+effect soldier_rifle_beam
+  layer round  count 1 reach speed 300 size 0.03 0.03 color 9 6 2.6 1 to 6 3 1 0.8 streak 0.024 shape soft
+end
+effect soldier_rifle_hit
+  light 1 0.7 0.4 3 3 0.05
+  layer flash  count 1 life 0.04 size 0.2 0.08 color 6 4 2 1 to 2 1 0.3 0
+  layer sparks count 6 life 0.12 0.3 speed 3 8 dir normal spread 55 size 0.02 0.008 color 5 3 1.2 1 to 2 0.5 0.1 0 streak 0.03 gravity 9.8
+  layer dust   count 6 life 0.5 1.1 speed 0.4 1.6 dir normal spread 50 size 0.1 0.6 color 0.45 0.41 0.35 0.4 to 0.47 0.44 0.4 0 blend drag 3.5 gravity -0.15
+end
+effect soldier_lmg_cast
+  light 1 0.62 0.28 14 7 0.05
+  layer core   count 2  life 0.03 0.045 size 0.26 0.12 color 9 5.5 2.2 1 to 4 1.6 0.4 0 jitter 0.01
+  layer cone   count 6  life 0.03 0.05 speed 1.5 4 spread 7 size 0.15 0.05 color 7 3.6 1.1 1 to 3 1 0.2 0 streak 0.07
+  layer smoke  count 3  life 0.5 1.0 speed 0.3 1 spread 16 size 0.05 0.3 color 0.6 0.58 0.55 0.18 to 0.62 0.62 0.62 0 blend drag 4 gravity -0.5
+end
+effect soldier_lmg_beam
+  layer round  count 1 reach speed 300 size 0.032 0.032 color 9 5 2 1 to 6 2.5 0.8 0.8 streak 0.024 shape soft
+end
+effect soldier_lmg_hit
+  layer flash  count 1 life 0.035 size 0.18 0.07 color 6 4 2 1 to 2 1 0.3 0
+  layer sparks count 4 life 0.1 0.25 speed 3 8 dir normal spread 55 size 0.02 0.008 color 5 3 1.2 1 to 2 0.5 0.1 0 streak 0.03 gravity 9.8
+  layer dust   count 4 life 0.5 1.0 speed 0.4 1.5 dir normal spread 50 size 0.1 0.55 color 0.45 0.41 0.35 0.4 to 0.47 0.44 0.4 0 blend drag 3.5 gravity -0.15
+end

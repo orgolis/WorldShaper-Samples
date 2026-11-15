@@ -34,6 +34,8 @@ weapon starter_rifle
   impact 0.12
   flash
   ammo rifle_rounds
+  model assets/models/military/weapons/starter_rifle.glb
+  view 0.21 -0.23 0.4
 end
 
 ability firebolt

@@ -23,6 +23,8 @@ weapon pistol
   impact 0.08
   flash
   ammo pistol_rounds
+  model assets/models/military/weapons/pistol.glb
+  view 0.18 -0.19 0.44
 end
 
 weapon shotgun
@@ -42,6 +44,8 @@ weapon shotgun
   impact 0.1
   flash
   ammo shotgun_shells
+  model assets/models/military/weapons/shotgun.glb
+  view 0.21 -0.23 0.38
 end
 
 weapon marksman
@@ -60,6 +64,8 @@ weapon marksman
   impact 0.12
   flash
   ammo rifle_rounds
+  model assets/models/military/weapons/marksman.glb
+  view 0.21 -0.23 0.38
 end
 
 weapon smg
@@ -79,6 +85,8 @@ weapon smg
   impact 0.07
   flash
   ammo pistol_rounds
+  model assets/models/military/weapons/smg.glb
+  view 0.2 -0.22 0.42
 end
 
 weapon carbine
@@ -99,6 +107,8 @@ weapon carbine
   impact 0.08
   flash
   ammo rifle_rounds
+  model assets/models/military/weapons/carbine.glb
+  view 0.21 -0.23 0.4
 end
 
 weapon lmg
@@ -118,6 +128,8 @@ weapon lmg
   impact 0.09
   flash
   ammo rifle_rounds
+  model assets/models/military/weapons/lmg.glb
+  view 0.22 -0.25 0.36
 end
 
 weapon revolver
@@ -136,6 +148,8 @@ weapon revolver
   impact 0.1
   flash
   ammo pistol_rounds
+  model assets/models/military/weapons/revolver.glb
+  view 0.18 -0.19 0.44
 end
 
 item pistol_rounds

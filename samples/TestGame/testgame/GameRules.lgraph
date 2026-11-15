@@ -1,7 +1,7 @@
 VSCRIPT 2
 name	GameRules
 var	Kills	int	0	0		
-var	Total	int	0	9		
+var	Total	int	0	20		
 var	Picked	string	0			
 var	PickedId	string	0			
 graph	event	EventGraph	0	342
@@ -12,7 +12,7 @@ node	3	ui.show	600.0	0.0		none	0
 pin	3	File	string	ui/menu.ui
 node	4	var.get	900.0	140.0	Total	none	0	
 node	5	math.add	900.0	0.0		string	0	
-pin	5	A	string	Creatures left: 
+pin	5	A	string	Enemies left: 
 node	6	ui.set_text	1200.0	0.0		none	0	
 pin	6	File	string	ui/hud.ui
 pin	6	Id	string	objective
@@ -530,7 +530,7 @@ node	322	var.set	600.0	31390.0	Kills	none	0
 node	323	var.get	900.0	31530.0	Total	none	0	
 node	324	math.sub	900.0	31640.0		none	0	
 node	325	math.add	900.0	31750.0		string	0	
-pin	325	A	string	Creatures left: 
+pin	325	A	string	Enemies left: 
 node	326	ui.set_text	900.0	31390.0		none	0	
 pin	326	File	string	ui/hud.ui
 pin	326	Id	string	objective
