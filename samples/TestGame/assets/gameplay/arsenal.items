@@ -183,8 +183,8 @@ item mage_hood
   kind armor
   slot head
   weight 0.4
-  mod Mana 50
-  about Head: +50 max mana
+  mod CooldownReduction 15
+  about Head: abilities cool down 15% sooner
 end
 
 item kevlar_vest

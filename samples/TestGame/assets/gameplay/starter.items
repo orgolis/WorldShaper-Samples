@@ -40,7 +40,6 @@ end
 
 ability firebolt
   name Firebolt
-  cost Mana 15
   cooldown 1.5
   cast 0.35
   target aimed
@@ -48,26 +47,27 @@ ability firebolt
   damage 30 fire
   vfx firebolt
   speed 45
+  about A ball of fire at what you aim at.
 end
 
 ability frost_nova
   name Frost Nova
-  cost Mana 25
   cooldown 8
   target area
   radius 5
   damage 15 cold
   effect Speed -3 3
   vfx frost_nova
+  about A freezing burst around you: hits and slows everything close.
 end
 
 ability mend
   name Mend
-  cost Mana 20
   cooldown 12
   cast 1.5
   still
   target self
   self Health 40
   vfx mend
+  about Stand still for a moment and heal 40.
 end

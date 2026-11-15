@@ -7,11 +7,11 @@ Everything in it is ordinary project content -- scenes, UI documents, logic scri
 item and effect files -- so every part of it can be opened and changed in the editor.
 Nothing about this game is built into the engine.
 
-**Needs engine 0.8.49 or newer.**
+**Needs engine 0.8.51 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.49 (or newer) from the Hub.
+1. Install engine 0.8.51 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
@@ -28,14 +28,19 @@ Nothing about this game is built into the engine.
 - **The player**: first person -- a rigged soldier (seen in its shadow), the gun in hand
   seen and animated -- with sprint, crouch, slide, dash, mantle and climb. It has
   three weapon slots, holding a rifle and a pistol at the start, plus frag grenades
-  (thrown: aim up to throw far), a Firebolt spell that flies and potions.
+  (thrown: aim up to throw far), a Firebolt spell that flies and health potions. No mana:
+  abilities cost only their cooldowns, and three ability slots hold the ones in use.
 - **Eight guns** (`assets/gameplay/arsenal.items`, `starter.items`): rifle, pistol,
   shotgun, marksman rifle, SMG, burst carbine, light machine gun and revolver. Six of
   them are in **supply caches**, along with armour (helmet, hood, vest) and more grenades.
   A gun found while all three slots are full goes into the bag. Use it from the inventory
   to swap it with the gun in hand.
-- **Levels and a skill tree** (`assets/gameplay/hero.items`): XP for each creature, a
-  skill point a level, three branches of skills and abilities.
+- **Levels and a skill tree** (`assets/gameplay/hero.items`): XP for each kill, a skill
+  point a level. The tree (K) is drawn as a tree of 32 skills growing from one root into
+  Sorcery, Survival and Agility: thirteen abilities to learn -- four of them movement
+  (Surge, Leap, Blink, Haste) -- and passives that raise health, speed, damage, reload
+  speed, regeneration and air jumps or shorten cooldowns. The abilities screen (P) puts
+  learned abilities into the three slots.
 - **Soldiers** (`assets/gameplay/soldiers.items`): three outposts of riflemen and heavy
   gunners -- rigged, animated models (`assets/models/military/`) with guns in their hands --
   who patrol, aim and shoot, stagger when hit and fall when killed.
@@ -48,11 +53,12 @@ Nothing about this game is built into the engine.
   tracers, sparks and dust, fiery trails, blasts that glow and bloom.
   The engine has a built-in look for every gun and ability; this game gives the
   creatures' attacks and the shotgun a heavier muzzle flash of its own (`assets/gameplay/effects.items`).
-- **Screens** (`ui/*.ui`): title menu, HUD, inventory, skill tree, pause menu, settings
-  (every control rebindable, mouse and graphics options) and a win screen. The HUD shows
-  where a hit came from and glows red at low health.
+- **Screens** (`ui/*.ui`): title menu, HUD, inventory, skill tree, abilities, pause menu,
+  settings (every control rebindable, mouse and graphics options) and a win screen. The
+  HUD keeps the ability slots (keys and cooldowns) and the gun in the lower left corner,
+  shows where a hit came from and glows red at low health.
 - **The rules** (`testgame/*.lgraph`, logic scripts): `GameRules` (menus, keys, XP and
-  loot, counting the enemies, the inventory and skill screens), `Checkpoint` (saves
+  loot, counting the enemies, the inventory, skill and ability screens), `Checkpoint` (saves
   when you walk through one), `Goal` (the beacon).
 
 ## Keys
@@ -61,7 +67,7 @@ Nothing about this game is built into the engine.
 |---|---|
 | Move | W A S D, Shift sprint, Space jump / mantle, Ctrl crouch / slide, V dash |
 | Guns | left mouse fire, right mouse aim, R reload, 1 / 2 / 3 weapon slots, mouse wheel or Q switch |
-| Other | G grenade, Z / X / C / F abilities, E open / pick up, I inventory, K skill tree |
+| Other | G grenade, Z / X / C abilities, E open / pick up, I inventory, K skill tree, P abilities |
 | Game | Esc menu, F6 save, F9 load, Shift+F1 free the mouse for the editor |
 
 All except Esc can be rebound in the game's Settings. The defaults are in `input.cfg`.

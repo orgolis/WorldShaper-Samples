@@ -1,0 +1,16 @@
+# Abilities: the 3 slots on your keys and every ability you know. Pick an
+# ability below, then click a slot to put it there (On UI Button ab_slots).
+ui modal pause layer=45
+panel  id=dim      anchor=fill color=0,0,0,0.55
+panel  id=card     anchor=center x=0 y=0 w=1400 h=860 color=0.06,0.08,0.12,0.95 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+label  id=title    anchor=center x=0 y=-380 w=800 h=70 text="Abilities" size=52 align=center bold=1 shadow=1
+label  id=h_slots  anchor=center x=0 y=-302 w=800 h=40 text="Ability slots" size=30 align=center color=1,0.86,0.5,1 bold=1
+slots  id=ab_slots anchor=center x=0 y=-196 w=510 h=150 cols=3 rows=1 size=22 bind=player.abilities frame=0.55,0.85,1,0.95 radius=6 border=1,1,1,0.1 border_width=1
+label  id=h_known  anchor=center x=0 y=-82 w=1100 h=40 text="Known abilities" size=30 align=center color=1,0.86,0.5,1 bold=1
+label  id=hint     anchor=center x=0 y=-48 w=1100 h=26 text="Pick one, then click a slot above to put it there" size=19 align=center color=1,1,1,0.55
+slots  id=known    anchor=center x=0 y=80 w=1240 h=220 cols=8 rows=2 size=19 bind=player.known_abilities radius=6 border=1,1,1,0.1 border_width=1
+label  id=picked   anchor=center x=0 y=222 w=900 h=40 text="{known.name}" size=32 align=center color=1,0.86,0.5,1 bold=1
+label  id=about    anchor=center x=0 y=260 w=1300 h=28 text="{known.info}" size=21 align=center color=0.85,0.9,1,0.85
+label  id=learn    anchor=center x=0 y=300 w=1300 h=26 text="New abilities come from the skill tree ({key.skills})" size=18 align=center color=1,1,1,0.5
+button id=open_skills     anchor=center x=-170 y=370 w=300 h=56 text="Skill tree ({key.skills})" size=24 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+button id=abilities_close anchor=center x=170 y=370 w=300 h=56 text="Close" size=24 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1

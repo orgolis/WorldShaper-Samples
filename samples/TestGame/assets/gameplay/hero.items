@@ -1,58 +1,247 @@
-# The hero's progression: a skill tree, an ability learned from it, mana potions.
-# Skills cost the points the player earns by levelling up (XP for each creature).
-# In Play, K opens the tree. "unlocks" puts an ability on the Ability Bar (keys 1-8,
-# in the order learned); "grant" raises an attribute; "requires" needs that skill first.
-# Firebolt is the hero's from the start (the Ability Bar in the scene).
-
-item mana_potion
-  name Mana Potion
-  kind consumable
-  max_stack 10
-  weight 0.2
-  on_use Mana 50
-  about Restores 50 mana
-end
+# The hero's abilities and skill tree. Skills cost the points the player earns by
+# levelling up. K opens the tree: it grows from Awakening at the bottom, a skill
+# needing the ones under it. Abilities have no cost but their cooldown; the player
+# has 3 ability slots (P: Abilities puts known ones in them). Passives ("grant")
+# raise bonus stats: MoveSpeed, Damage, CooldownReduction, ReloadSpeed (all %),
+# HealthRegen (a second), ExtraJumps -- and Health.
 
 ability lightning
   name Lightning
-  cost Mana 30
   cooldown 4
   cast 0.2
   target aimed
   range 60
   damage 55 shock
   vfx lightning
+  about A bolt of lightning at what you aim at, far away.
+end
+
+ability ice_lance
+  name Ice Lance
+  cooldown 3
+  cast 0.25
+  target aimed
+  range 45
+  damage 40 cold
+  speed 60
+  effect Speed -3 3
+  about A shard of ice that flies straight and slows what it hits.
+end
+
+ability shock_wave
+  name Shock Wave
+  cooldown 9
+  target area
+  radius 7
+  damage 35 shock
+  effect Speed -2 2
+  about A ring of lightning bursts from you: everything close is hit and slowed.
+end
+
+ability meteor
+  name Meteor
+  cooldown 14
+  cast 0.8
+  still
+  target area_at_aim
+  range 50
+  radius 6
+  damage 90 fire
+  speed 28
+  arc 9.8
+  about Stand still and call down a falling star where you aim.
+end
+
+ability venom_rain
+  name Venom Rain
+  cooldown 12
+  channel 3 0.5
+  target area_at_aim
+  range 40
+  radius 5
+  damage 10 poison
+  about Hold the key: poison rains where you aim, every half second.
+end
+
+ability battle_cry
+  name Battle Cry
+  cooldown 20
+  target self
+  self Damage 30 8
+  about A roar that makes every shot and spell hit 30% harder for 8 seconds.
+end
+
+ability second_wind
+  name Second Wind
+  cooldown 25
+  target self
+  self Health 30
+  self HealthRegen 12 5
+  about Heals 30 at once, then 12 a second for 5 seconds.
+end
+
+ability surge
+  name Surge
+  cooldown 5
+  target self
+  move dash 12
+  about Dash 12 metres the way you look.
+end
+
+ability leap
+  name Leap
+  cooldown 7
+  target self
+  move leap 11 10
+  about Leap high and far: up 3 metres and 10 on.
+end
+
+ability blink
+  name Blink
+  cooldown 9
+  target self
+  move blink 14
+  about Vanish and appear up to 14 metres ahead, short of walls.
+end
+
+ability haste
+  name Haste
+  cooldown 18
+  target self
+  self MoveSpeed 50 6
+  about Run 50% faster for 6 seconds.
+end
+
+skill awaken
+  name Awakening
+  tree hero
+  cost 1
+  grant Health 10
+  about Passive: +10 max health. Where every path starts.
+  pos 5 0
 end
 
 skill frost
   name Frost Nova
   tree hero
   cost 1
+  requires awaken
   unlocks frost_nova
+  about Ability: A freezing burst around you: hits and slows everything close.
+  pos 2 1
+end
+
+skill ice
+  name Ice Lance
+  tree hero
+  cost 1
+  requires frost
+  unlocks ice_lance
+  about Ability: A shard of ice that flies straight and slows what it hits.
+  pos 1 2
+end
+
+skill focus
+  name Focus
+  tree hero
+  cost 1
+  requires frost
+  grant CooldownReduction 10
+  about Passive: abilities cool down 10% sooner.
+  pos 3 2
 end
 
 skill storm
   name Lightning
   tree hero
   cost 2
-  requires frost
+  requires ice
   unlocks lightning
+  about Ability: A bolt of lightning at what you aim at, far away.
+  pos 0 3
+end
+
+skill shock
+  name Shock Wave
+  tree hero
+  cost 2
+  requires ice
+  unlocks shock_wave
+  about Ability: A ring of lightning bursts from you: everything close is hit and slowed.
+  pos 2 3
+end
+
+skill clarity
+  name Clarity
+  tree hero
+  cost 2
+  requires focus
+  grant CooldownReduction 15
+  about Passive: abilities cool down 15% sooner.
+  pos 3 3
+end
+
+skill venom
+  name Venom Rain
+  tree hero
+  cost 2
+  requires storm
+  unlocks venom_rain
+  about Ability: Hold the key: poison rains where you aim, every half second.
+  pos 0 4
+end
+
+skill meteor_skill
+  name Meteor
+  tree hero
+  cost 2
+  requires shock
+  unlocks meteor
+  about Ability: Stand still and call down a falling star where you aim.
+  pos 2 4
+end
+
+skill spellweaver
+  name Spellweaver
+  tree hero
+  cost 2
+  requires clarity
+  grant Damage 10
+  about Passive: +10% damage.
+  pos 3 4
 end
 
 skill archmage
   name Archmage
   tree hero
-  cost 2
-  requires storm
-  requires clarity
-  grant Mana 60
+  cost 3
+  requires venom
+  requires meteor_skill
+  grant Damage 15
+  grant CooldownReduction 10
+  about Passive: +15% damage, abilities cool down 10% sooner.
+  pos 1 5
+end
+
+skill elementalist
+  name Elementalist
+  tree hero
+  cost 3
+  requires archmage
+  requires spellweaver
+  grant Damage 20
+  about Passive: +20% damage.
+  pos 2 6
 end
 
 skill tough
   name Toughness
   tree hero
   cost 1
+  requires awaken
   grant Health 25
+  about Passive: +25 max health.
+  pos 5 1
 end
 
 skill mend_skill
@@ -61,6 +250,18 @@ skill mend_skill
   cost 1
   requires tough
   unlocks mend
+  about Ability: Stand still for a moment and heal 40.
+  pos 4 2
+end
+
+skill regen
+  name Regeneration
+  tree hero
+  cost 1
+  requires tough
+  grant HealthRegen 1.5
+  about Passive: +1.5 health a second.
+  pos 6 2
 end
 
 skill iron
@@ -68,29 +269,176 @@ skill iron
   tree hero
   cost 2
   requires mend_skill
+  requires regen
   grant Health 50
+  about Passive: +50 max health.
+  pos 5 3
 end
 
-skill focus
-  name Focus
+skill second_wind_skill
+  name Second Wind
   tree hero
-  cost 1
-  grant Mana 30
+  cost 2
+  requires iron
+  unlocks second_wind
+  about Ability: Heals 30 at once, then 12 a second for 5 seconds.
+  pos 4 4
 end
 
-skill clarity
-  name Clarity
+skill battle_cry_skill
+  name Battle Cry
   tree hero
-  cost 1
-  requires focus
-  grant Mana 40
+  cost 2
+  requires iron
+  unlocks battle_cry
+  about Ability: A roar that makes every shot and spell hit 30% harder for 8 seconds.
+  pos 6 4
 end
 
 skill veteran
   name Veteran
   tree hero
-  cost 2
-  requires clarity
-  requires tough
+  cost 3
+  requires second_wind_skill
+  requires battle_cry_skill
   grant Health 40
+  grant HealthRegen 2
+  about Passive: +40 max health, +2 health a second.
+  pos 5 5
+end
+
+skill undying
+  name Undying
+  tree hero
+  cost 3
+  requires veteran
+  grant Health 60
+  grant HealthRegen 3
+  about Passive: +60 max health, +3 health a second.
+  pos 5 6
+end
+
+skill fleet
+  name Fleet Foot
+  tree hero
+  cost 1
+  requires awaken
+  grant MoveSpeed 10
+  about Passive: +10% move speed.
+  pos 8 1
+end
+
+skill surge_skill
+  name Surge
+  tree hero
+  cost 1
+  requires fleet
+  unlocks surge
+  about Ability: Dash 12 metres the way you look.
+  pos 7 2
+end
+
+skill quick_hands
+  name Quick Hands
+  tree hero
+  cost 1
+  requires fleet
+  grant ReloadSpeed 30
+  about Passive: +30% reload speed.
+  pos 9 2
+end
+
+skill leap_skill
+  name Leap
+  tree hero
+  cost 2
+  requires surge_skill
+  unlocks leap
+  about Ability: Leap high and far: up 3 metres and 10 on.
+  pos 7 3
+end
+
+skill marksman
+  name Marksman
+  tree hero
+  cost 2
+  requires quick_hands
+  grant Damage 10
+  about Passive: +10% damage.
+  pos 9 3
+end
+
+skill double_jump
+  name Double Jump
+  tree hero
+  cost 2
+  requires leap_skill
+  grant ExtraJumps 1
+  about Passive: a jump in mid-air.
+  pos 7 4
+end
+
+skill haste_skill
+  name Haste
+  tree hero
+  cost 2
+  requires leap_skill
+  requires marksman
+  unlocks haste
+  about Ability: Run 50% faster for 6 seconds.
+  pos 8 4
+end
+
+skill deadeye
+  name Deadeye
+  tree hero
+  cost 2
+  requires marksman
+  grant Damage 15
+  about Passive: +15% damage.
+  pos 10 4
+end
+
+skill blink_skill
+  name Blink
+  tree hero
+  cost 3
+  requires double_jump
+  requires haste_skill
+  unlocks blink
+  about Ability: Vanish and appear up to 14 metres ahead, short of walls.
+  pos 7 5
+end
+
+skill swiftness
+  name Swiftness
+  tree hero
+  cost 3
+  requires haste_skill
+  grant MoveSpeed 15
+  about Passive: +15% move speed.
+  pos 9 5
+end
+
+skill windwalker
+  name Windwalker
+  tree hero
+  cost 3
+  requires blink_skill
+  requires swiftness
+  grant MoveSpeed 10
+  grant ExtraJumps 1
+  about Passive: +10% move speed, a jump in mid-air.
+  pos 8 6
+end
+
+skill gunslinger
+  name Gunslinger
+  tree hero
+  cost 3
+  requires deadeye
+  grant ReloadSpeed 40
+  grant Damage 10
+  about Passive: +40% reload speed, +10% damage.
+  pos 10 6
 end

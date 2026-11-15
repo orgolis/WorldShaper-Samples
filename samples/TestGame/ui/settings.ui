@@ -27,34 +27,34 @@ label  id=l_inventory      anchor=center x=-770 y=146 w=250 h=38 text="Inventory
 button id=bind_inventory   anchor=center x=-555 y=146 w=170 h=38 text="{key.inventory}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 label  id=l_skills         anchor=center x=-770 y=192 w=250 h=38 text="Skill tree" size=21
 button id=bind_skills      anchor=center x=-555 y=192 w=170 h=38 text="{key.skills}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_fire           anchor=center x=-770 y=238 w=250 h=38 text="Fire" size=21
-button id=bind_fire        anchor=center x=-555 y=238 w=170 h=38 text="{key.fire}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_aim            anchor=center x=-770 y=284 w=250 h=38 text="Aim" size=21
-button id=bind_aim         anchor=center x=-555 y=284 w=170 h=38 text="{key.aim}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_reload         anchor=center x=-300 y=-268 w=250 h=38 text="Reload" size=21
-button id=bind_reload      anchor=center x=-85 y=-268 w=170 h=38 text="{key.reload}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_next_weapon    anchor=center x=-300 y=-222 w=250 h=38 text="Next weapon" size=21
-button id=bind_next_weapon anchor=center x=-85 y=-222 w=170 h=38 text="{key.next_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_prev_weapon    anchor=center x=-300 y=-176 w=250 h=38 text="Previous weapon" size=21
-button id=bind_prev_weapon anchor=center x=-85 y=-176 w=170 h=38 text="{key.prev_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_last_weapon    anchor=center x=-300 y=-130 w=250 h=38 text="Last weapon" size=21
-button id=bind_last_weapon anchor=center x=-85 y=-130 w=170 h=38 text="{key.last_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_weapon_1       anchor=center x=-300 y=-84 w=250 h=38 text="Weapon slot 1" size=21
-button id=bind_weapon_1    anchor=center x=-85 y=-84 w=170 h=38 text="{key.weapon_1}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_weapon_2       anchor=center x=-300 y=-38 w=250 h=38 text="Weapon slot 2" size=21
-button id=bind_weapon_2    anchor=center x=-85 y=-38 w=170 h=38 text="{key.weapon_2}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_weapon_3       anchor=center x=-300 y=8 w=250 h=38 text="Weapon slot 3" size=21
-button id=bind_weapon_3    anchor=center x=-85 y=8 w=170 h=38 text="{key.weapon_3}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_grenade        anchor=center x=-300 y=54 w=250 h=38 text="Throw grenade" size=21
-button id=bind_grenade     anchor=center x=-85 y=54 w=170 h=38 text="{key.grenade}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_ability_1      anchor=center x=-300 y=100 w=250 h=38 text="Ability 1" size=21
-button id=bind_ability_1   anchor=center x=-85 y=100 w=170 h=38 text="{key.ability_1}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_ability_2      anchor=center x=-300 y=146 w=250 h=38 text="Ability 2" size=21
-button id=bind_ability_2   anchor=center x=-85 y=146 w=170 h=38 text="{key.ability_2}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_ability_3      anchor=center x=-300 y=192 w=250 h=38 text="Ability 3" size=21
-button id=bind_ability_3   anchor=center x=-85 y=192 w=170 h=38 text="{key.ability_3}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-label  id=l_ability_4      anchor=center x=-300 y=238 w=250 h=38 text="Ability 4" size=21
-button id=bind_ability_4   anchor=center x=-85 y=238 w=170 h=38 text="{key.ability_4}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_abilities      anchor=center x=-770 y=238 w=250 h=38 text="Abilities" size=21
+button id=bind_abilities   anchor=center x=-555 y=238 w=170 h=38 text="{key.abilities}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_fire           anchor=center x=-770 y=284 w=250 h=38 text="Fire" size=21
+button id=bind_fire        anchor=center x=-555 y=284 w=170 h=38 text="{key.fire}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_aim            anchor=center x=-300 y=-268 w=250 h=38 text="Aim" size=21
+button id=bind_aim         anchor=center x=-85 y=-268 w=170 h=38 text="{key.aim}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_reload         anchor=center x=-300 y=-222 w=250 h=38 text="Reload" size=21
+button id=bind_reload      anchor=center x=-85 y=-222 w=170 h=38 text="{key.reload}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_next_weapon    anchor=center x=-300 y=-176 w=250 h=38 text="Next weapon" size=21
+button id=bind_next_weapon anchor=center x=-85 y=-176 w=170 h=38 text="{key.next_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_prev_weapon    anchor=center x=-300 y=-130 w=250 h=38 text="Previous weapon" size=21
+button id=bind_prev_weapon anchor=center x=-85 y=-130 w=170 h=38 text="{key.prev_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_last_weapon    anchor=center x=-300 y=-84 w=250 h=38 text="Last weapon" size=21
+button id=bind_last_weapon anchor=center x=-85 y=-84 w=170 h=38 text="{key.last_weapon}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_weapon_1       anchor=center x=-300 y=-38 w=250 h=38 text="Weapon slot 1" size=21
+button id=bind_weapon_1    anchor=center x=-85 y=-38 w=170 h=38 text="{key.weapon_1}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_weapon_2       anchor=center x=-300 y=8 w=250 h=38 text="Weapon slot 2" size=21
+button id=bind_weapon_2    anchor=center x=-85 y=8 w=170 h=38 text="{key.weapon_2}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_weapon_3       anchor=center x=-300 y=54 w=250 h=38 text="Weapon slot 3" size=21
+button id=bind_weapon_3    anchor=center x=-85 y=54 w=170 h=38 text="{key.weapon_3}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_grenade        anchor=center x=-300 y=100 w=250 h=38 text="Throw grenade" size=21
+button id=bind_grenade     anchor=center x=-85 y=100 w=170 h=38 text="{key.grenade}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_ability_1      anchor=center x=-300 y=146 w=250 h=38 text="Ability 1" size=21
+button id=bind_ability_1   anchor=center x=-85 y=146 w=170 h=38 text="{key.ability_1}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_ability_2      anchor=center x=-300 y=192 w=250 h=38 text="Ability 2" size=21
+button id=bind_ability_2   anchor=center x=-85 y=192 w=170 h=38 text="{key.ability_2}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+label  id=l_ability_3      anchor=center x=-300 y=238 w=250 h=38 text="Ability 3" size=21
+button id=bind_ability_3   anchor=center x=-85 y=238 w=170 h=38 text="{key.ability_3}" size=19 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 label  id=h_mouse anchor=center x=470 y=-350 w=640 h=44 text="Mouse" size=32 align=center color=1,0.86,0.5,1 bold=1
 label  id=l_sens  anchor=center x=260 y=-290 w=330 h=40 text="Sensitivity" size=24
 button id=sens_down anchor=center x=520 y=-290 w=56 h=40 text="-" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
