@@ -1,7 +1,7 @@
 VSCRIPT 2
 name	GameRules
 var	Kills	int	0	0		
-var	Total	int	0	9		
+var	Total	int	0	84		
 var	Picked	string	0			
 var	PickedId	string	0			
 graph	event	EventGraph	0	660

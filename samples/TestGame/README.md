@@ -7,11 +7,11 @@ Everything in it is ordinary project content -- scenes, UI documents, logic scri
 item and effect files -- so every part of it can be opened and changed in the editor.
 Nothing about this game is built into the engine.
 
-**Needs engine 0.8.51 or newer.**
+**Needs engine 0.8.52 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.51 (or newer) from the Hub.
+1. Install engine 0.8.52 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
@@ -19,6 +19,13 @@ Nothing about this game is built into the engine.
 
 ## What is in it
 
+- **Six lands** (painted biomes): a meadow where you start, a pine forest, autumn woods, dry
+  plains, snowy highlands round the beacon and wetland along the rivers -- each with its own
+  textured ground, plants (flowers, ferns, fallen logs, mushrooms, cacti, reeds, snow-laden
+  pines...) and air. The models are made for the game (`assets/models/nature`).
+- **Buildings** (`assets/models/buildings`): a village and a farm, ruins, log cabins in the
+  snow -- walk in through their doors -- and a bunker, sandbag walls and a watchtower at every
+  soldiers' outpost.
 - **The world** (`scenes/main.scene`): 1024 m of rolling hills with four rivers and their
   lakes (water that splashes and rings where anything touches it) under an HDR sky, grass
   that moves in the wind, forests
@@ -26,8 +33,9 @@ Nothing about this game is built into the engine.
   is: trees cast shadows and, with Volumetric light on, light shafts. Trees and rocks are
   solid: they stop the player, rounds, grenades, sight and creatures.
 - **The player**: first person -- a rigged soldier (seen in its shadow), the gun in hand
-  seen and animated -- with sprint, crouch, slide, dash, mantle and climb. It has
-  three weapon slots, holding a rifle and a pistol at the start, plus frag grenades
+  seen and animated, held by the player's own arms -- with sprint, crouch, slide, dash, mantle
+  and climb. It has three weapon slots, holding a rifle, a pistol and a sword at the start
+  (one swing cuts everyone in front), plus frag grenades
   (thrown: aim up to throw far), a Firebolt spell that flies and health potions. No mana:
   abilities cost only their cooldowns, and three ability slots hold the ones in use.
 - **Eight guns** (`assets/gameplay/arsenal.items`, `starter.items`): rifle, pistol,
@@ -41,7 +49,8 @@ Nothing about this game is built into the engine.
   (Surge, Leap, Blink, Haste) -- and passives that raise health, speed, damage, reload
   speed, regeneration and air jumps or shorten cooldowns. The abilities screen (P) puts
   learned abilities into the three slots.
-- **Soldiers** (`assets/gameplay/soldiers.items`): three outposts of riflemen and heavy
+- **84 enemies**: 37 soldiers at ten outposts and 47 creatures in thirteen camps.
+- **Soldiers** (`assets/gameplay/soldiers.items`): ten outposts of riflemen and heavy
   gunners -- rigged, animated models (`assets/models/military/`) with guns in their hands --
   who patrol, aim and shoot, stagger when hit and fall when killed.
 - **Creature camps**: creatures wander about their camp, see you only with a clear line,

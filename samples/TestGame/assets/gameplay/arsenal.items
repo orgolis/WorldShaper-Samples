@@ -24,7 +24,9 @@ weapon pistol
   flash
   ammo pistol_rounds
   model assets/models/military/weapons/pistol.glb
-  view 0.18 -0.19 0.44
+  view 0.13 -0.16 0.42 -4 2 0
+  grip weapon_socket 0 0 0 90 0 180
+  hold pistol
 end
 
 weapon shotgun
@@ -45,7 +47,8 @@ weapon shotgun
   flash
   ammo shotgun_shells
   model assets/models/military/weapons/shotgun.glb
-  view 0.21 -0.23 0.38
+  view 0.17 -0.2 0.28 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 weapon marksman
@@ -65,7 +68,8 @@ weapon marksman
   flash
   ammo rifle_rounds
   model assets/models/military/weapons/marksman.glb
-  view 0.21 -0.23 0.38
+  view 0.17 -0.19 0.28 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 weapon smg
@@ -86,7 +90,8 @@ weapon smg
   flash
   ammo pistol_rounds
   model assets/models/military/weapons/smg.glb
-  view 0.2 -0.22 0.42
+  view 0.17 -0.18 0.32 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 weapon carbine
@@ -108,7 +113,8 @@ weapon carbine
   flash
   ammo rifle_rounds
   model assets/models/military/weapons/carbine.glb
-  view 0.21 -0.23 0.4
+  view 0.17 -0.19 0.3 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 weapon lmg
@@ -129,7 +135,8 @@ weapon lmg
   flash
   ammo rifle_rounds
   model assets/models/military/weapons/lmg.glb
-  view 0.22 -0.25 0.36
+  view 0.19 -0.22 0.26 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 weapon revolver
@@ -149,7 +156,9 @@ weapon revolver
   flash
   ammo pistol_rounds
   model assets/models/military/weapons/revolver.glb
-  view 0.18 -0.19 0.44
+  view 0.13 -0.16 0.42 -4 2 0
+  grip weapon_socket 0 0 0 90 0 180
+  hold pistol
 end
 
 item pistol_rounds
@@ -215,4 +224,19 @@ ability frag
   speed 18
   arc 9.8
   vfx frag
+end
+
+weapon sword
+  name Sword
+  fire semi
+  damage 55 physical
+  rpm 100
+  melee 2.4 110
+  draw 0.3
+  impact 0.06
+  hold melee
+  model assets/models/weapons/sword.glb
+  view 0.17 -0.21 0.38 -10 -20 25
+  grip weapon_socket 0 0 0 90 0 180
+  about A blade for close work: one swing cuts everyone in front of you
 end

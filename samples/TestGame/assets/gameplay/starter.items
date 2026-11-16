@@ -35,7 +35,8 @@ weapon starter_rifle
   flash
   ammo rifle_rounds
   model assets/models/military/weapons/starter_rifle.glb
-  view 0.21 -0.23 0.4
+  view 0.17 -0.19 0.3 -3 1 -2
+  grip weapon_socket 0 0 0 90 0 180
 end
 
 ability firebolt
