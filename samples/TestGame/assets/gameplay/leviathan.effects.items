@@ -1,0 +1,206 @@
+# Project-owned Leviathan particles. 20 Hz bursts, bounded by the engine pool.
+
+effect leviathan_bolt_trail
+  layer sparks count 3 life .2 .4 speed 0 1 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter .2
+end
+
+effect leviathan_port_flash
+  layer sparks count 30 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow 
+  layer ward count 12 life .12 .22 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_bolt_burst
+  layer sparks count 50 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow 
+  layer ward count 30 life .12 .22 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+end
+
+effect leviathan_levitation
+  layer sparks count 4 life .6 1 speed 1 3 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter 2 gravity -4
+  layer ward count 8 life .2 .5 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+  layer mist count 3 life .6 1 speed .2 .7 spread 180 size 1.8 2.2 color .25 .06 .45 .16 to .1 .02 .2 0 blend shape smoke jitter 2 gravity -1
+end
+
+effect leviathan_meteor_trail
+  layer sparks count 5 life .2 .5 speed 1 3 spread 180 size .14 .02 color 7 0.6 0.25 1 to 7 0.6 0.25 0 drag 2 shape glow jitter .4
+  layer smoke count 2 life .3 .6 speed .3 1 spread 180 size 1 2 color .12 .03 .2 .6 to .1 .02 .15 0 blend shape smoke
+end
+
+effect leviathan_meteor_warning
+  layer ward count 22 life .12 .22 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_meteor_locked
+  layer ward count 24 life .12 .22 speed 0 ring 3 size .2 .1 color 7 0.6 0.25 .8 to 7 0.6 0.25 0 shape glow
+  layer sparks count 2 life .18 .45 speed 2 7 spread 180 size .14 .02 color 7 0.6 0.25 1 to 7 0.6 0.25 0 drag 2 shape glow ring 3
+end
+
+effect leviathan_meteor_impact
+  layer sparks count 100 life .18 .45 speed 5 18 spread 180 size .14 .02 color 7 0.6 0.25 1 to 7 0.6 0.25 0 drag 2 shape glow 
+  layer ward count 45 life .12 .22 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+  layer smoke count 20 life .5 1.3 speed 1 6 spread 180 size .5 3 color .18 .08 .25 .6 to .1 .03 .15 0 blend shape smoke
+end
+
+effect leviathan_beam_warning
+  layer ward count 20 life .12 .22 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_beam_guide
+  layer line path 0.3 life .09 .14 speed 0 size .15 .1 color 0.4 4 6 .7 to 0.4 4 6 0 jitter .08 shape glow
+end
+
+effect leviathan_beam_charge
+  layer sparks count 5 life .18 .45 speed 0 1 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter .4
+  layer sparks count 2 life .18 .45 speed 0 .3 spread 180 size .6 .4 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow 
+end
+
+effect leviathan_beam
+  layer line path 1.3 life .09 .14 speed 0 size .8 .55 color 1.4 0.2 2.8 .7 to 1.4 0.2 2.8 0 jitter .08 shape glow
+  layer line path 1.2 life .09 .14 speed 0 size .22 .15 color 1.5 1.7 2.2 .7 to 1.5 1.7 2.2 0 jitter .08 shape glow
+end
+
+effect leviathan_beam_impact
+  layer sparks count 10 life .18 .45 speed 2 8 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow 
+  layer sparks count 3 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow 
+  layer ward count 10 life .12 .22 speed 0 ring 1 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+end
+
+effect leviathan_collapse_beam
+  layer line path 0.6 life .09 .14 speed 0 size 2.2 1.8 color 1.4 0.2 2.8 .7 to 1.4 0.2 2.8 0 jitter .08 shape glow
+  layer line path 0.5 life .09 .14 speed 0 size .8 .6 color 1.5 1.7 2.2 .7 to 1.5 1.7 2.2 0 jitter .08 shape glow
+end
+
+effect leviathan_roar
+  layer sparks count 100 life .18 .45 speed 3 6 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow ring 3
+  layer ward count 100 life .4 .8 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_tail_arc
+  layer line path 2 life .09 .14 speed 0 size .3 .12 color 0.4 4 6 .7 to 0.4 4 6 0 jitter .08 shape glow
+  layer sparks count 3 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow 
+end
+
+effect leviathan_bite
+  layer sparks count 50 life .18 .45 speed 2 9 spread 180 size .14 .02 color 7 0.6 0.25 1 to 7 0.6 0.25 0 drag 2 shape glow 
+end
+
+effect leviathan_current
+  layer gust count 250 life 1 2 speed 20 45 spread 42 dir along size .25 .08 color .5 3.5 5 .8 to .1 .3 1 0 drag .2 streak .035 shape soft
+  layer sparks count 25 life .18 .45 speed 15 30 spread 180 size .14 .02 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow dir along spread 42
+end
+
+effect leviathan_teleport_charge
+  layer ward count 35 life .12 .22 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+  layer sparks count 20 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter 4
+end
+
+effect leviathan_portal_mist
+  layer line path 0.25 life .09 .14 speed 0 size .4 .7 color 1.4 0.2 2.8 .7 to 1.4 0.2 2.8 0 jitter .08 shape glow
+  layer sparks count 3 life .18 .45 speed 2 7 spread 180 size .14 .02 color 0.4 4 6 1 to 0.4 4 6 0 drag 2 shape glow 
+end
+
+effect leviathan_teleport
+  layer sparks count 150 life .18 .45 speed 4 15 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter 6
+  layer ward count 80 life .4 .8 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_crystal_break
+  layer sparks count 70 life .18 .45 speed 3 10 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow 
+  layer sparks count 20 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow 
+end
+
+effect leviathan_crystal_return
+  layer sparks count 70 life .18 .45 speed 1 5 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow gravity -3
+end
+
+effect leviathan_healing_link
+  layer line path 0.3 life .09 .14 speed 0 size .2 .1 color 1.4 0.2 2.8 .7 to 1.4 0.2 2.8 0 jitter .08 shape glow
+end
+
+effect leviathan_oracle_0
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color 6 .4 .4 .9 to 6 .4 .4 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color 6 .4 .4 .8 to 6 .4 .4 0
+end
+
+effect leviathan_oracle_1
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color 6 2.8 .4 .9 to 6 2.8 .4 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color 6 2.8 .4 .8 to 6 2.8 .4 0
+end
+
+effect leviathan_oracle_2
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color 5 5 .6 .9 to 5 5 .6 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color 5 5 .6 .8 to 5 5 .6 0
+end
+
+effect leviathan_oracle_3
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color .5 5 1 .9 to .5 5 1 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color .5 5 1 .8 to .5 5 1 0
+end
+
+effect leviathan_oracle_4
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color .4 4.5 6 .9 to .4 4.5 6 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color .4 4.5 6 .8 to .4 4.5 6 0
+end
+
+effect leviathan_oracle_5
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color 4 .6 6 .9 to 4 .6 6 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color 4 .6 6 .8 to 4 .6 6 0
+end
+
+effect leviathan_oracle_6
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color .6 1.5 6 .9 to .6 1.5 6 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color .6 1.5 6 .8 to .6 1.5 6 0
+end
+
+effect leviathan_oracle_7
+  layer pillar count 8 life 1 1.3 speed 22 28 dir up spread 3 jitter .45 size .7 .35 color .3 3.5 3.5 .9 to .3 3.5 3.5 0 shape glow
+  layer ward count 10 life .3 .6 speed 0 ring 2.7 size .22 .1 color .3 3.5 3.5 .8 to .3 3.5 3.5 0
+end
+
+effect leviathan_oracle_cue
+  layer sparks count 12 life .8 1.4 speed 30 40 spread 180 size .55 .25 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow dir up spread 2 jitter .4
+  layer ward count 30 life .12 .22 speed 0 ring 3 size .2 .1 color 1.5 1.7 2.2 .8 to 1.5 1.7 2.2 0 shape glow
+end
+
+effect leviathan_oracle_success
+  layer sparks count 90 life .18 .45 speed 3 10 spread 180 size .14 .02 color 0.4 4 6 1 to 0.4 4 6 0 drag 2 shape glow 
+  layer ward count 35 life .12 .22 speed 0 ring 3 size .2 .1 color 1.5 1.7 2.2 .8 to 1.5 1.7 2.2 0 shape glow
+end
+
+effect leviathan_brand
+  layer ward count 10 life .12 .22 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+  layer sparks count 2 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter .5
+end
+
+effect leviathan_brand_blast
+  layer sparks count 100 life .18 .45 speed 3 10 spread 180 size .14 .02 color 7 0.6 0.25 1 to 7 0.6 0.25 0 drag 2 shape glow 
+  layer ward count 50 life .12 .22 speed 0 ring 3 size .2 .1 color 1.4 0.2 2.8 .8 to 1.4 0.2 2.8 0 shape glow
+end
+
+effect leviathan_cleanse
+  layer ward count 20 life .12 .22 speed 0 ring 3.2 size .2 .1 color 1.5 1.7 2.2 .8 to 1.5 1.7 2.2 0 shape glow
+  layer sparks count 4 life .9 1.2 speed 18 25 spread 180 size .7 .35 color 0.4 4 6 1 to 0.4 4 6 0 drag 2 shape glow dir up spread 3 jitter .7
+end
+
+effect leviathan_cleanse_progress
+  layer ward count 20 life .12 .22 speed 0 ring 3.2 size .2 .1 color 0.6 5 2 .8 to 0.6 5 2 0 shape glow
+  layer sparks count 6 life .18 .45 speed 2 7 spread 180 size .14 .02 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow dir up spread 10
+end
+
+effect leviathan_cleanse_contested
+  layer ward count 20 life .12 .22 speed 0 ring 3.2 size .2 .1 color 7 0.6 0.25 .8 to 7 0.6 0.25 0 shape glow
+end
+
+effect leviathan_cleanse_success
+  layer sparks count 80 life .18 .45 speed 2 8 spread 180 size .14 .02 color 1.5 1.7 2.2 1 to 1.5 1.7 2.2 0 drag 2 shape glow 
+  layer ward count 40 life .12 .22 speed 0 ring 3.2 size .2 .1 color 0.6 5 2 .8 to 0.6 5 2 0 shape glow
+end
+
+effect leviathan_stagger
+  layer sparks count 4 life .18 .45 speed 2 7 spread 180 size .14 .02 color 0.4 4 6 1 to 0.4 4 6 0 drag 2 shape glow jitter 2
+  layer ward count 10 life .12 .22 speed 0 ring 3 size .2 .1 color 0.4 4 6 .8 to 0.4 4 6 0 shape glow
+end
+
+effect leviathan_death
+  layer sparks count 10 life .18 .45 speed 1 5 spread 180 size .14 .02 color 1.4 0.2 2.8 1 to 1.4 0.2 2.8 0 drag 2 shape glow jitter 3 gravity -1
+  layer sparks count 4 life .18 .45 speed 2 7 spread 180 size .14 .02 color 0.4 4 6 1 to 0.4 4 6 0 drag 2 shape glow 
+end

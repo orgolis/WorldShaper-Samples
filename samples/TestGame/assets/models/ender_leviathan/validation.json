@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "vertices": 7344,
+  "triangles": 3672,
+  "bones": 56,
+  "clips": 13,
+  "preserved_source_files": 5,
+  "scene_entities": 39,
+  "runtime_frames": 720,
+  "runtime_attack_observed": "dorsal_salvo",
+  "checks": [
+    "GLB buffers and skin weights",
+    "clip names/order/timing",
+    "embedded albedo and emissive images",
+    "real engine importer and sampled clips",
+    "script binding checks",
+    "163.8-second encounter simulation",
+    "actual game runtime and attack",
+    "Arcan source hashes unchanged",
+    "main project still opens original scene"
+  ]
+}

@@ -1,0 +1,24 @@
+ui modal layer=45
+panel id=shade anchor=fill color=0.02,0.03,0.05,0.72
+panel id=card anchor=center w=880 h=960 color=0.045,0.065,0.09,0.97 radius=14 border=0.55,0.69,0.7,0.6
+label id=title anchor=center x=0 y=-390 w=720 h=96 text="The Beacon" size=76 align=center bold=1
+label id=heading anchor=center x=0 y=-298 w=720 h=60 text="Choose a mode" size=33 align=center bold=1
+label id=mode_1 anchor=center x=-200 y=-218 w=330 h=64 text="Co-op Expedition" size=36 align=left bold=1
+button id=online_solo_1 anchor=center x=50 y=-218 w=116 h=62 text="Solo" size=28 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+button id=online_lobby_1 anchor=center x=192 y=-218 w=152 h=62 text="Online" size=28 color=0.10,0.26,0.30,1 hover=0.16,0.38,0.42,1 border=0.45,0.85,0.85,0.7 radius=7 bold=1
+button id=online_host_1 anchor=center x=342 y=-218 w=132 h=62 text="Host IP" size=26 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+label id=mode_2 anchor=center x=-200 y=-140 w=330 h=64 text="Leviathan Raid" size=36 align=left bold=1
+button id=online_solo_2 anchor=center x=50 y=-140 w=116 h=62 text="Solo" size=28 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+button id=online_lobby_2 anchor=center x=192 y=-140 w=152 h=62 text="Online" size=28 color=0.10,0.26,0.30,1 hover=0.16,0.38,0.42,1 border=0.45,0.85,0.85,0.7 radius=7 bold=1
+button id=online_host_2 anchor=center x=342 y=-140 w=132 h=62 text="Host IP" size=26 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+label id=mode_3 anchor=center x=-200 y=-62 w=330 h=64 text="PvP Duel" size=36 align=left bold=1
+button id=online_lobby_3 anchor=center x=192 y=-62 w=152 h=62 text="Online" size=28 color=0.10,0.26,0.30,1 hover=0.16,0.38,0.42,1 border=0.45,0.85,0.85,0.7 radius=7 bold=1
+button id=online_host_3 anchor=center x=342 y=-62 w=132 h=62 text="Host IP" size=26 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+label id=hint_online anchor=center x=0 y=-4 w=780 h=40 text="Online gives you a code to send your friends." size=22 align=center
+label id=join_heading anchor=center x=0 y=62 w=720 h=60 text="Join a friend" size=33 align=center bold=1
+button id=online_code anchor=center x=-125 y=135 w=470 h=66 text="Click to type a code" size=31 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.45,0.85,0.85,0.7 radius=7 bold=1
+button id=online_join_code anchor=center x=240 y=135 w=240 h=66 text="Join with code" size=29 color=0.10,0.26,0.30,1 hover=0.16,0.38,0.42,1 border=0.45,0.85,0.85,0.7 radius=7 bold=1
+label id=connection anchor=center x=0 y=222 w=720 h=48 text="Direct connection (LAN / IP)" size=25 align=center bold=1
+button id=online_endpoint anchor=center x=-125 y=284 w=470 h=58 text="127.0.0.1:7777" size=27 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+button id=online_join anchor=center x=240 y=284 w=240 h=58 text="Join by IP" size=27 color=0.12,0.17,0.22,1 hover=0.19,0.28,0.34,1 border=0.54,0.65,0.66,0.5 radius=7 bold=1
+label id=message anchor=center x=0 y=392 w=840 h=64 text="" size=23 align=center bold=1

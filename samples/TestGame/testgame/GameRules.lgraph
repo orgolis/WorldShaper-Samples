@@ -4,14 +4,14 @@ var	Kills	int	0	0
 var	Total	int	0	84		
 var	Picked	string	0			
 var	PickedId	string	0			
-graph	event	EventGraph	0	660
+graph	event	EventGraph	0	834
 node	1	event.begin_play	0.0	0.0		none	0	
 node	2	ui.show	300.0	0.0		none	0	
 pin	2	File	string	ui/hud.ui
 node	3	ui.show	600.0	0.0		none	0	
 pin	3	File	string	ui/menu.ui
 node	4	var.get	900.0	140.0	Total	none	0	
-node	5	math.add	900.0	0.0		string	0	
+node	5	math.add	1025.840087890625	173.03001403808594		string	0	
 pin	5	A	string	Enemies left: 
 node	6	ui.set_text	1200.0	0.0		none	0	
 pin	6	File	string	ui/hud.ui
@@ -19,10 +19,10 @@ pin	6	Id	string	objective
 node	7	gameplay.set_skill_tree	1500.0	0.0		none	0	
 pin	7	Tree	string	hero
 node	8	gameplay.add_skill_points	1800.0	0.0		none	0	
-pin	8	Points	int	3
-node	9	entity.find	2100.0	140.0		none	0	
+pin	8	Points	int	6
+node	9	entity.find	1291.5244140625	167.37863159179688		none	0	
 pin	9	Name	string	Player
-node	10	entity.find	2100.0	250.0		none	0	
+node	10	entity.find	1554.036865234375	179.13751220703125		none	0	
 pin	10	Name	string	Player
 node	11	event.ui_button	0.0	450.0	start	none	0	
 node	12	ui.hide	300.0	450.0		none	0	
@@ -470,7 +470,7 @@ pin	284	B	string	)
 node	285	ui.show_message	1200.0	27230.0		none	0	
 pin	285	Seconds	float	3.5
 node	286	ui.show_message	1500.0	27370.0		none	0	
-pin	286	Text	string	Can't learn Lightning yet: it takes 2 skill points and Ice Lance first
+pin	286	Text	string	Can't learn Lightning yet: it takes 1 skill point and Ice Lance first
 pin	286	Seconds	float	3.0
 node	287	entity.find	1500.0	27480.0		none	0	
 pin	287	Name	string	Player
@@ -492,7 +492,7 @@ pin	296	B	string	)
 node	297	ui.show_message	1200.0	27790.0		none	0	
 pin	297	Seconds	float	3.5
 node	298	ui.show_message	1500.0	27930.0		none	0	
-pin	298	Text	string	Can't learn Shock Wave yet: it takes 2 skill points and Ice Lance first
+pin	298	Text	string	Can't learn Shock Wave yet: it takes 1 skill point and Ice Lance first
 pin	298	Seconds	float	3.0
 node	299	entity.find	1500.0	28040.0		none	0	
 pin	299	Name	string	Player
@@ -506,10 +506,10 @@ node	304	gameplay.unlock_skill	600.0	28350.0		none	0
 pin	304	Skill	string	clarity
 node	305	flow.branch	900.0	28350.0		none	0	
 node	306	ui.show_message	1200.0	28350.0		none	0	
-pin	306	Text	string	Learned Clarity -- abilities cool down 15% sooner.
+pin	306	Text	string	Learned Clarity -- +10% cooldown reduction.
 pin	306	Seconds	float	3.5
 node	307	ui.show_message	1500.0	28490.0		none	0	
-pin	307	Text	string	Can't learn Clarity yet: it takes 2 skill points and Focus first
+pin	307	Text	string	Can't learn Clarity yet: it takes 1 skill point and Focus first
 pin	307	Seconds	float	3.0
 node	308	entity.find	1500.0	28600.0		none	0	
 pin	308	Name	string	Player
@@ -531,7 +531,7 @@ pin	317	B	string	)
 node	318	ui.show_message	1200.0	28910.0		none	0	
 pin	318	Seconds	float	3.5
 node	319	ui.show_message	1500.0	29050.0		none	0	
-pin	319	Text	string	Can't learn Venom Rain yet: it takes 2 skill points and Lightning first
+pin	319	Text	string	Can't learn Venom Rain yet: it takes 1 skill point and Lightning first
 pin	319	Seconds	float	3.0
 node	320	entity.find	1500.0	29160.0		none	0	
 pin	320	Name	string	Player
@@ -553,7 +553,7 @@ pin	329	B	string	)
 node	330	ui.show_message	1200.0	29470.0		none	0	
 pin	330	Seconds	float	3.5
 node	331	ui.show_message	1500.0	29610.0		none	0	
-pin	331	Text	string	Can't learn Meteor yet: it takes 2 skill points and Shock Wave first
+pin	331	Text	string	Can't learn Meteor yet: it takes 1 skill point and Shock Wave first
 pin	331	Seconds	float	3.0
 node	332	entity.find	1500.0	29720.0		none	0	
 pin	332	Name	string	Player
@@ -567,10 +567,10 @@ node	337	gameplay.unlock_skill	600.0	30030.0		none	0
 pin	337	Skill	string	spellweaver
 node	338	flow.branch	900.0	30030.0		none	0	
 node	339	ui.show_message	1200.0	30030.0		none	0	
-pin	339	Text	string	Learned Spellweaver -- +10% damage.
+pin	339	Text	string	Learned Spellweaver -- +20% spell damage.
 pin	339	Seconds	float	3.5
 node	340	ui.show_message	1500.0	30170.0		none	0	
-pin	340	Text	string	Can't learn Spellweaver yet: it takes 2 skill points and Clarity first
+pin	340	Text	string	Can't learn Spellweaver yet: it takes 1 skill point and Clarity first
 pin	340	Seconds	float	3.0
 node	341	entity.find	1500.0	30280.0		none	0	
 pin	341	Name	string	Player
@@ -584,10 +584,10 @@ node	346	gameplay.unlock_skill	600.0	30590.0		none	0
 pin	346	Skill	string	archmage
 node	347	flow.branch	900.0	30590.0		none	0	
 node	348	ui.show_message	1200.0	30590.0		none	0	
-pin	348	Text	string	Learned Archmage -- +15% damage, abilities cool down 10% sooner.
+pin	348	Text	string	Learned Archmage -- +20% spell damage, +10% cooldown reduction.
 pin	348	Seconds	float	3.5
 node	349	ui.show_message	1500.0	30730.0		none	0	
-pin	349	Text	string	Can't learn Archmage yet: it takes 3 skill points and Venom Rain and Meteor first
+pin	349	Text	string	Can't learn Archmage yet: it takes 2 skill points and Venom Rain and Meteor first
 pin	349	Seconds	float	3.0
 node	350	entity.find	1500.0	30840.0		none	0	
 pin	350	Name	string	Player
@@ -601,10 +601,10 @@ node	355	gameplay.unlock_skill	600.0	31150.0		none	0
 pin	355	Skill	string	elementalist
 node	356	flow.branch	900.0	31150.0		none	0	
 node	357	ui.show_message	1200.0	31150.0		none	0	
-pin	357	Text	string	Learned Elementalist -- +20% damage.
+pin	357	Text	string	Learned Elementalist -- +25% spell damage.
 pin	357	Seconds	float	3.5
 node	358	ui.show_message	1500.0	31290.0		none	0	
-pin	358	Text	string	Can't learn Elementalist yet: it takes 3 skill points and Archmage and Spellweaver first
+pin	358	Text	string	Can't learn Elementalist yet: it takes 2 skill points and Archmage and Spellweaver first
 pin	358	Seconds	float	3.0
 node	359	entity.find	1500.0	31400.0		none	0	
 pin	359	Name	string	Player
@@ -674,10 +674,10 @@ node	394	gameplay.unlock_skill	600.0	33390.0		none	0
 pin	394	Skill	string	iron
 node	395	flow.branch	900.0	33390.0		none	0	
 node	396	ui.show_message	1200.0	33390.0		none	0	
-pin	396	Text	string	Learned Iron Skin -- +50 max health.
+pin	396	Text	string	Learned Iron Skin -- +35 max health.
 pin	396	Seconds	float	3.5
 node	397	ui.show_message	1500.0	33530.0		none	0	
-pin	397	Text	string	Can't learn Iron Skin yet: it takes 2 skill points and Mend and Regeneration first
+pin	397	Text	string	Can't learn Iron Skin yet: it takes 1 skill point and Mend and Regeneration first
 pin	397	Seconds	float	3.0
 node	398	entity.find	1500.0	33640.0		none	0	
 pin	398	Name	string	Player
@@ -699,7 +699,7 @@ pin	407	B	string	)
 node	408	ui.show_message	1200.0	33950.0		none	0	
 pin	408	Seconds	float	3.5
 node	409	ui.show_message	1500.0	34090.0		none	0	
-pin	409	Text	string	Can't learn Second Wind yet: it takes 2 skill points and Iron Skin first
+pin	409	Text	string	Can't learn Second Wind yet: it takes 1 skill point and Iron Skin first
 pin	409	Seconds	float	3.0
 node	410	entity.find	1500.0	34200.0		none	0	
 pin	410	Name	string	Player
@@ -721,7 +721,7 @@ pin	419	B	string	)
 node	420	ui.show_message	1200.0	34510.0		none	0	
 pin	420	Seconds	float	3.5
 node	421	ui.show_message	1500.0	34650.0		none	0	
-pin	421	Text	string	Can't learn Battle Cry yet: it takes 2 skill points and Iron Skin first
+pin	421	Text	string	Can't learn Battle Cry yet: it takes 1 skill point and Iron Skin first
 pin	421	Seconds	float	3.0
 node	422	entity.find	1500.0	34760.0		none	0	
 pin	422	Name	string	Player
@@ -735,10 +735,10 @@ node	427	gameplay.unlock_skill	600.0	35070.0		none	0
 pin	427	Skill	string	veteran
 node	428	flow.branch	900.0	35070.0		none	0	
 node	429	ui.show_message	1200.0	35070.0		none	0	
-pin	429	Text	string	Learned Veteran -- +40 max health, +2 health a second.
+pin	429	Text	string	Learned Veteran -- +40 max health, +1.5 health/s.
 pin	429	Seconds	float	3.5
 node	430	ui.show_message	1500.0	35210.0		none	0	
-pin	430	Text	string	Can't learn Veteran yet: it takes 3 skill points and Second Wind and Battle Cry first
+pin	430	Text	string	Can't learn Veteran yet: it takes 2 skill points and Second Wind and Battle Cry first
 pin	430	Seconds	float	3.0
 node	431	entity.find	1500.0	35320.0		none	0	
 pin	431	Name	string	Player
@@ -752,10 +752,10 @@ node	436	gameplay.unlock_skill	600.0	35630.0		none	0
 pin	436	Skill	string	undying
 node	437	flow.branch	900.0	35630.0		none	0	
 node	438	ui.show_message	1200.0	35630.0		none	0	
-pin	438	Text	string	Learned Undying -- +60 max health, +3 health a second.
+pin	438	Text	string	Learned Undying -- +40 max health, +2 health/s.
 pin	438	Seconds	float	3.5
 node	439	ui.show_message	1500.0	35770.0		none	0	
-pin	439	Text	string	Can't learn Undying yet: it takes 3 skill points and Veteran first
+pin	439	Text	string	Can't learn Undying yet: it takes 2 skill points and Veteran first
 pin	439	Seconds	float	3.0
 node	440	entity.find	1500.0	35880.0		none	0	
 pin	440	Name	string	Player
@@ -769,7 +769,7 @@ node	445	gameplay.unlock_skill	600.0	36190.0		none	0
 pin	445	Skill	string	fleet
 node	446	flow.branch	900.0	36190.0		none	0	
 node	447	ui.show_message	1200.0	36190.0		none	0	
-pin	447	Text	string	Learned Fleet Foot -- +10% move speed.
+pin	447	Text	string	Learned Fleet Foot -- +10% movement speed.
 pin	447	Seconds	float	3.5
 node	448	ui.show_message	1500.0	36330.0		none	0	
 pin	448	Text	string	Can't learn Fleet Foot yet: it takes 1 skill point and Awakening first
@@ -808,7 +808,7 @@ node	466	gameplay.unlock_skill	600.0	37310.0		none	0
 pin	466	Skill	string	quick_hands
 node	467	flow.branch	900.0	37310.0		none	0	
 node	468	ui.show_message	1200.0	37310.0		none	0	
-pin	468	Text	string	Learned Quick Hands -- +30% reload speed.
+pin	468	Text	string	Learned Quick Hands -- +25% reload speed.
 pin	468	Seconds	float	3.5
 node	469	ui.show_message	1500.0	37450.0		none	0	
 pin	469	Text	string	Can't learn Quick Hands yet: it takes 1 skill point and Fleet Foot first
@@ -833,7 +833,7 @@ pin	479	B	string	)
 node	480	ui.show_message	1200.0	37870.0		none	0	
 pin	480	Seconds	float	3.5
 node	481	ui.show_message	1500.0	38010.0		none	0	
-pin	481	Text	string	Can't learn Leap yet: it takes 2 skill points and Surge first
+pin	481	Text	string	Can't learn Leap yet: it takes 1 skill point and Surge first
 pin	481	Seconds	float	3.0
 node	482	entity.find	1500.0	38120.0		none	0	
 pin	482	Name	string	Player
@@ -847,10 +847,10 @@ node	487	gameplay.unlock_skill	600.0	38430.0		none	0
 pin	487	Skill	string	marksman
 node	488	flow.branch	900.0	38430.0		none	0	
 node	489	ui.show_message	1200.0	38430.0		none	0	
-pin	489	Text	string	Learned Marksman -- +10% damage.
+pin	489	Text	string	Learned Marksman -- +15% firearm damage.
 pin	489	Seconds	float	3.5
 node	490	ui.show_message	1500.0	38570.0		none	0	
-pin	490	Text	string	Can't learn Marksman yet: it takes 2 skill points and Quick Hands first
+pin	490	Text	string	Can't learn Marksman yet: it takes 1 skill point and Quick Hands first
 pin	490	Seconds	float	3.0
 node	491	entity.find	1500.0	38680.0		none	0	
 pin	491	Name	string	Player
@@ -867,7 +867,7 @@ node	498	ui.show_message	1200.0	38990.0		none	0
 pin	498	Text	string	Learned Double Jump -- a jump in mid-air.
 pin	498	Seconds	float	3.5
 node	499	ui.show_message	1500.0	39130.0		none	0	
-pin	499	Text	string	Can't learn Double Jump yet: it takes 2 skill points and Leap first
+pin	499	Text	string	Can't learn Double Jump yet: it takes 1 skill point and Leap first
 pin	499	Seconds	float	3.0
 node	500	entity.find	1500.0	39240.0		none	0	
 pin	500	Name	string	Player
@@ -889,7 +889,7 @@ pin	509	B	string	)
 node	510	ui.show_message	1200.0	39550.0		none	0	
 pin	510	Seconds	float	3.5
 node	511	ui.show_message	1500.0	39690.0		none	0	
-pin	511	Text	string	Can't learn Haste yet: it takes 2 skill points and Leap and Marksman first
+pin	511	Text	string	Can't learn Haste yet: it takes 1 skill point and Leap and Marksman first
 pin	511	Seconds	float	3.0
 node	512	entity.find	1500.0	39800.0		none	0	
 pin	512	Name	string	Player
@@ -903,10 +903,10 @@ node	517	gameplay.unlock_skill	600.0	40110.0		none	0
 pin	517	Skill	string	deadeye
 node	518	flow.branch	900.0	40110.0		none	0	
 node	519	ui.show_message	1200.0	40110.0		none	0	
-pin	519	Text	string	Learned Deadeye -- +15% damage.
+pin	519	Text	string	Learned Deadeye -- +20% firearm damage, +10% less spread and recoil.
 pin	519	Seconds	float	3.5
 node	520	ui.show_message	1500.0	40250.0		none	0	
-pin	520	Text	string	Can't learn Deadeye yet: it takes 2 skill points and Marksman first
+pin	520	Text	string	Can't learn Deadeye yet: it takes 1 skill point and Marksman first
 pin	520	Seconds	float	3.0
 node	521	entity.find	1500.0	40360.0		none	0	
 pin	521	Name	string	Player
@@ -928,7 +928,7 @@ pin	530	B	string	)
 node	531	ui.show_message	1200.0	40670.0		none	0	
 pin	531	Seconds	float	3.5
 node	532	ui.show_message	1500.0	40810.0		none	0	
-pin	532	Text	string	Can't learn Blink yet: it takes 3 skill points and Double Jump and Haste first
+pin	532	Text	string	Can't learn Blink yet: it takes 1 skill point and Double Jump and Haste first
 pin	532	Seconds	float	3.0
 node	533	entity.find	1500.0	40920.0		none	0	
 pin	533	Name	string	Player
@@ -942,10 +942,10 @@ node	538	gameplay.unlock_skill	600.0	41230.0		none	0
 pin	538	Skill	string	swiftness
 node	539	flow.branch	900.0	41230.0		none	0	
 node	540	ui.show_message	1200.0	41230.0		none	0	
-pin	540	Text	string	Learned Swiftness -- +15% move speed.
+pin	540	Text	string	Learned Swiftness -- +10% movement speed.
 pin	540	Seconds	float	3.5
 node	541	ui.show_message	1500.0	41370.0		none	0	
-pin	541	Text	string	Can't learn Swiftness yet: it takes 3 skill points and Haste first
+pin	541	Text	string	Can't learn Swiftness yet: it takes 1 skill point and Haste first
 pin	541	Seconds	float	3.0
 node	542	entity.find	1500.0	41480.0		none	0	
 pin	542	Name	string	Player
@@ -959,10 +959,10 @@ node	547	gameplay.unlock_skill	600.0	41790.0		none	0
 pin	547	Skill	string	windwalker
 node	548	flow.branch	900.0	41790.0		none	0	
 node	549	ui.show_message	1200.0	41790.0		none	0	
-pin	549	Text	string	Learned Windwalker -- +10% move speed, a jump in mid-air.
+pin	549	Text	string	Learned Windwalker -- +10% movement speed, +1 air jumps.
 pin	549	Seconds	float	3.5
 node	550	ui.show_message	1500.0	41930.0		none	0	
-pin	550	Text	string	Can't learn Windwalker yet: it takes 3 skill points and Blink and Swiftness first
+pin	550	Text	string	Can't learn Windwalker yet: it takes 2 skill points and Blink and Swiftness first
 pin	550	Seconds	float	3.0
 node	551	entity.find	1500.0	42040.0		none	0	
 pin	551	Name	string	Player
@@ -976,10 +976,10 @@ node	556	gameplay.unlock_skill	600.0	42350.0		none	0
 pin	556	Skill	string	gunslinger
 node	557	flow.branch	900.0	42350.0		none	0	
 node	558	ui.show_message	1200.0	42350.0		none	0	
-pin	558	Text	string	Learned Gunslinger -- +40% reload speed, +10% damage.
+pin	558	Text	string	Learned Gunslinger -- +25% reload speed, +25% firearm damage.
 pin	558	Seconds	float	3.5
 node	559	ui.show_message	1500.0	42490.0		none	0	
-pin	559	Text	string	Can't learn Gunslinger yet: it takes 3 skill points and Deadeye first
+pin	559	Text	string	Can't learn Gunslinger yet: it takes 2 skill points and Deadeye first
 pin	559	Seconds	float	3.0
 node	560	entity.find	1500.0	42600.0		none	0	
 pin	560	Name	string	Player
@@ -1157,6 +1157,332 @@ pin	658	Name	string	Player
 node	659	ui.show_message	2400.0	49960.0		none	0	
 pin	659	Text	string	+100 XP   +ammunition
 pin	659	Seconds	float	1.5
+node	660	event.ui_button	0.0	50380.0	learn_channeling	none	0	
+node	661	gameplay.skill_state	300.0	50520.0		none	0	
+pin	661	Skill	string	channeling
+node	662	flow.branch	300.0	50380.0		none	0	
+node	663	gameplay.unlock_skill	600.0	50380.0		none	0	
+pin	663	Skill	string	channeling
+node	664	flow.branch	900.0	50380.0		none	0	
+node	665	ui.show_message	1200.0	50380.0		none	0	
+pin	665	Text	string	Learned Channeling -- +5% cooldown reduction.
+pin	665	Seconds	float	3.5
+node	666	ui.show_message	1500.0	50520.0		none	0	
+pin	666	Text	string	Can't learn Channeling yet: it takes 2 skill points and Archmage first
+pin	666	Seconds	float	3.0
+node	667	entity.find	1500.0	50630.0		none	0	
+pin	667	Name	string	Player
+node	668	entity.find	1500.0	50740.0		none	0	
+pin	668	Name	string	Player
+node	669	event.ui_button	0.0	50940.0	learn_spellforce	none	0	
+node	670	gameplay.skill_state	300.0	51080.0		none	0	
+pin	670	Skill	string	spellforce
+node	671	flow.branch	300.0	50940.0		none	0	
+node	672	gameplay.unlock_skill	600.0	50940.0		none	0	
+pin	672	Skill	string	spellforce
+node	673	flow.branch	900.0	50940.0		none	0	
+node	674	ui.show_message	1200.0	50940.0		none	0	
+pin	674	Text	string	Learned Spellforce -- +20% spell damage.
+pin	674	Seconds	float	3.5
+node	675	ui.show_message	1500.0	51080.0		none	0	
+pin	675	Text	string	Can't learn Spellforce yet: it takes 2 skill points and Elementalist first
+pin	675	Seconds	float	3.0
+node	676	entity.find	1500.0	51190.0		none	0	
+pin	676	Name	string	Player
+node	677	entity.find	1500.0	51300.0		none	0	
+pin	677	Name	string	Player
+node	678	event.ui_button	0.0	51500.0	learn_conductor	none	0	
+node	679	gameplay.skill_state	300.0	51640.0		none	0	
+pin	679	Skill	string	conductor
+node	680	flow.branch	300.0	51500.0		none	0	
+node	681	gameplay.unlock_skill	600.0	51500.0		none	0	
+pin	681	Skill	string	conductor
+node	682	flow.branch	900.0	51500.0		none	0	
+node	683	controls.key	1200.0	51640.0		none	0	
+pin	683	Action	string	abilities
+node	684	math.add	1200.0	51750.0		string	0	
+pin	684	A	string	Learned Rail Lance -- a new ability, in Abilities (
+node	685	math.add	1200.0	51860.0		string	0	
+pin	685	B	string	)
+node	686	ui.show_message	1200.0	51500.0		none	0	
+pin	686	Seconds	float	3.5
+node	687	ui.show_message	1500.0	51640.0		none	0	
+pin	687	Text	string	Can't learn Rail Lance yet: it takes 2 skill points and Channeling first
+pin	687	Seconds	float	3.0
+node	688	entity.find	1500.0	51750.0		none	0	
+pin	688	Name	string	Player
+node	689	entity.find	1500.0	51860.0		none	0	
+pin	689	Name	string	Player
+node	690	event.ui_button	0.0	52060.0	learn_manaflow	none	0	
+node	691	gameplay.skill_state	300.0	52200.0		none	0	
+pin	691	Skill	string	manaflow
+node	692	flow.branch	300.0	52060.0		none	0	
+node	693	gameplay.unlock_skill	600.0	52060.0		none	0	
+pin	693	Skill	string	manaflow
+node	694	flow.branch	900.0	52060.0		none	0	
+node	695	ui.show_message	1200.0	52060.0		none	0	
+pin	695	Text	string	Learned Spell Focus -- +10% spell damage.
+pin	695	Seconds	float	3.5
+node	696	ui.show_message	1500.0	52200.0		none	0	
+pin	696	Text	string	Can't learn Spell Focus yet: it takes 2 skill points and Spellforce first
+pin	696	Seconds	float	3.0
+node	697	entity.find	1500.0	52310.0		none	0	
+pin	697	Name	string	Player
+node	698	entity.find	1500.0	52420.0		none	0	
+pin	698	Name	string	Player
+node	699	event.ui_button	0.0	52620.0	learn_arcanist	none	0	
+node	700	gameplay.skill_state	300.0	52760.0		none	0	
+pin	700	Skill	string	arcanist
+node	701	flow.branch	300.0	52620.0		none	0	
+node	702	gameplay.unlock_skill	600.0	52620.0		none	0	
+pin	702	Skill	string	arcanist
+node	703	flow.branch	900.0	52620.0		none	0	
+node	704	ui.show_message	1200.0	52620.0		none	0	
+pin	704	Text	string	Learned Arcanist -- +30% spell damage, +5% cooldown reduction.
+pin	704	Seconds	float	3.5
+node	705	ui.show_message	1500.0	52760.0		none	0	
+pin	705	Text	string	Can't learn Arcanist yet: it takes 3 skill points and Rail Lance and Spell Focus first
+pin	705	Seconds	float	3.0
+node	706	entity.find	1500.0	52870.0		none	0	
+pin	706	Name	string	Player
+node	707	entity.find	1500.0	52980.0		none	0	
+pin	707	Name	string	Player
+node	708	event.ui_button	0.0	53180.0	learn_plated	none	0	
+node	709	gameplay.skill_state	300.0	53320.0		none	0	
+pin	709	Skill	string	plated
+node	710	flow.branch	300.0	53180.0		none	0	
+node	711	gameplay.unlock_skill	600.0	53180.0		none	0	
+pin	711	Skill	string	plated
+node	712	flow.branch	900.0	53180.0		none	0	
+node	713	ui.show_message	1200.0	53180.0		none	0	
+pin	713	Text	string	Learned Ballistic Plating -- 8% physical resistance, 8% kinetic resistance.
+pin	713	Seconds	float	3.5
+node	714	ui.show_message	1500.0	53320.0		none	0	
+pin	714	Text	string	Can't learn Ballistic Plating yet: it takes 2 skill points and Veteran first
+pin	714	Seconds	float	3.0
+node	715	entity.find	1500.0	53430.0		none	0	
+pin	715	Name	string	Player
+node	716	entity.find	1500.0	53540.0		none	0	
+pin	716	Name	string	Player
+node	717	event.ui_button	0.0	53740.0	learn_void_ward	none	0	
+node	718	gameplay.skill_state	300.0	53880.0		none	0	
+pin	718	Skill	string	void_ward
+node	719	flow.branch	300.0	53740.0		none	0	
+node	720	gameplay.unlock_skill	600.0	53740.0		none	0	
+pin	720	Skill	string	void_ward
+node	721	flow.branch	900.0	53740.0		none	0	
+node	722	ui.show_message	1200.0	53740.0		none	0	
+pin	722	Text	string	Learned Void Ward -- 12% void resistance.
+pin	722	Seconds	float	3.5
+node	723	ui.show_message	1500.0	53880.0		none	0	
+pin	723	Text	string	Can't learn Void Ward yet: it takes 2 skill points and Undying first
+pin	723	Seconds	float	3.0
+node	724	entity.find	1500.0	53990.0		none	0	
+pin	724	Name	string	Player
+node	725	entity.find	1500.0	54100.0		none	0	
+pin	725	Name	string	Player
+node	726	event.ui_button	0.0	54300.0	learn_bulwark_skill	none	0	
+node	727	gameplay.skill_state	300.0	54440.0		none	0	
+pin	727	Skill	string	bulwark_skill
+node	728	flow.branch	300.0	54300.0		none	0	
+node	729	gameplay.unlock_skill	600.0	54300.0		none	0	
+pin	729	Skill	string	bulwark_skill
+node	730	flow.branch	900.0	54300.0		none	0	
+node	731	controls.key	1200.0	54440.0		none	0	
+pin	731	Action	string	abilities
+node	732	math.add	1200.0	54550.0		string	0	
+pin	732	A	string	Learned Bulwark -- a new ability, in Abilities (
+node	733	math.add	1200.0	54660.0		string	0	
+pin	733	B	string	)
+node	734	ui.show_message	1200.0	54300.0		none	0	
+pin	734	Seconds	float	3.5
+node	735	ui.show_message	1500.0	54440.0		none	0	
+pin	735	Text	string	Can't learn Bulwark yet: it takes 2 skill points and Ballistic Plating first
+pin	735	Seconds	float	3.0
+node	736	entity.find	1500.0	54550.0		none	0	
+pin	736	Name	string	Player
+node	737	entity.find	1500.0	54660.0		none	0	
+pin	737	Name	string	Player
+node	738	event.ui_button	0.0	54860.0	learn_renewal_skill	none	0	
+node	739	gameplay.skill_state	300.0	55000.0		none	0	
+pin	739	Skill	string	renewal_skill
+node	740	flow.branch	300.0	54860.0		none	0	
+node	741	gameplay.unlock_skill	600.0	54860.0		none	0	
+pin	741	Skill	string	renewal_skill
+node	742	flow.branch	900.0	54860.0		none	0	
+node	743	controls.key	1200.0	55000.0		none	0	
+pin	743	Action	string	abilities
+node	744	math.add	1200.0	55110.0		string	0	
+pin	744	A	string	Learned Renewal -- a new ability, in Abilities (
+node	745	math.add	1200.0	55220.0		string	0	
+pin	745	B	string	)
+node	746	ui.show_message	1200.0	54860.0		none	0	
+pin	746	Seconds	float	3.5
+node	747	ui.show_message	1500.0	55000.0		none	0	
+pin	747	Text	string	Can't learn Renewal yet: it takes 2 skill points and Void Ward first
+pin	747	Seconds	float	3.0
+node	748	entity.find	1500.0	55110.0		none	0	
+pin	748	Name	string	Player
+node	749	entity.find	1500.0	55220.0		none	0	
+pin	749	Name	string	Player
+node	750	event.ui_button	0.0	55420.0	learn_guardian	none	0	
+node	751	gameplay.skill_state	300.0	55560.0		none	0	
+pin	751	Skill	string	guardian
+node	752	flow.branch	300.0	55420.0		none	0	
+node	753	gameplay.unlock_skill	600.0	55420.0		none	0	
+pin	753	Skill	string	guardian
+node	754	flow.branch	900.0	55420.0		none	0	
+node	755	ui.show_message	1200.0	55420.0		none	0	
+pin	755	Text	string	Learned Guardian -- +40 max health, 6% kinetic resistance, 6% void resistance.
+pin	755	Seconds	float	3.5
+node	756	ui.show_message	1500.0	55560.0		none	0	
+pin	756	Text	string	Can't learn Guardian yet: it takes 3 skill points and Bulwark and Renewal first
+pin	756	Seconds	float	3.0
+node	757	entity.find	1500.0	55670.0		none	0	
+pin	757	Name	string	Player
+node	758	entity.find	1500.0	55780.0		none	0	
+pin	758	Name	string	Player
+node	759	event.ui_button	0.0	55980.0	learn_fieldcraft	none	0	
+node	760	gameplay.skill_state	300.0	56120.0		none	0	
+pin	760	Skill	string	fieldcraft
+node	761	flow.branch	300.0	55980.0		none	0	
+node	762	gameplay.unlock_skill	600.0	55980.0		none	0	
+pin	762	Skill	string	fieldcraft
+node	763	flow.branch	900.0	55980.0		none	0	
+node	764	ui.show_message	1200.0	55980.0		none	0	
+pin	764	Text	string	Learned Fieldcraft -- +15% reload speed, +5% movement speed.
+pin	764	Seconds	float	3.5
+node	765	ui.show_message	1500.0	56120.0		none	0	
+pin	765	Text	string	Can't learn Fieldcraft yet: it takes 2 skill points and Windwalker first
+pin	765	Seconds	float	3.0
+node	766	entity.find	1500.0	56230.0		none	0	
+pin	766	Name	string	Player
+node	767	entity.find	1500.0	56340.0		none	0	
+pin	767	Name	string	Player
+node	768	event.ui_button	0.0	56540.0	learn_specialist	none	0	
+node	769	gameplay.skill_state	300.0	56680.0		none	0	
+pin	769	Skill	string	specialist
+node	770	flow.branch	300.0	56540.0		none	0	
+node	771	gameplay.unlock_skill	600.0	56540.0		none	0	
+pin	771	Skill	string	specialist
+node	772	flow.branch	900.0	56540.0		none	0	
+node	773	ui.show_message	1200.0	56540.0		none	0	
+pin	773	Text	string	Learned Weapon Specialist -- +20% firearm damage.
+pin	773	Seconds	float	3.5
+node	774	ui.show_message	1500.0	56680.0		none	0	
+pin	774	Text	string	Can't learn Weapon Specialist yet: it takes 2 skill points and Gunslinger first
+pin	774	Seconds	float	3.0
+node	775	entity.find	1500.0	56790.0		none	0	
+pin	775	Name	string	Player
+node	776	entity.find	1500.0	56900.0		none	0	
+pin	776	Name	string	Player
+node	777	event.ui_button	0.0	57100.0	learn_steady_hands	none	0	
+node	778	gameplay.skill_state	300.0	57240.0		none	0	
+pin	778	Skill	string	steady_hands
+node	779	flow.branch	300.0	57100.0		none	0	
+node	780	gameplay.unlock_skill	600.0	57100.0		none	0	
+pin	780	Skill	string	steady_hands
+node	781	flow.branch	900.0	57100.0		none	0	
+node	782	ui.show_message	1200.0	57100.0		none	0	
+pin	782	Text	string	Learned Steady Hands -- +15% less spread and recoil.
+pin	782	Seconds	float	3.5
+node	783	ui.show_message	1500.0	57240.0		none	0	
+pin	783	Text	string	Can't learn Steady Hands yet: it takes 2 skill points and Gunslinger first
+pin	783	Seconds	float	3.0
+node	784	entity.find	1500.0	57350.0		none	0	
+pin	784	Name	string	Player
+node	785	entity.find	1500.0	57460.0		none	0	
+pin	785	Name	string	Player
+node	786	event.ui_button	0.0	57660.0	learn_overdrive_skill	none	0	
+node	787	gameplay.skill_state	300.0	57800.0		none	0	
+pin	787	Skill	string	overdrive_skill
+node	788	flow.branch	300.0	57660.0		none	0	
+node	789	gameplay.unlock_skill	600.0	57660.0		none	0	
+pin	789	Skill	string	overdrive_skill
+node	790	flow.branch	900.0	57660.0		none	0	
+node	791	controls.key	1200.0	57800.0		none	0	
+pin	791	Action	string	abilities
+node	792	math.add	1200.0	57910.0		string	0	
+pin	792	A	string	Learned Overdrive -- a new ability, in Abilities (
+node	793	math.add	1200.0	58020.0		string	0	
+pin	793	B	string	)
+node	794	ui.show_message	1200.0	57660.0		none	0	
+pin	794	Seconds	float	3.5
+node	795	ui.show_message	1500.0	57800.0		none	0	
+pin	795	Text	string	Can't learn Overdrive yet: it takes 2 skill points and Fieldcraft first
+pin	795	Seconds	float	3.0
+node	796	entity.find	1500.0	57910.0		none	0	
+pin	796	Name	string	Player
+node	797	entity.find	1500.0	58020.0		none	0	
+pin	797	Name	string	Player
+node	798	event.ui_button	0.0	58220.0	learn_sharpshooter	none	0	
+node	799	gameplay.skill_state	300.0	58360.0		none	0	
+pin	799	Skill	string	sharpshooter
+node	800	flow.branch	300.0	58220.0		none	0	
+node	801	gameplay.unlock_skill	600.0	58220.0		none	0	
+pin	801	Skill	string	sharpshooter
+node	802	flow.branch	900.0	58220.0		none	0	
+node	803	ui.show_message	1200.0	58220.0		none	0	
+pin	803	Text	string	Learned Sharpshooter -- +20% firearm damage, +10% less spread and recoil.
+pin	803	Seconds	float	3.5
+node	804	ui.show_message	1500.0	58360.0		none	0	
+pin	804	Text	string	Can't learn Sharpshooter yet: it takes 2 skill points and Weapon Specialist first
+pin	804	Seconds	float	3.0
+node	805	entity.find	1500.0	58470.0		none	0	
+pin	805	Name	string	Player
+node	806	entity.find	1500.0	58580.0		none	0	
+pin	806	Name	string	Player
+node	807	event.ui_button	0.0	58780.0	learn_skirmisher	none	0	
+node	808	gameplay.skill_state	300.0	58920.0		none	0	
+pin	808	Skill	string	skirmisher
+node	809	flow.branch	300.0	58780.0		none	0	
+node	810	gameplay.unlock_skill	600.0	58780.0		none	0	
+pin	810	Skill	string	skirmisher
+node	811	flow.branch	900.0	58780.0		none	0	
+node	812	ui.show_message	1200.0	58780.0		none	0	
+pin	812	Text	string	Learned Skirmisher -- +10% movement speed, 4% kinetic resistance.
+pin	812	Seconds	float	3.5
+node	813	ui.show_message	1500.0	58920.0		none	0	
+pin	813	Text	string	Can't learn Skirmisher yet: it takes 2 skill points and Steady Hands first
+pin	813	Seconds	float	3.0
+node	814	entity.find	1500.0	59030.0		none	0	
+pin	814	Name	string	Player
+node	815	entity.find	1500.0	59140.0		none	0	
+pin	815	Name	string	Player
+node	816	event.ui_button	0.0	59340.0	learn_commando	none	0	
+node	817	gameplay.skill_state	300.0	59480.0		none	0	
+pin	817	Skill	string	commando
+node	818	flow.branch	300.0	59340.0		none	0	
+node	819	gameplay.unlock_skill	600.0	59340.0		none	0	
+pin	819	Skill	string	commando
+node	820	flow.branch	900.0	59340.0		none	0	
+node	821	ui.show_message	1200.0	59340.0		none	0	
+pin	821	Text	string	Learned Commando -- +25% firearm damage, +15% reload speed.
+pin	821	Seconds	float	3.5
+node	822	ui.show_message	1500.0	59480.0		none	0	
+pin	822	Text	string	Can't learn Commando yet: it takes 3 skill points and Overdrive and Sharpshooter first
+pin	822	Seconds	float	3.0
+node	823	entity.find	1500.0	59590.0		none	0	
+pin	823	Name	string	Player
+node	824	entity.find	1500.0	59700.0		none	0	
+pin	824	Name	string	Player
+node	825	event.ui_button	0.0	59900.0	learn_ghost	none	0	
+node	826	gameplay.skill_state	300.0	60040.0		none	0	
+pin	826	Skill	string	ghost
+node	827	flow.branch	300.0	59900.0		none	0	
+node	828	gameplay.unlock_skill	600.0	59900.0		none	0	
+pin	828	Skill	string	ghost
+node	829	flow.branch	900.0	59900.0		none	0	
+node	830	ui.show_message	1200.0	59900.0		none	0	
+pin	830	Text	string	Learned Ghost -- +10% movement speed, 6% void resistance.
+pin	830	Seconds	float	3.5
+node	831	ui.show_message	1500.0	60040.0		none	0	
+pin	831	Text	string	Can't learn Ghost yet: it takes 2 skill points and Skirmisher first
+pin	831	Seconds	float	3.0
+node	832	entity.find	1500.0	60150.0		none	0	
+pin	832	Name	string	Player
+node	833	entity.find	1500.0	60260.0		none	0	
+pin	833	Name	string	Player
 link	1	Then	2	In
 link	2	Then	3	In
 link	3	Then	6	In
@@ -1777,4 +2103,178 @@ link	648	Then	649	In
 link	649	Then	650	In
 link	647	True	648	In
 link	647	False	659	In
+link	667	Entity	661	Entity
+link	668	Entity	663	Entity
+link	660	Then	662	In
+link	661	Learned	662	Condition
+link	662	False	663	In
+link	663	Then	664	In
+link	663	Unlocked	664	Condition
+link	664	True	665	In
+link	664	False	666	In
+link	676	Entity	670	Entity
+link	677	Entity	672	Entity
+link	669	Then	671	In
+link	670	Learned	671	Condition
+link	671	False	672	In
+link	672	Then	673	In
+link	672	Unlocked	673	Condition
+link	673	True	674	In
+link	673	False	675	In
+link	683	Key	684	B
+link	684	Result	685	A
+link	685	Result	686	Text
+link	688	Entity	679	Entity
+link	689	Entity	681	Entity
+link	678	Then	680	In
+link	679	Learned	680	Condition
+link	680	False	681	In
+link	681	Then	682	In
+link	681	Unlocked	682	Condition
+link	682	True	686	In
+link	682	False	687	In
+link	697	Entity	691	Entity
+link	698	Entity	693	Entity
+link	690	Then	692	In
+link	691	Learned	692	Condition
+link	692	False	693	In
+link	693	Then	694	In
+link	693	Unlocked	694	Condition
+link	694	True	695	In
+link	694	False	696	In
+link	706	Entity	700	Entity
+link	707	Entity	702	Entity
+link	699	Then	701	In
+link	700	Learned	701	Condition
+link	701	False	702	In
+link	702	Then	703	In
+link	702	Unlocked	703	Condition
+link	703	True	704	In
+link	703	False	705	In
+link	715	Entity	709	Entity
+link	716	Entity	711	Entity
+link	708	Then	710	In
+link	709	Learned	710	Condition
+link	710	False	711	In
+link	711	Then	712	In
+link	711	Unlocked	712	Condition
+link	712	True	713	In
+link	712	False	714	In
+link	724	Entity	718	Entity
+link	725	Entity	720	Entity
+link	717	Then	719	In
+link	718	Learned	719	Condition
+link	719	False	720	In
+link	720	Then	721	In
+link	720	Unlocked	721	Condition
+link	721	True	722	In
+link	721	False	723	In
+link	731	Key	732	B
+link	732	Result	733	A
+link	733	Result	734	Text
+link	736	Entity	727	Entity
+link	737	Entity	729	Entity
+link	726	Then	728	In
+link	727	Learned	728	Condition
+link	728	False	729	In
+link	729	Then	730	In
+link	729	Unlocked	730	Condition
+link	730	True	734	In
+link	730	False	735	In
+link	743	Key	744	B
+link	744	Result	745	A
+link	745	Result	746	Text
+link	748	Entity	739	Entity
+link	749	Entity	741	Entity
+link	738	Then	740	In
+link	739	Learned	740	Condition
+link	740	False	741	In
+link	741	Then	742	In
+link	741	Unlocked	742	Condition
+link	742	True	746	In
+link	742	False	747	In
+link	757	Entity	751	Entity
+link	758	Entity	753	Entity
+link	750	Then	752	In
+link	751	Learned	752	Condition
+link	752	False	753	In
+link	753	Then	754	In
+link	753	Unlocked	754	Condition
+link	754	True	755	In
+link	754	False	756	In
+link	766	Entity	760	Entity
+link	767	Entity	762	Entity
+link	759	Then	761	In
+link	760	Learned	761	Condition
+link	761	False	762	In
+link	762	Then	763	In
+link	762	Unlocked	763	Condition
+link	763	True	764	In
+link	763	False	765	In
+link	775	Entity	769	Entity
+link	776	Entity	771	Entity
+link	768	Then	770	In
+link	769	Learned	770	Condition
+link	770	False	771	In
+link	771	Then	772	In
+link	771	Unlocked	772	Condition
+link	772	True	773	In
+link	772	False	774	In
+link	784	Entity	778	Entity
+link	785	Entity	780	Entity
+link	777	Then	779	In
+link	778	Learned	779	Condition
+link	779	False	780	In
+link	780	Then	781	In
+link	780	Unlocked	781	Condition
+link	781	True	782	In
+link	781	False	783	In
+link	791	Key	792	B
+link	792	Result	793	A
+link	793	Result	794	Text
+link	796	Entity	787	Entity
+link	797	Entity	789	Entity
+link	786	Then	788	In
+link	787	Learned	788	Condition
+link	788	False	789	In
+link	789	Then	790	In
+link	789	Unlocked	790	Condition
+link	790	True	794	In
+link	790	False	795	In
+link	805	Entity	799	Entity
+link	806	Entity	801	Entity
+link	798	Then	800	In
+link	799	Learned	800	Condition
+link	800	False	801	In
+link	801	Then	802	In
+link	801	Unlocked	802	Condition
+link	802	True	803	In
+link	802	False	804	In
+link	814	Entity	808	Entity
+link	815	Entity	810	Entity
+link	807	Then	809	In
+link	808	Learned	809	Condition
+link	809	False	810	In
+link	810	Then	811	In
+link	810	Unlocked	811	Condition
+link	811	True	812	In
+link	811	False	813	In
+link	823	Entity	817	Entity
+link	824	Entity	819	Entity
+link	816	Then	818	In
+link	817	Learned	818	Condition
+link	818	False	819	In
+link	819	Then	820	In
+link	819	Unlocked	820	Condition
+link	820	True	821	In
+link	820	False	822	In
+link	832	Entity	826	Entity
+link	833	Entity	828	Entity
+link	825	Then	827	In
+link	826	Learned	827	Condition
+link	827	False	828	In
+link	828	Then	829	In
+link	828	Unlocked	829	Condition
+link	829	True	830	In
+link	829	False	831	In
 end

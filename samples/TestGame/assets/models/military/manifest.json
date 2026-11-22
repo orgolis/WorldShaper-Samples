@@ -8,13 +8,13 @@
     "player": {
       "file": "assets/models/military/characters/player.glb",
       "source": "art_source/military_pack/player.blend",
-      "vertices": 18712,
-      "triangles": 36792,
+      "vertices": 23198,
+      "triangles": 45700,
       "bones": 43,
       "clips": [
         {
           "name": "00_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -24,12 +24,12 @@
         },
         {
           "name": "02_Run",
-          "duration": 0.8,
+          "duration": 0.6,
           "loop": true
         },
         {
           "name": "03_Crouch_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -39,7 +39,7 @@
         },
         {
           "name": "05_Aim_Rifle",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -69,7 +69,7 @@
         },
         {
           "name": "11_Aim_Pistol",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -120,6 +120,61 @@
         {
           "name": "21_Reload_Marksman",
           "duration": 2.2,
+          "loop": false
+        },
+        {
+          "name": "22_Walk_Back",
+          "duration": 1.0666666666666667,
+          "loop": true
+        },
+        {
+          "name": "23_Jump",
+          "duration": 0.4,
+          "loop": false
+        },
+        {
+          "name": "24_Fall",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "25_Land",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "26_Melee_Swing",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "27_Melee_Idle",
+          "duration": 4.0,
+          "loop": true
+        },
+        {
+          "name": "28_Run_Back",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "29_Strafe_Run_Left",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "30_Strafe_Run_Right",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "31_GetUp_FaceUp",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "32_GetUp_FaceDown",
+          "duration": 2.0,
           "loop": false
         }
       ]
@@ -127,13 +182,13 @@
     "rifleman": {
       "file": "assets/models/military/characters/rifleman.glb",
       "source": "art_source/military_pack/rifleman.blend",
-      "vertices": 18844,
-      "triangles": 37044,
+      "vertices": 22942,
+      "triangles": 45196,
       "bones": 43,
       "clips": [
         {
           "name": "00_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -143,12 +198,12 @@
         },
         {
           "name": "02_Run",
-          "duration": 0.8,
+          "duration": 0.6,
           "loop": true
         },
         {
           "name": "03_Crouch_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -158,7 +213,7 @@
         },
         {
           "name": "05_Aim_Rifle",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -188,7 +243,7 @@
         },
         {
           "name": "11_Aim_Pistol",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -239,6 +294,61 @@
         {
           "name": "21_Reload_Marksman",
           "duration": 2.2,
+          "loop": false
+        },
+        {
+          "name": "22_Walk_Back",
+          "duration": 1.0666666666666667,
+          "loop": true
+        },
+        {
+          "name": "23_Jump",
+          "duration": 0.4,
+          "loop": false
+        },
+        {
+          "name": "24_Fall",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "25_Land",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "26_Melee_Swing",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "27_Melee_Idle",
+          "duration": 4.0,
+          "loop": true
+        },
+        {
+          "name": "28_Run_Back",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "29_Strafe_Run_Left",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "30_Strafe_Run_Right",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "31_GetUp_FaceUp",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "32_GetUp_FaceDown",
+          "duration": 2.0,
           "loop": false
         }
       ]
@@ -246,13 +356,13 @@
     "heavy": {
       "file": "assets/models/military/characters/heavy.glb",
       "source": "art_source/military_pack/heavy.blend",
-      "vertices": 19512,
-      "triangles": 38356,
-      "bones": 43,
+      "vertices": 23980,
+      "triangles": 47220,
+      "bones": 47,
       "clips": [
         {
           "name": "00_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -262,12 +372,12 @@
         },
         {
           "name": "02_Run",
-          "duration": 0.8,
+          "duration": 0.6,
           "loop": true
         },
         {
           "name": "03_Crouch_Idle",
-          "duration": 2.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -277,7 +387,7 @@
         },
         {
           "name": "05_Aim_Rifle",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -307,7 +417,7 @@
         },
         {
           "name": "11_Aim_Pistol",
-          "duration": 1.0,
+          "duration": 4.0,
           "loop": true
         },
         {
@@ -358,6 +468,61 @@
         {
           "name": "21_Reload_Marksman",
           "duration": 2.2,
+          "loop": false
+        },
+        {
+          "name": "22_Walk_Back",
+          "duration": 1.0666666666666667,
+          "loop": true
+        },
+        {
+          "name": "23_Jump",
+          "duration": 0.4,
+          "loop": false
+        },
+        {
+          "name": "24_Fall",
+          "duration": 1.0,
+          "loop": true
+        },
+        {
+          "name": "25_Land",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "name": "26_Melee_Swing",
+          "duration": 0.6,
+          "loop": false
+        },
+        {
+          "name": "27_Melee_Idle",
+          "duration": 4.0,
+          "loop": true
+        },
+        {
+          "name": "28_Run_Back",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "29_Strafe_Run_Left",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "30_Strafe_Run_Right",
+          "duration": 0.6666666666666666,
+          "loop": true
+        },
+        {
+          "name": "31_GetUp_FaceUp",
+          "duration": 2.0,
+          "loop": false
+        },
+        {
+          "name": "32_GetUp_FaceDown",
+          "duration": 2.0,
           "loop": false
         }
       ]

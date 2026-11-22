@@ -1,0 +1,45 @@
+# The Ender Leviathan's animation hooks: where in each clip a blow lands.
+# A line is: clip  seconds-into-the-clip  event  [param]
+# The engine publishes each as the gameplay event "anim.<event>" the moment the
+# playing clip passes it (param "<clip>|<param>"); assets/scripts/ender_leviathan.cpp
+# acts on them. Times are clip seconds, from the Arcan mod's tick tables
+# (20 ticks a second) and the rig report of the clips.
+
+# The dive: the jaws may close on someone from 0.45 s, and close at the latest at 0.80 s.
+bite              0.45  bite_open
+bite              0.80  bite_close
+
+# The roar's blast (tick 20): knocks back, stuns and shreds.
+roar              1.00  roar_blast
+
+# The dorsal salvo: each of the nine ports opens and fires (ticks 21 .. 43),
+# param = the port: 0 neck, 1 front, 2 right 1, 3 left 1, 4 right 2, 5 left 2, 6..8 tail.
+dorsal_salvo      1.05  bolt  0
+dorsal_salvo      1.20  bolt  1
+dorsal_salvo      1.35  bolt  2
+dorsal_salvo      1.45  bolt  3
+dorsal_salvo      1.60  bolt  4
+dorsal_salvo      1.75  bolt  5
+dorsal_salvo      1.90  bolt  6
+dorsal_salvo      2.05  bolt  7
+dorsal_salvo      2.15  bolt  8
+
+# The mouth beam (the clip is held at 0.62x speed: 0.93 s is 1.5 s of play, 3.10 s is 5 s).
+mouth_beam        0.93  beam_fire
+mouth_beam        3.10  beam_end
+
+# The tail strike: the wind-up gathers at the fluke, the whip crosses 1.10 .. 1.70 s.
+tail_strike       0.20  tail_windup
+tail_strike       1.10  tail_strike_start
+tail_strike       1.70  tail_strike_end
+
+# The repulsion current: the fins draw back before each stroke, then throw the current.
+repulsion_current 0.90  stroke_windup  0
+repulsion_current 1.30  stroke  0
+repulsion_current 1.90  stroke_windup  1
+repulsion_current 2.30  stroke  1
+repulsion_current 2.90  stroke_windup  2
+repulsion_current 3.30  stroke  2
+
+# The death: the body gives out at the end.
+death             4.70  death_burst

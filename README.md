@@ -23,7 +23,7 @@ so the Hub's *upgrade preflight* runs against this repo's content.
 
 | Sample | Needs engine | What it is |
 |---|---|---|
-| [TestGame](samples/TestGame) -- "The Beacon" | 0.8.52+ | A complete first-person game: 1024 m of hills in six lands (meadow, pine forest, autumn woods, dry plains, snow, wetland) with rivers, lakes, villages, ruins and outposts under an HDR sky, 84 enemies, solid forests, rigged soldiers that aim and shoot, creature camps that fight together, eight guns in three weapon slots, armour, thrown grenades, abilities in three slots (movement ones too), effects, a 32-skill tree with passives, menus, HUD, settings, checkpoints and a goal -- all project files (scenes, `.ui`, logic scripts, `.items`). |
+| [TestGame](samples/TestGame) -- "The Beacon" | 0.8.65+ | A complete first-person game, solo or online (co-op expedition, a raid, a duel; lobby codes, no server): 1024 m of hills in six lands with rivers, villages and outposts under an HDR sky, 84 enemies -- rigged soldiers that aim, flinch, fall limp, are knocked down by grenades and get up again -- creature camps, the Ender Leviathan as a raid boss (a native C++ script), eight guns, a sword that lunges, armour, grenades, abilities, a 50-skill tree, menus, HUD and settings -- all project files (scenes, `.ui`, logic scripts, `.items`, animation graphs and spring chains). |
 
 **Download:** each sample is a zip on the [Releases](https://github.com/orgolis/WorldShaper-Samples/releases) page -- the newest TestGame is always at
 https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip. Unzip it, then in the Hub:

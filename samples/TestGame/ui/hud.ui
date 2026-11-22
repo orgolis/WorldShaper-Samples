@@ -24,3 +24,4 @@ bar    id=reload    anchor=bottom_left x=420 y=-86 w=280 h=8 color=1,0.86,0.5,1 
 label  id=grenades  anchor=bottom_left x=420 y=-60 w=290 h=24 text="Grenades {player.item.frag_grenade}   [{key.grenade}]" size=18 color=1,1,1,0.85 shadow=1
 label  id=gun_title anchor=bottom_left x=716 y=-170 w=278 h=26 text="Weapons" size=19 color=1,0.86,0.5,0.9 shadow=1
 slots  id=hud_guns  anchor=bottom_left x=716 y=-64 w=278 h=104 cols=3 rows=1 size=13 bind=player.weapons radius=6 border=1,1,1,0.1 border_width=1
+

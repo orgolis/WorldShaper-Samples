@@ -4,7 +4,7 @@
 item rifle_rounds
   name Rifle Rounds
   kind material
-  max_stack 300
+  max_stack 600
   weight 0.01
   about Ammunition for the rifle, marksman rifle, carbine and machine gun
 end
@@ -14,8 +14,8 @@ item health_potion
   kind consumable
   max_stack 10
   weight 0.2
-  on_use Health 40
-  about Restores 40 health
+  on_use Health 60
+  about Restores 60 health.
 end
 
 weapon starter_rifle
@@ -37,38 +37,39 @@ weapon starter_rifle
   model assets/models/military/weapons/starter_rifle.glb
   view 0.17 -0.19 0.3 -3 1 -2
   grip weapon_socket 0 0 0 90 0 180
+  about Versatile automatic rifle; 18 damage, 30 rounds, accurate aimed bursts.
 end
 
 ability firebolt
   name Firebolt
   cooldown 1.5
-  cast 0.35
+  cast 0.25
   target aimed
-  range 35
-  damage 30 fire
+  range 90
+  damage 45 fire
   vfx firebolt
-  speed 45
-  about A ball of fire at what you aim at.
+  speed 65
+  about A fast 45-damage fireball.
 end
 
 ability frost_nova
   name Frost Nova
   cooldown 8
   target area
-  radius 5
-  damage 15 cold
-  effect Speed -3 3
+  radius 7
+  damage 35 cold
+  effect MoveSpeed -40 3
   vfx frost_nova
-  about A freezing burst around you: hits and slows everything close.
+  about 35 cold damage in a 7m ring; slows by 40% for 3 seconds.
 end
 
 ability mend
   name Mend
-  cooldown 12
-  cast 1.5
+  cooldown 10
+  cast 0.8
   still
   target self
   self Health 40
   vfx mend
-  about Stand still for a moment and heal 40.
+  about Stand still for 0.8s and heal 40 health.
 end

@@ -183,8 +183,10 @@ item combat_helmet
   slot head
   weight 1.2
   mod Health 20
-  mod resist.physical 0.1
-  about Head: +20 max health, 10% less damage
+  mod resist.physical 0.08
+  mod resist.kinetic 0.08
+
+  about Head: +20 max health; 8% physical and bullet resistance.
 end
 
 item mage_hood
@@ -192,8 +194,8 @@ item mage_hood
   kind armor
   slot head
   weight 0.4
-  mod CooldownReduction 15
-  about Head: abilities cool down 15% sooner
+  mod CooldownReduction 10
+  about Head: 10% cooldown reduction.
 end
 
 item kevlar_vest
@@ -202,8 +204,10 @@ item kevlar_vest
   slot chest
   weight 3
   mod Health 30
-  mod resist.physical 0.2
-  about Chest: +30 max health, 20% less damage
+  mod resist.physical 0.16
+  mod resist.kinetic 0.16
+
+  about Chest: +30 max health; 16% physical and bullet resistance.
 end
 
 item frag_grenade
@@ -212,7 +216,7 @@ item frag_grenade
   max_stack 5
   weight 0.4
   casts frag
-  about Thrown (G), it bursts where it lands: 90 damage within 5 m
+  about Thrown (G), it bursts where it lands: 90 damage within 5 m; it knocks down whoever it leaves standing within 7 m
 end
 
 ability frag
@@ -221,6 +225,7 @@ ability frag
   range 40
   radius 5
   damage 90 explosive
+  knockdown 7
   speed 18
   arc 9.8
   vfx frag
@@ -239,4 +244,15 @@ weapon sword
   view 0.17 -0.21 0.38 -10 -20 25
   grip weapon_socket 0 0 0 90 0 180
   about A blade for close work: one swing cuts everyone in front of you
+end
+
+item ward_vest
+  name Void-Weave Vest
+  kind armor
+  slot chest
+  weight 2
+  mod Health 20
+  mod resist.void 0.18
+  mod resist.kinetic 0.08
+  about Chest: +20 max health, 18% void and 8% bullet resistance.
 end

@@ -2,9 +2,8 @@
 ui modal pause layer=30
 panel  id=dim      anchor=fill color=0,0,0,0.6
 panel  id=card     anchor=center x=0 y=0 w=520 h=640 color=0.06,0.08,0.12,0.92 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
-label  id=title    anchor=center x=0 y=-250 w=480 h=80 text="Paused" size=60 align=center bold=1 shadow=1
+label  id=title    anchor=center x=0 y=-250 w=480 h=80 text="Session Menu" size=60 align=center bold=1 shadow=1
 button id=resume   anchor=center x=0 y=-140 w=400 h=66 text="Resume" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-button id=save     anchor=center x=0 y=-60 w=400 h=66 text="Save game" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
-button id=load     anchor=center x=0 y=20 w=400 h=66 text="Load game" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 button id=settings anchor=center x=0 y=100 w=400 h=66 text="Settings" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
 button id=quit     anchor=center x=0 y=200 w=400 h=66 text="Quit" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8 border=1,0.85,0.55,0.32 border_hover=1,0.85,0.55,0.95 bold=1
+button id=online_return anchor=center x=0 y=-20 w=400 h=66 text="Starting screen" size=28 color=0.11,0.14,0.2,0.96 hover=0.2,0.26,0.36,1 radius=8

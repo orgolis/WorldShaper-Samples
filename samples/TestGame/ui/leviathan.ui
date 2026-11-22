@@ -1,0 +1,13 @@
+# Boss encounter HUD, layered over the existing player HUD.
+ui layer=5
+panel id=boss_box anchor=top x=0 y=100 w=850 h=72 color=0.025,0.012,0.05,0.88 radius=8 border=0.35,0.15,0.6,1 border_width=2
+label id=boss_health anchor=top x=0 y=102 w=830 h=38 text="ENDER LEVIATHAN" size=25 align=center color=0.65,0.9,1,1 bold=1 shadow=1
+label id=crystals anchor=top x=0 y=138 w=830 h=28 text="" size=17 align=center color=0.8,0.65,1,1 shadow=1
+label id=mechanic anchor=top x=0 y=181 w=1000 h=32 text="" size=24 align=center color=1,0.85,0.45,1 bold=1 shadow=1
+label id=sequence anchor=top x=0 y=215 w=1100 h=30 text="" size=20 align=center color=0.9,0.95,1,1 shadow=1
+label id=brand anchor=top x=0 y=181 w=1000 h=35 text="" size=22 align=center color=0.7,0.95,1,1 bold=1 shadow=1
+
+label id=boss_hint anchor=bottom x=0 y=-28 w=900 h=25 text="Keep moving. Shoot its body, head, fins or tail. Leave the meteor markers." size=18 align=center color=0.8,0.8,0.95,1 shadow=1
+panel id=player_box anchor=bottom_left x=20 y=-80 w=280 h=80 color=0.025,0.015,0.055,0.88 radius=7
+bar id=player_hp anchor=bottom_left x=30 y=-90 w=260 h=16 color=0.8,0.16,0.24,1 bind=player.Health radius=4 bg=0.03,0.02,0.06,1
+label id=player_hp_text anchor=bottom_left x=30 y=-122 w=260 h=24 text="HP {player.Health}   LMB fire / R reload" size=17 color=1,0.9,0.92,1 shadow=1

@@ -1,55 +1,50 @@
-# The hero's abilities and skill tree. Skills cost the points the player earns by
-# levelling up. K opens the tree: it grows from Awakening at the bottom, a skill
-# needing the ones under it. Abilities have no cost but their cooldown; the player
-# has 3 ability slots (P: Abilities puts known ones in them). Passives ("grant")
-# raise bonus stats: MoveSpeed, Damage, CooldownReduction, ReloadSpeed (all %),
-# HealthRegen (a second), ExtraJumps -- and Health.
-
+# TestGame combat builds: percentage bonuses add within each damage family.
+# Three equipped abilities. Abilities use cooldowns and cast rules, with no resource costs.
 ability lightning
   name Lightning
   cooldown 4
-  cast 0.2
+  cast 0.05
   target aimed
-  range 60
-  damage 55 shock
+  range 100
+  damage 100 shock
   vfx lightning
-  about A bolt of lightning at what you aim at, far away.
+  about Instant long-range strike for 100 shock damage.
 end
 
 ability ice_lance
   name Ice Lance
   cooldown 3
-  cast 0.25
+  cast 0.15
   target aimed
-  range 45
-  damage 40 cold
-  speed 60
-  effect Speed -3 3
-  about A shard of ice that flies straight and slows what it hits.
+  range 90
+  damage 80 cold
+  speed 80
+  effect MoveSpeed -35 3
+  about 80 cold damage and 35% slow for 3 seconds.
 end
 
 ability shock_wave
   name Shock Wave
-  cooldown 9
+  cooldown 8
   target area
-  radius 7
-  damage 35 shock
-  effect Speed -2 2
-  about A ring of lightning bursts from you: everything close is hit and slowed.
+  radius 10
+  damage 65 shock
+  effect MoveSpeed -40 2
+  about 65 shock damage in a 10m ring; slows by 40% for 2 seconds.
 end
 
 ability meteor
   name Meteor
-  cooldown 14
-  cast 0.8
+  cooldown 12
+  cast 0.65
   still
   target area_at_aim
-  range 50
-  radius 6
-  damage 90 fire
-  speed 28
+  range 120
+  radius 7
+  damage 180 fire
+  speed 55
   arc 9.8
-  about Stand still and call down a falling star where you aim.
+  about Hold still to launch an arcing 180-damage meteor; 7m blast.
 end
 
 ability venom_rain
@@ -57,10 +52,10 @@ ability venom_rain
   cooldown 12
   channel 3 0.5
   target area_at_aim
-  range 40
-  radius 5
-  damage 10 poison
-  about Hold the key: poison rains where you aim, every half second.
+  range 110
+  radius 6
+  damage 32 poison
+  about Hold to channel 32 poison damage per pulse, every 0.5s for 3s.
 end
 
 ability battle_cry
@@ -68,24 +63,25 @@ ability battle_cry
   cooldown 20
   target self
   self Damage 30 8
-  about A roar that makes every shot and spell hit 30% harder for 8 seconds.
+  about All shots and spells deal 30% more damage for 8 seconds.
 end
 
 ability second_wind
   name Second Wind
   cooldown 25
   target self
-  self Health 30
-  self HealthRegen 12 5
-  about Heals 30 at once, then 12 a second for 5 seconds.
+  self Health 35
+  self HealthRegen 8 5
+
+  about Heal 35 now, then regenerate 8 health/s for 5 seconds.
 end
 
 ability surge
   name Surge
-  cooldown 5
+  cooldown 4
   target self
-  move dash 12
-  about Dash 12 metres the way you look.
+  move dash 13
+  about Dash 13m along your view; free emergency movement.
 end
 
 ability leap
@@ -93,23 +89,23 @@ ability leap
   cooldown 7
   target self
   move leap 11 10
-  about Leap high and far: up 3 metres and 10 on.
+  about Launch upward at 11m/s and forward at 10m/s.
 end
 
 ability blink
   name Blink
   cooldown 9
   target self
-  move blink 14
-  about Vanish and appear up to 14 metres ahead, short of walls.
+  move blink 18
+  about Teleport up to 18m forward, stopping before walls.
 end
 
 ability haste
   name Haste
   cooldown 18
   target self
-  self MoveSpeed 50 6
-  about Run 50% faster for 6 seconds.
+  self MoveSpeed 40 6
+  about Run 40% faster for 6 seconds.
 end
 
 skill awaken
@@ -137,7 +133,7 @@ skill ice
   cost 1
   requires frost
   unlocks ice_lance
-  about Ability: A shard of ice that flies straight and slows what it hits.
+  about Ability: 80 cold damage and 35% slow for 3 seconds.
   pos 1 2
 end
 
@@ -154,83 +150,84 @@ end
 skill storm
   name Lightning
   tree hero
-  cost 2
+  cost 1
   requires ice
   unlocks lightning
-  about Ability: A bolt of lightning at what you aim at, far away.
+  about Ability: Instant long-range strike for 100 shock damage.
   pos 0 3
 end
 
 skill shock
   name Shock Wave
   tree hero
-  cost 2
+  cost 1
   requires ice
   unlocks shock_wave
-  about Ability: A ring of lightning bursts from you: everything close is hit and slowed.
+  about Ability: 65 shock damage in a 10m ring; slows by 40% for 2 seconds.
   pos 2 3
 end
 
 skill clarity
   name Clarity
   tree hero
-  cost 2
+  cost 1
   requires focus
-  grant CooldownReduction 15
-  about Passive: abilities cool down 15% sooner.
+  grant CooldownReduction 10
+  about Passive: +10% cooldown reduction.
   pos 3 3
 end
 
 skill venom
   name Venom Rain
   tree hero
-  cost 2
+  cost 1
   requires storm
   unlocks venom_rain
-  about Ability: Hold the key: poison rains where you aim, every half second.
+  about Ability: Hold to channel 32 poison damage per pulse, every 0.5s for 3s.
   pos 0 4
 end
 
 skill meteor_skill
   name Meteor
   tree hero
-  cost 2
+  cost 1
   requires shock
   unlocks meteor
-  about Ability: Stand still and call down a falling star where you aim.
+  about Ability: Hold still to launch an arcing 180-damage meteor; 7m blast.
   pos 2 4
 end
 
 skill spellweaver
   name Spellweaver
   tree hero
-  cost 2
+  cost 1
   requires clarity
-  grant Damage 10
-  about Passive: +10% damage.
+  grant AbilityDamage 20
+  about Passive: +20% spell damage.
   pos 3 4
 end
 
 skill archmage
   name Archmage
   tree hero
-  cost 3
+  cost 1
   requires venom
   requires meteor_skill
-  grant Damage 15
+  grant AbilityDamage 20
   grant CooldownReduction 10
-  about Passive: +15% damage, abilities cool down 10% sooner.
+
+  about Passive: +20% spell damage, +10% cooldown reduction.
   pos 1 5
 end
 
 skill elementalist
   name Elementalist
   tree hero
-  cost 3
+  cost 1
   requires archmage
   requires spellweaver
-  grant Damage 20
-  about Passive: +20% damage.
+  grant AbilityDamage 25
+  about Passive: +25% spell damage.
   pos 2 6
 end
 
@@ -267,54 +264,56 @@ end
 skill iron
   name Iron Skin
   tree hero
-  cost 2
+  cost 1
   requires mend_skill
   requires regen
-  grant Health 50
-  about Passive: +50 max health.
+  grant Health 35
+  about Passive: +35 max health.
   pos 5 3
 end
 
 skill second_wind_skill
   name Second Wind
   tree hero
-  cost 2
+  cost 1
   requires iron
   unlocks second_wind
-  about Ability: Heals 30 at once, then 12 a second for 5 seconds.
+  about Ability: Heal 35 now, then regenerate 8 health/s for 5 seconds.
   pos 4 4
 end
 
 skill battle_cry_skill
   name Battle Cry
   tree hero
-  cost 2
+  cost 1
   requires iron
   unlocks battle_cry
-  about Ability: A roar that makes every shot and spell hit 30% harder for 8 seconds.
+  about Ability: All shots and spells deal 30% more damage for 8 seconds.
   pos 6 4
 end
 
 skill veteran
   name Veteran
   tree hero
-  cost 3
+  cost 1
   requires second_wind_skill
   requires battle_cry_skill
   grant Health 40
-  grant HealthRegen 2
-  about Passive: +40 max health, +2 health a second.
+  grant HealthRegen 1.5
+
+  about Passive: +40 max health, +1.5 health/s.
   pos 5 5
 end
 
 skill undying
   name Undying
   tree hero
-  cost 3
+  cost 1
   requires veteran
-  grant Health 60
-  grant HealthRegen 3
-  about Passive: +60 max health, +3 health a second.
+  grant Health 40
+  grant HealthRegen 2
+
+  about Passive: +40 max health, +2 health/s.
   pos 5 6
 end
 
@@ -324,7 +323,7 @@ skill fleet
   cost 1
   requires awaken
   grant MoveSpeed 10
-  about Passive: +10% move speed.
+  about Passive: +10% movement speed.
   pos 8 1
 end
 
@@ -334,7 +333,7 @@ skill surge_skill
   cost 1
   requires fleet
   unlocks surge
-  about Ability: Dash 12 metres the way you look.
+  about Ability: Dash 13m along your view; free emergency movement.
   pos 7 2
 end
 
@@ -343,35 +342,35 @@ skill quick_hands
   tree hero
   cost 1
   requires fleet
-  grant ReloadSpeed 30
-  about Passive: +30% reload speed.
+  grant ReloadSpeed 25
+  about Passive: +25% reload speed.
   pos 9 2
 end
 
 skill leap_skill
   name Leap
   tree hero
-  cost 2
+  cost 1
   requires surge_skill
   unlocks leap
-  about Ability: Leap high and far: up 3 metres and 10 on.
+  about Ability: Launch upward at 11m/s and forward at 10m/s.
   pos 7 3
 end
 
 skill marksman
   name Marksman
   tree hero
-  cost 2
+  cost 1
   requires quick_hands
-  grant Damage 10
-  about Passive: +10% damage.
+  grant WeaponDamage 15
+  about Passive: +15% firearm damage.
   pos 9 3
 end
 
 skill double_jump
   name Double Jump
   tree hero
-  cost 2
+  cost 1
   requires leap_skill
   grant ExtraJumps 1
   about Passive: a jump in mid-air.
@@ -381,64 +380,302 @@ end
 skill haste_skill
   name Haste
   tree hero
-  cost 2
+  cost 1
   requires leap_skill
   requires marksman
   unlocks haste
-  about Ability: Run 50% faster for 6 seconds.
+  about Ability: Run 40% faster for 6 seconds.
   pos 8 4
 end
 
 skill deadeye
   name Deadeye
   tree hero
-  cost 2
+  cost 1
   requires marksman
-  grant Damage 15
-  about Passive: +15% damage.
+  grant WeaponDamage 20
+  grant WeaponHandling 10
+  about Passive: +20% firearm damage, +10% less spread and recoil.
   pos 10 4
 end
 
 skill blink_skill
   name Blink
   tree hero
-  cost 3
+  cost 1
   requires double_jump
   requires haste_skill
   unlocks blink
-  about Ability: Vanish and appear up to 14 metres ahead, short of walls.
+  about Ability: Teleport up to 18m forward, stopping before walls.
   pos 7 5
 end
 
 skill swiftness
   name Swiftness
   tree hero
-  cost 3
+  cost 1
   requires haste_skill
-  grant MoveSpeed 15
-  about Passive: +15% move speed.
+  grant MoveSpeed 10
+  about Passive: +10% movement speed.
   pos 9 5
 end
 
 skill windwalker
   name Windwalker
   tree hero
-  cost 3
+  cost 1
   requires blink_skill
   requires swiftness
   grant MoveSpeed 10
   grant ExtraJumps 1
-  about Passive: +10% move speed, a jump in mid-air.
+
+  about Passive: +10% movement speed, +1 air jumps.
   pos 8 6
 end
 
 skill gunslinger
   name Gunslinger
   tree hero
-  cost 3
+  cost 1
   requires deadeye
-  grant ReloadSpeed 40
-  grant Damage 10
-  about Passive: +40% reload speed, +10% damage.
+  grant ReloadSpeed 25
+  grant WeaponDamage 25
+
+  about Passive: +25% reload speed, +25% firearm damage.
   pos 10 6
+end
+
+ability rail_lance
+  name Rail Lance
+  cooldown 12
+  cast 0.6
+  target aimed
+  range 150
+  damage 260 shock
+  vfx lightning
+  about A focused 260-damage shock lance; aim for the Leviathan head.
+end
+
+ability bulwark
+  name Bulwark
+  cooldown 24
+  target self
+  self resist.physical 0.25 6
+  self resist.kinetic 0.25 6
+  self resist.void 0.25 6
+  vfx mend
+  about Reduce physical, bullet and void damage by 25% for 6 seconds.
+end
+
+ability renewal
+  name Renewal
+  cooldown 24
+  cast 0.6
+  still
+  target self
+  self Health 70
+  vfx mend
+  about Stand still for 0.6s to heal 70 health.
+end
+
+ability overdrive
+  name Overdrive
+  cooldown 28
+  target self
+  self WeaponDamage 40 8
+  self ReloadSpeed 50 8
+  vfx mend
+  about Gain 40% firearm damage and 50% reload speed for 8 seconds.
+end
+
+skill channeling
+  name Channeling
+  tree hero
+  cost 1
+  requires archmage
+  grant CooldownReduction 5
+  about Passive: +5% cooldown reduction.
+  pos 0 7
+end
+
+skill spellforce
+  name Spellforce
+  tree hero
+  cost 1
+  requires elementalist
+  grant AbilityDamage 20
+  about Passive: +20% spell damage.
+  pos 2 7
+end
+
+skill conductor
+  name Rail Lance
+  tree hero
+  cost 1
+  requires channeling
+  unlocks rail_lance
+  about Ability: A focused 260-damage shock lance; aim for the Leviathan head.
+  pos 0 8
+end
+
+skill manaflow
+  name Spell Focus
+  tree hero
+  cost 1
+  requires spellforce
+  grant AbilityDamage 10
+  about Passive: +10% spell damage.
+  pos 2 8
+end
+
+skill arcanist
+  name Arcanist
+  tree hero
+  cost 1
+  requires conductor
+  requires manaflow
+  grant AbilityDamage 30
+  grant CooldownReduction 5
+  about Passive: +30% spell damage, +5% cooldown reduction.
+  pos 1 9
+end
+
+skill plated
+  name Ballistic Plating
+  tree hero
+  cost 2
+  requires veteran
+  grant resist.physical 0.08
+  grant resist.kinetic 0.08
+  about Passive: 8% physical resistance, 8% kinetic resistance.
+  pos 4 7
+end
+
+skill void_ward
+  name Void Ward
+  tree hero
+  cost 1
+  requires undying
+  grant resist.void 0.12
+  about Passive: 12% void resistance.
+  pos 6 7
+end
+
+skill bulwark_skill
+  name Bulwark
+  tree hero
+  cost 1
+  requires plated
+  unlocks bulwark
+  about Ability: Reduce physical, bullet and void damage by 25% for 6 seconds.
+  pos 4 8
+end
+
+skill renewal_skill
+  name Renewal
+  tree hero
+  cost 2
+  requires void_ward
+  unlocks renewal
+  about Ability: Stand still for 0.6s to heal 70 health.
+  pos 6 8
+end
+
+skill guardian
+  name Guardian
+  tree hero
+  cost 1
+  requires bulwark_skill
+  requires renewal_skill
+  grant Health 40
+  grant resist.kinetic 0.06
+  grant resist.void 0.06
+  about Passive: +40 max health, 6% kinetic resistance, 6% void resistance.
+  pos 5 9
+end
+
+skill fieldcraft
+  name Fieldcraft
+  tree hero
+  cost 1
+  requires windwalker
+  grant ReloadSpeed 15
+  grant MoveSpeed 5
+  about Passive: +15% reload speed, +5% movement speed.
+  pos 7 7
+end
+
+skill specialist
+  name Weapon Specialist
+  tree hero
+  cost 1
+  requires gunslinger
+  grant WeaponDamage 20
+  about Passive: +20% firearm damage.
+  pos 9 7
+end
+
+skill steady_hands
+  name Steady Hands
+  tree hero
+  cost 1
+  requires gunslinger
+  grant WeaponHandling 15
+  about Passive: +15% less spread and recoil.
+  pos 10 7
+end
+
+skill overdrive_skill
+  name Overdrive
+  tree hero
+  cost 1
+  requires fieldcraft
+  unlocks overdrive
+  about Ability: Gain 40% firearm damage and 50% reload speed for 8 seconds.
+  pos 7 8
+end
+
+skill sharpshooter
+  name Sharpshooter
+  tree hero
+  cost 1
+  requires specialist
+  grant WeaponDamage 20
+  grant WeaponHandling 10
+  about Passive: +20% firearm damage, +10% less spread and recoil.
+  pos 9 8
+end
+
+skill skirmisher
+  name Skirmisher
+  tree hero
+  cost 1
+  requires steady_hands
+  grant MoveSpeed 10
+  grant resist.kinetic 0.04
+  about Passive: +10% movement speed, 4% kinetic resistance.
+  pos 10 8
+end
+
+skill commando
+  name Commando
+  tree hero
+  cost 1
+  requires overdrive_skill
+  requires sharpshooter
+  grant WeaponDamage 25
+  grant ReloadSpeed 15
+  about Passive: +25% firearm damage, +15% reload speed.
+  pos 8 9
+end
+
+skill ghost
+  name Ghost
+  tree hero
+  cost 1
+  requires skirmisher
+  grant MoveSpeed 10
+  grant resist.void 0.06
+  about Passive: +10% movement speed, 6% void resistance.
+  pos 10 9
 end

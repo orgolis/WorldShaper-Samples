@@ -1,74 +1,89 @@
 # TestGame -- "The Beacon"
 
-A small, complete first-person game made with GameWorldshaper's own tools. Clear the
-soldiers' outposts and the creature camps in the hills, then reach the beacon on the far side.
+A complete first-person game made with GameWorldshaper's own tools: clear the soldiers'
+outposts and the creature camps in the hills -- alone or with friends online -- take on
+the Ender Leviathan in a raid, or face a friend in a duel.
 
-Everything in it is ordinary project content -- scenes, UI documents, logic scripts,
-item and effect files -- so every part of it can be opened and changed in the editor.
-Nothing about this game is built into the engine.
+Everything in it is ordinary project content -- scenes, UI documents, logic scripts, item
+and effect files, one native script -- so every part of it can be opened and changed in the
+editor. Nothing about this game is built into the engine.
 
-**Needs engine 0.8.52 or newer.**
+**Needs engine 0.8.65 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.52 (or newer) from the Hub.
+1. Install engine 0.8.65 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
-4. Open it, press **Play**.
+4. Open it, press **Play** -- or, on Windows, double-click `Play TestGame.cmd` (the game in
+   its own window, with the newest engine the Hub installed). `Play Leviathan.cmd` opens the
+   Leviathan encounter on its own (`leviathan.schizo`).
+
+**The Leviathan is a native script** (`assets/scripts/ender_leviathan.cpp`): the engine
+compiles it with g++ (MinGW-w64) when the scene starts. Have g++ on PATH, or point
+`GWS_SCRIPT_CXX` at it (`C:\Strawberry\c\bin\g++.exe` is found on its own). Without a
+compiler the rest of the game plays; the Leviathan does not act.
+
+## Modes
+
+The title screen (`scenes/start.scene`) offers:
+
+- **Co-op Expedition** (`scenes/coop_world.scene`) -- Solo, or online with up to four players.
+- **Leviathan Raid** (`scenes/leviathan_raid.scene`) -- Solo, or online with up to four players.
+- **PvP Duel** (`scenes/duel_arena.scene`) -- two players, first to three rounds.
+
+**Online** gives you a six-character code to send your friends; they type it under
+**Join a friend**. The games find each other on the local network and over the internet
+and connect directly -- no server to run (for the networks they cannot get through, see
+`config/multiplayer.ini`). **Host IP** / **Join by IP** connect by address on a LAN.
 
 ## What is in it
 
-- **Six lands** (painted biomes): a meadow where you start, a pine forest, autumn woods, dry
-  plains, snowy highlands round the beacon and wetland along the rivers -- each with its own
-  textured ground, plants (flowers, ferns, fallen logs, mushrooms, cacti, reeds, snow-laden
-  pines...) and air. The models are made for the game (`assets/models/nature`).
-- **Buildings** (`assets/models/buildings`): a village and a farm, ruins, log cabins in the
-  snow -- walk in through their doors -- and a bunker, sandbag walls and a watchtower at every
-  soldiers' outpost.
-- **The world** (`scenes/main.scene`): 1024 m of rolling hills with four rivers and their
-  lakes (water that splashes and rings where anything touches it) under an HDR sky, grass
-  that moves in the wind, forests
-  of trees from 5 to 18 m tall, grass and rocks. The sun shines from where the sky's sun
-  is: trees cast shadows and, with Volumetric light on, light shafts. Trees and rocks are
-  solid: they stop the player, rounds, grenades, sight and creatures.
-- **The player**: first person -- a rigged soldier (seen in its shadow), the gun in hand
-  seen and animated, held by the player's own arms -- with sprint, crouch, slide, dash, mantle
-  and climb. It has three weapon slots, holding a rifle, a pistol and a sword at the start
-  (one swing cuts everyone in front), plus frag grenades
-  (thrown: aim up to throw far), a Firebolt spell that flies and health potions. No mana:
-  abilities cost only their cooldowns, and three ability slots hold the ones in use.
-- **Eight guns** (`assets/gameplay/arsenal.items`, `starter.items`): rifle, pistol,
-  shotgun, marksman rifle, SMG, burst carbine, light machine gun and revolver. Six of
-  them are in **supply caches**, along with armour (helmet, hood, vest) and more grenades.
-  A gun found while all three slots are full goes into the bag. Use it from the inventory
-  to swap it with the gun in hand.
-- **Levels and a skill tree** (`assets/gameplay/hero.items`): XP for each kill, a skill
-  point a level. The tree (K) is drawn as a tree of 32 skills growing from one root into
-  Sorcery, Survival and Agility: thirteen abilities to learn -- four of them movement
-  (Surge, Leap, Blink, Haste) -- and passives that raise health, speed, damage, reload
-  speed, regeneration and air jumps or shorten cooldowns. The abilities screen (P) puts
-  learned abilities into the three slots.
+- **The world**: 1024 m of rolling hills in six lands (painted biomes) -- a meadow where you
+  start, a pine forest, autumn woods, dry plains, snowy highlands round the beacon and
+  wetland along the rivers -- with four rivers and their lakes, villages, a farm, ruins, log
+  cabins and soldiers' outposts, under an HDR sky. Grass moves in the wind; trees and rocks
+  stop the player, rounds, grenades, sight and creatures. (`scenes/main.scene` is the
+  original single-player world.)
 - **84 enemies**: 37 soldiers at ten outposts and 47 creatures in thirteen camps.
-- **Soldiers** (`assets/gameplay/soldiers.items`): ten outposts of riflemen and heavy
-  gunners -- rigged, animated models (`assets/models/military/`) with guns in their hands --
-  who patrol, aim and shoot, stagger when hit and fall when killed.
-- **Creature camps**: creatures wander about their camp, see you only with a clear line,
-  hear gunfire and call their camp in. They chase, search where you were last seen, and
-  give up far from home. Melee creatures rear up (a red glow) before they claw; spitters
-  keep their distance and spit globs that arc and can be dodged. Their attacks are
-  abilities in `assets/gameplay/creatures.items`.
-- **Effects**: muzzle flashes that light their surroundings, smoke that drifts as a cloud,
-  tracers, sparks and dust, fiery trails, blasts that glow and bloom.
-  The engine has a built-in look for every gun and ability; this game gives the
-  creatures' attacks and the shotgun a heavier muzzle flash of its own (`assets/gameplay/effects.items`).
-- **Screens** (`ui/*.ui`): title menu, HUD, inventory, skill tree, abilities, pause menu,
-  settings (every control rebindable, mouse and graphics options) and a win screen. The
-  HUD keeps the ability slots (keys and cooldowns) and the gun in the lower left corner,
-  shows where a hit came from and glows red at low health.
+- **Soldiers** (`assets/gameplay/soldiers.items`, `assets/models/military/`): riflemen and
+  heavy gunners who patrol, spot you, turn and aim at you (up and down hills), shoot, flinch
+  when hit and go limp when killed. Thrown down by a grenade that leaves them alive, they
+  hold their fire while they lie and get up again -- off their back or face down -- from
+  where they landed.
+- **Their animation** (33 clips each, made procedurally in Blender): every soldier and the
+  player's own body run an animation graph -- walking and running blended every way at the
+  speeds their clips were measured to move at, aiming and shots on the upper body -- with
+  feet planted on the slopes they stand on and held where they step, a body that leans into
+  its moves, the support hand on the gun, ragdolls, and the heavy gunner's radio antenna
+  swaying as he moves.
+- **The Ender Leviathan** (`scenes/leviathan_raid.scene`, `assets/scripts/ender_leviathan.cpp`):
+  a raid boss with 60,000 health and three phases -- a dorsal salvo, a beam, a bite from
+  above, a tail strike, a current, a roar, meteors and teleports -- whose blows land on its
+  animation's own cues.
+- **The player**: first person -- a rigged soldier (seen in its shadow), the gun in hand seen
+  and animated -- with sprint, crouch, slide, dash, mantle and climb. Three weapon slots
+  hold a rifle, a pistol and a sword at the start (swung at someone a step out of reach, it
+  lunges onto them), plus frag grenades (aim up to throw far; they knock down whoever they
+  do not kill within 7 m), a Firebolt spell and health potions.
+- **Eight guns** (`assets/gameplay/arsenal.items`): rifle, pistol, shotgun, marksman rifle,
+  SMG, burst carbine, light machine gun and revolver, most of them in supply caches, along
+  with armour (helmet, hood, vests) and more grenades.
+- **Levels and a skill tree** (`assets/gameplay/hero.items`): XP for each kill and skill
+  points each level for a tree of 50 skills in Sorcery, Survival and Arms & Mobility --
+  abilities to learn (Rail Lance, Bulwark, Renewal, Overdrive, movement ones) and passives.
+  No mana: abilities cost only their cooldowns; three ability slots hold the ones in use.
+- **Creature camps**: creatures see you only with a clear line, hear gunfire and call their
+  camp in; melee creatures rear up before they claw, spitters arc globs that can be dodged
+  (`assets/gameplay/creatures.items`).
+- **Effects** (`assets/gameplay/effects.items`): muzzle flashes that light their
+  surroundings, tracers, sparks, smoke, fiery trails, blasts that glow and bloom.
+- **Screens** (`ui/*.ui`): title and mode menu, HUD, inventory, skill tree, abilities,
+  pause menu, settings (every control rebindable) and a win screen.
 - **The rules** (`testgame/*.lgraph`, logic scripts): `GameRules` (menus, keys, XP and
-  loot, counting the enemies, the inventory, skill and ability screens), `Checkpoint` (saves
-  when you walk through one), `Goal` (the beacon).
+  loot, counting the enemies, the screens), `Checkpoint` (saves when you walk through one),
+  `Goal` (the beacon).
 
 ## Keys
 
@@ -85,8 +100,9 @@ All except Esc can be rebound in the game's Settings. The defaults are in `input
 
 - Creatures are capsules (the soldiers are rigged models); they steer round trees but can
   get stuck in a dense thicket.
-- No inverse kinematics: a soldier's support hand follows its clip, not the gun.
 - Starting Play bakes the navmesh from the full terrain, which pauses for a few seconds.
+- Online guests do not see knockdowns yet (the host does), and the player is never knocked
+  down.
 
 ## Credits
 
@@ -94,6 +110,7 @@ The sky is [Kloofendal 48d Partly Cloudy (Pure Sky)](https://polyhaven.com/a/klo
 from Poly Haven, CC0.
 
 More detail: the engine's
-[`docs/systems/TEST_GAME.md`](https://github.com/orgolis/c-Engine-Game/blob/main/docs/systems/TEST_GAME.md).
+[`docs/systems/TEST_GAME.md`](https://github.com/orgolis/c-Engine-Game/blob/main/docs/systems/TEST_GAME.md)
+and [`docs/systems/CHARACTERS.md`](https://github.com/orgolis/c-Engine-Game/blob/main/docs/systems/CHARACTERS.md).
 This sample is also a regression test. CI loads and runs it against every new engine
 release.

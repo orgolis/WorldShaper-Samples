@@ -2,9 +2,9 @@ VSCRIPT 2
 name	Checkpoint
 graph	event	EventGraph	0	4
 node	1	event.trigger_enter	0.0	0.0		none	0	
-node	2	world.save_game	0.0	0.0		none	0	
+node	2	world.save_game	50.0	204.0		none	0	
 pin	2	Slot	string	quick
-node	3	ui.show_message	0.0	0.0		none	0	
+node	3	ui.show_message	344.0	-5.0		none	0	
 pin	3	Text	string	Checkpoint -- the game is saved
 pin	3	Seconds	float	3.0
 link	1	Then	2	In

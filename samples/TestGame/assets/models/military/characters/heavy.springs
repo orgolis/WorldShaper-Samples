@@ -1,0 +1,6 @@
+# The heavy's radio antenna: a whip that sways with the body and settles
+# (engine 0.8.63+: spring_bones.h; GWS_NO_SPRINGS=1 holds it straight).
+#     first bone  last bone   stiffness damping gravity radius  max bend (degrees)
+chain antenna_01  antenna_04  0.45      0.25    0.3     0.006   45
+# The head keeps it out (head space: up its bone 0.1 m, 0.11 m round).
+collider head 0 0.1 0 0.11

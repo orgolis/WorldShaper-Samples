@@ -1,0 +1,219 @@
+{
+  "name": "Ender Leviathan",
+  "source": "Arcan V2h combat",
+  "units": "metres",
+  "forward": "+Z",
+  "up": "+Y",
+  "source_pixels_per_metre": 16,
+  "model_lift": 4.7,
+  "parts": 306,
+  "bones": 56,
+  "original_bones": 46,
+  "clips": [
+    {
+      "name": "idle",
+      "index": 0,
+      "duration": 6.4,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "swim",
+      "index": 1,
+      "duration": 3.2,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "swim_fast",
+      "index": 2,
+      "duration": 1.6,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "turn_left",
+      "index": 3,
+      "duration": 2.4,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "turn_right",
+      "index": 4,
+      "duration": 2.4,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "bite",
+      "index": 5,
+      "duration": 1.4,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "roar",
+      "index": 6,
+      "duration": 2.8,
+      "loop": false,
+      "hold_last": false
+    },
+    {
+      "name": "dorsal_salvo",
+      "index": 7,
+      "duration": 3.6,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "mouth_beam",
+      "index": 8,
+      "duration": 4.4,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "hurt",
+      "index": 9,
+      "duration": 0.65,
+      "loop": true,
+      "hold_last": false
+    },
+    {
+      "name": "death",
+      "index": 10,
+      "duration": 4.8,
+      "loop": false,
+      "hold_last": true
+    },
+    {
+      "name": "tail_strike",
+      "index": 11,
+      "duration": 3.4,
+      "loop": false,
+      "hold_last": false
+    },
+    {
+      "name": "repulsion_current",
+      "index": 12,
+      "duration": 4.8,
+      "loop": false,
+      "hold_last": false
+    }
+  ],
+  "locators": [
+    {
+      "name": "mouth",
+      "parent": "head",
+      "rest_gltf": [
+        0.0,
+        4.7,
+        18.875
+      ]
+    },
+    {
+      "name": "projectile_front",
+      "parent": "launcher_front",
+      "rest_gltf": [
+        0.0,
+        8.5125,
+        3.7
+      ]
+    },
+    {
+      "name": "projectile_right_1",
+      "parent": "launcher_right_1",
+      "rest_gltf": [
+        1.5,
+        8.6375,
+        -0.275
+      ]
+    },
+    {
+      "name": "projectile_left_1",
+      "parent": "launcher_left_1",
+      "rest_gltf": [
+        -1.375,
+        8.6375,
+        -0.275
+      ]
+    },
+    {
+      "name": "projectile_right_2",
+      "parent": "launcher_right_2",
+      "rest_gltf": [
+        1.5,
+        8.45,
+        -4.775
+      ]
+    },
+    {
+      "name": "projectile_left_2",
+      "parent": "launcher_left_2",
+      "rest_gltf": [
+        -1.375,
+        8.45,
+        -4.775
+      ]
+    },
+    {
+      "name": "projectile_neck",
+      "parent": "launcher_neck",
+      "rest_gltf": [
+        0.0,
+        8.1375,
+        8.63125
+      ]
+    },
+    {
+      "name": "projectile_tail_1",
+      "parent": "launcher_tail_1",
+      "rest_gltf": [
+        0.0,
+        8.075,
+        -9.8984375
+      ]
+    },
+    {
+      "name": "projectile_tail_2",
+      "parent": "launcher_tail_2",
+      "rest_gltf": [
+        0.0,
+        7.575,
+        -15.2890625
+      ]
+    },
+    {
+      "name": "projectile_tail_3",
+      "parent": "launcher_tail_3",
+      "rest_gltf": [
+        0.0,
+        7.3875,
+        -21.715625
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "source": "C:\\dev\\Arcan\\art\\ender-leviathan\\rework-v2\\ender_leviathan.v2h-combat.bbmodel",
+      "sha256": "48ae15a1f2a96b2d535ab6de00975a2e9e24f28e05aa0bd1e9d6ee9b1b6efa65"
+    },
+    {
+      "source": "C:\\dev\\Arcan\\src\\main\\resources\\assets\\arcan\\geo\\ender_leviathan.geo.json",
+      "sha256": "627eaf1fe957daa5713c94c9388adf2ff8b155e7f4f89b26e7374bc43693ab29"
+    },
+    {
+      "source": "C:\\dev\\Arcan\\src\\main\\resources\\assets\\arcan\\animations\\ender_leviathan.animation.json",
+      "sha256": "dd06b0ccf76e1a2de2a150ec3cbd688a6d2bde441f9d28b44abc90b95efdf111"
+    },
+    {
+      "source": "C:\\dev\\Arcan\\src\\main\\resources\\assets\\arcan\\textures\\entity\\ender_leviathan\\ender_leviathan.png",
+      "sha256": "87b5128c1b06c568c4177cb84c8295fab1895d2ba6175603e77bc2652e67bdc9"
+    },
+    {
+      "source": "C:\\dev\\Arcan\\src\\main\\resources\\assets\\arcan\\textures\\entity\\ender_leviathan\\ender_leviathan.png.mcmeta",
+      "sha256": "5847dc804e0368fcf6fc13d4671f45f4b1228dfacd662a51f921ff6c0175c10d"
+    }
+  ]
+}

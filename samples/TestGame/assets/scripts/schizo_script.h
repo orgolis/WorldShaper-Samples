@@ -1,0 +1,203 @@
+#pragma once
+
+// ============================================================
+// Project Schizo — native C++ script SDK (Stage 12)
+// ============================================================
+//
+// Write a .cpp next to this header, implement one or both hooks, attach the
+// file to an entity via Inspector -> Add Component -> Script. The editor
+// compiles it with g++ into a DLL, loads it live, and recompiles + reloads
+// whenever you save the file during Play.
+//
+//   #include "schizo_script.h"
+//   SCHIZO_SCRIPT void on_start(const SchizoScriptApi* api, unsigned entity) { ... }
+//   SCHIZO_SCRIPT void on_update(const SchizoScriptApi* api, unsigned entity, float dt) { ... }
+//
+// The api table is the same surface Python scripts see. Entities are scene
+// ids (0 = invalid); rotations are world-space Euler degrees. Physics entries
+// only act during Play. NOTE: native scripts run in-process — a crash in your
+// script crashes the editor. Keep your file-scope state simple: it is REPLACED
+// on every hot reload (the DLL is swapped).
+//
+// This struct MUST stay binary-identical to editor/include/script_api.h —
+// the editor build static_asserts the layouts against each other.
+
+extern "C" {
+
+typedef struct SchizoScriptApi {
+    void*  ctx;
+    float  dt;      // seconds since last frame
+    double time;    // seconds since Play started
+
+    void (*log)(void* ctx, const char* msg);
+
+    unsigned (*find_entity)(void* ctx, const char* name);
+    bool (*get_position)(void* ctx, unsigned e, float out[3]);
+    void (*set_position)(void* ctx, unsigned e, const float p[3]);
+    bool (*get_rotation_euler)(void* ctx, unsigned e, float out_deg[3]);
+    void (*set_rotation_euler)(void* ctx, unsigned e, const float deg[3]);
+    bool (*get_scale)(void* ctx, unsigned e, float out[3]);
+    void (*set_scale)(void* ctx, unsigned e, const float s[3]);
+
+    bool (*key_down)(void* ctx, int glfw_key);
+    bool (*mouse_down)(void* ctx, int button);
+    void (*mouse_delta)(void* ctx, float out[2]);
+
+    unsigned (*spawn_primitive)(void* ctx, int shape, const float pos[3],
+                                float size, const float rgba[4], int dynamic);
+    void (*destroy_entity)(void* ctx, unsigned e);
+
+    void (*set_velocity)(void* ctx, unsigned e, const float v[3]);
+    void (*add_impulse)(void* ctx, unsigned e, const float i[3]);
+    bool (*raycast)(void* ctx, const float origin[3], const float dir[3],
+                    float max_dist, float out_pos[3], unsigned* out_entity);
+
+    void (*set_color)(void* ctx, unsigned e, const float rgba[4]);
+    void (*set_emissive)(void* ctx, unsigned e, const float rgb[3], float intensity);
+
+    void (*audio_play)(void* ctx, unsigned e);
+    void (*audio_stop)(void* ctx, unsigned e);
+
+    /* ---- gameplay (G0-G4); appended at the end so the ABI prefix is stable ---- */
+    float (*get_attribute)(void* ctx, unsigned e, const char* name);
+    void  (*set_attribute)(void* ctx, unsigned e, const char* name, float value);
+    void  (*adjust_attribute)(void* ctx, unsigned e, const char* name, float delta);
+    bool  (*has_tag)(void* ctx, unsigned e, const char* tag);
+    void  (*add_tag)(void* ctx, unsigned e, const char* tag);
+    void  (*remove_tag)(void* ctx, unsigned e, const char* tag);
+    float (*apply_damage)(void* ctx, unsigned e, float amount, const char* type);
+    void  (*apply_heal)(void* ctx, unsigned e, const char* attribute, float amount);
+    bool  (*activate_ability)(void* ctx, unsigned e, int index, unsigned target);
+    void  (*grant_xp)(void* ctx, unsigned e, float amount);
+    int   (*get_level)(void* ctx, unsigned e);
+    bool  (*unlock_skill)(void* ctx, unsigned e, const char* node_id);
+    bool  (*send_state_event)(void* ctx, unsigned e, const char* event);
+    bool  (*in_state)(void* ctx, unsigned e, const char* state);
+    int   (*add_item)(void* ctx, unsigned e, const char* def_id, int qty);
+    int   (*item_count)(void* ctx, unsigned e, const char* def_id);
+    bool  (*equip_item)(void* ctx, unsigned e, const char* def_id);
+    bool  (*use_item)(void* ctx, unsigned e, const char* def_id);
+    bool  (*interact)(void* ctx, unsigned e);   /* G7: use the nearest interactable in range */
+    bool  (*fire_weapon)(void* ctx, unsigned e);   /* G12: fire the entity's Weapon */
+    bool  (*reload_weapon)(void* ctx, unsigned e); /* G12: reload the entity's Weapon */
+    void  (*drive)(void* ctx, unsigned e, float throttle, float steer, int brake, int boost); /* G13 */
+    bool  (*toggle_flashlight)(void* ctx, unsigned e);   /* G15: toggle the entity's Flashlight */
+    /* Script public parameters (Stage 12 script fields) — read a value the
+       Inspector authored for this entity's @param, else the given default. */
+    float (*get_param_float)(void* ctx, unsigned e, const char* name, float def);
+    int   (*get_param_int)(void* ctx, unsigned e, const char* name, int def);
+    bool  (*get_param_bool)(void* ctx, unsigned e, const char* name, int def);
+    int   (*get_param_string)(void* ctx, unsigned e, const char* name,
+                              char* out, int out_size, const char* def);
+    /* world flags + events (shared with the scene logic graph) */
+    int   (*get_flag)(void* ctx, const char* key);
+    void  (*set_flag)(void* ctx, const char* key, int value);
+    void  (*emit_event)(void* ctx, const char* name);
+    /* spatial helpers */
+    float (*distance)(void* ctx, unsigned a, unsigned b);
+    void  (*translate)(void* ctx, unsigned e, const float delta[3]);
+    bool  (*get_forward)(void* ctx, unsigned e, float out[3]);
+    /* editor extensions (Phase 4.8) -- non-null ONLY for scripts loaded from
+       the project's editor_scripts/ folder. A gameplay script sees null here.
+       A command entry point is:
+           SCHIZO_SCRIPT void my_command(const SchizoScriptApi* api) { ... }
+       and is named to register_command as its token. */
+    void (*register_command)(void* ctx, const char* title, const char* category,
+                             const char* token);
+    bool (*run_command)(void* ctx, const char* title);
+    unsigned (*selected_entity)(void* ctx);
+    void     (*select_entity)(void* ctx, unsigned e);
+    int      (*entity_count)(void* ctx);
+    unsigned (*entity_at)(void* ctx, int index);
+    int      (*entity_name)(void* ctx, unsigned e, char* out, int out_size);
+    void     (*set_status)(void* ctx, const char* msg);
+    /* Gameplay events published since the previous frame (trigger enter/exit,
+       damage, pickups ...). Entity ids are 0 when the event names none. */
+    int      (*event_count)(void* ctx);
+    bool     (*event_get)(void* ctx, int index, char* name_out, int name_size,
+                          unsigned* instigator, unsigned* target, float* value,
+                          char* param_out, int param_size);
+    /* The biome an entity stands in (-1 and "" where none), and its weight. */
+    int      (*biome_at)(void* ctx, unsigned e, char* name_out, int name_size, float* weight);
+    /* Save the game to a slot (saves/<slot>.sav), or load one. Play only. */
+    bool     (*save_game)(void* ctx, const char* slot);
+    bool     (*load_game)(void* ctx, const char* slot);
+    /* Text across the game view for some seconds. */
+    void     (*show_message)(void* ctx, const char* text, float seconds);
+    /* The project's UI documents (.ui files); a click is the gameplay event
+       "ui.click" with the button's id. Pause the game; quit. */
+    bool     (*ui_show)(void* ctx, const char* path);
+    void     (*ui_hide)(void* ctx, const char* path);
+    bool     (*ui_set_text)(void* ctx, const char* path, const char* id, const char* text);
+    bool     (*ui_shown)(void* ctx, const char* path);
+    void     (*set_game_paused)(void* ctx, bool paused);
+    void     (*quit_game)(void* ctx);
+    /* Controls by action (move_forward, fire, ability_1, ...) and settings by
+       name (quality, fov, mouse_sensitivity, ...). */
+    bool     (*action_down)(void* ctx, const char* action);
+    void     (*rebind_action)(void* ctx, const char* action);
+    void     (*reset_controls)(void* ctx);
+    int      (*key_for_action)(void* ctx, const char* action, char* out, int out_size);
+    bool     (*set_setting)(void* ctx, const char* name, const char* value);
+    int      (*get_setting)(void* ctx, const char* name, char* out, int out_size);
+    int      (*next_setting)(void* ctx, const char* name, char* out, int out_size);
+    /* Skill trees from project data; inventory screens. */
+    bool     (*set_skill_tree)(void* ctx, unsigned e, const char* tree);
+    void     (*add_skill_points)(void* ctx, unsigned e, int points);
+    int      (*skill_state)(void* ctx, unsigned e, const char* skill);
+    int      (*skill_points)(void* ctx, unsigned e);
+    int      (*ui_selected)(void* ctx, const char* path, const char* id);
+    bool     (*item_in_slot)(void* ctx, unsigned e, int index, char* id_out, int id_size, char* name_out, int name_size,
+                             int* count);
+    /* Guns carried, gear worn. */
+    bool     (*give_weapon)(void* ctx, unsigned e, const char* weapon);
+    bool     (*select_weapon)(void* ctx, unsigned e, int index);
+    int      (*current_weapon)(void* ctx, unsigned e, char* id_out, int id_size);
+    bool     (*unequip_item)(void* ctx, unsigned e, const char* slot);
+    bool     (*equipped_item)(void* ctx, unsigned e, const char* slot, char* id_out, int id_size, char* name_out,
+                              int name_size);
+    /* Weapon slots: a gun into the bag, out of it into a slot (-1: the first
+       empty one), how many can be carried (0: any number), what is in one. */
+    bool     (*stow_weapon)(void* ctx, unsigned e, int index);
+    bool     (*equip_weapon)(void* ctx, unsigned e, const char* weapon, int slot);
+    void     (*set_weapon_slots)(void* ctx, unsigned e, int count);
+    bool     (*weapon_in_slot)(void* ctx, unsigned e, int index, char* id_out, int id_size, char* name_out,
+                               int name_size);
+    /* Ability slots: a known ability (its place in the known list) into a bar slot. */
+    bool     (*equip_ability)(void* ctx, unsigned e, int known_index, int slot);
+    /* Named skeletal clips and animated attachment points. Appended ABI entries. */
+    bool     (*play_animation)(void* ctx, unsigned e, const char* clip, bool loop,
+                               float speed, float blend, bool restart);
+    bool     (*bone_position)(void* ctx, unsigned e, const char* bone, float out[3]);
+    /* 0.8.53: named project VFX, frame-local environment, additive bone pose,
+       and non-colliding visual meshes. Probe engine.encounter_api before use. */
+    bool     (*spawn_effect)(void* ctx, const char* effect, const float pos[3], const float dir[3], float scale, float reach);
+    void     (*set_environment)(void* ctx, float darkness, float whiteout);
+    bool     (*set_bone_rotation)(void* ctx, unsigned e, const char* bone, const float degrees[3]);
+    unsigned (*spawn_mesh)(void* ctx, const char* path, const float pos[3], float scale);
+    /* 0.8.53: query engine.combat_api before accessing this appended field. */
+    bool (*set_damage_receiver)(void* ctx, unsigned part, unsigned owner, float multiplier);
+    /* 0.8.57 (query engine.animation_events): a point of a skinned model, in the
+       model's own space as modelled, carried by `bone` as it is posed now, in the
+       world. Clip events arrive as gameplay events "anim.<name>" (instigator: the
+       entity; param: the clip). */
+    bool (*bone_point)(void* ctx, unsigned e, const char* bone, const float model_point[3], float out[3]);
+} SchizoScriptApi;
+
+}  // extern "C"
+
+// Common GLFW key codes for key_down().
+enum {
+    SCHIZO_KEY_SPACE = 32,
+    SCHIZO_KEY_A = 65, SCHIZO_KEY_D = 68, SCHIZO_KEY_E = 69, SCHIZO_KEY_F = 70,
+    SCHIZO_KEY_G = 71, SCHIZO_KEY_Q = 81, SCHIZO_KEY_S = 83, SCHIZO_KEY_W = 87,
+    SCHIZO_KEY_RIGHT = 262, SCHIZO_KEY_LEFT = 263, SCHIZO_KEY_DOWN = 264, SCHIZO_KEY_UP = 265,
+    SCHIZO_KEY_LSHIFT = 340, SCHIZO_KEY_LCTRL = 341,
+    SCHIZO_MOUSE_LEFT = 0, SCHIZO_MOUSE_RIGHT = 1, SCHIZO_MOUSE_MIDDLE = 2,
+};
+
+#if defined(_WIN32)
+#define SCHIZO_SCRIPT extern "C" __declspec(dllexport)
+#else
+#define SCHIZO_SCRIPT extern "C" __attribute__((visibility("default")))
+#endif
