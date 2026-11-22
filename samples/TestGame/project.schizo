@@ -1,5 +1,6 @@
 # GameWorldshaper project file
 name = TestGame
-engine_version = 0.8.65
+engine_version = 0.8.66
 default_scene = scenes/start.scene
 features = Physics,Animation,Audio,Networking,AI,Terrain,WorldStreaming,VFX,Combat,Scripting,GameUI
+escape = game

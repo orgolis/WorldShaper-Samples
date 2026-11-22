@@ -1,7 +1,7 @@
 # Settings: controls (click one, then press the new key; Esc cancels) and graphics.
 ui modal pause layer=50
 panel  id=dim     anchor=fill color=0,0,0,0.65
-panel  id=card    anchor=center x=0 y=0 w=1800 h=940 color=0.06,0.08,0.12,0.95 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
+panel  id=card    anchor=center x=0 y=0 w=1800 h=940 color=0.06,0.08,0.12,1 radius=12 border=1,0.85,0.55,0.28 border_width=1.5 shadow=1
 label  id=title   anchor=center x=0 y=-420 w=800 h=70 text="Settings" size=52 align=center bold=1 shadow=1
 label  id=h_ctrl  anchor=center x=-450 y=-350 w=640 h=44 text="Controls" size=32 align=center color=1,0.86,0.5,1 bold=1
 label  id=hint    anchor=center x=-450 y=-312 w=820 h=30 text="Click a control, then press the new key, mouse button or wheel (Esc cancels)" size=18 align=center color=1,1,1,0.55

@@ -8,11 +8,11 @@ Everything in it is ordinary project content -- scenes, UI documents, logic scri
 and effect files, one native script -- so every part of it can be opened and changed in the
 editor. Nothing about this game is built into the engine.
 
-**Needs engine 0.8.65 or newer.**
+**Needs engine 0.8.66 or newer.**
 
 ## Open it
 
-1. Install engine 0.8.65 (or newer) from the Hub.
+1. Install engine 0.8.66 (or newer) from the Hub.
 2. Download [TestGame.zip](https://github.com/orgolis/WorldShaper-Samples/releases/latest/download/TestGame.zip)
    and unzip it (or clone this repository with Git LFS installed -- the terrain, sky and models are stored with it).
 3. In the Hub: **Projects > Add Existing Project...** and choose this `TestGame` folder.
@@ -37,6 +37,13 @@ The title screen (`scenes/start.scene`) offers:
 **Join a friend**. The games find each other on the local network and over the internet
 and connect directly -- no server to run (for the networks they cannot get through, see
 `config/multiplayer.ini`). **Host IP** / **Join by IP** connect by address on a LAN.
+
+**Your progress goes with you** from one mode to the next -- level, XP, skill points, the
+skill tree, the abilities in their slots, the bag, the gear worn and the guns: it is kept on
+your own computer (`saves/profile.sav`; an exported game keeps it in the player's own
+folder) and saved every 15 seconds and whenever you leave a mode. Online, each guest brings
+their own. Every mode starts at full health; the duel keeps its own rules. Delete
+`saves/profile.sav` to start over; `keep_progress=0` in `config/multiplayer.ini` turns it off.
 
 ## What is in it
 
@@ -95,6 +102,8 @@ and connect directly -- no server to run (for the networks they cannot get throu
 | Game | Esc menu, F6 save, F9 load, Shift+F1 free the mouse for the editor |
 
 All except Esc can be rebound in the game's Settings. The defaults are in `input.cfg`.
+Esc belongs to the game (`escape = game` in `project.schizo`): its own Session Menu, not the
+engine's.
 
 ## Known limits
 
